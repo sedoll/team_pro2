@@ -78,10 +78,10 @@ CREATE TABLE product(
 	resdate timestamp DEFAULT CURRENT_TIMESTAMP()
 );
 
-INSERT INTO product VALUES(DEFAULT, '국어', '국어 1', '고등국어1', '설명', '목차',
+INSERT INTO product VALUES(DEFAULT, '국어', '', '고등국어1', '설명', '목차',
 	100, 20000, 'main_bottom_1.png', NULL, NULL, DEFAULT);
 	
-INSERT INTO product VALUES(DEFAULT, '수학', '미적분 1', '고등수학1', '수학 설명', ' 수학 목차',
+INSERT INTO product VALUES(DEFAULT, '수학', '', '고등수학1', '수학 설명', ' 수학 목차',
 	50, 25000, 'test2.jpg', 'test2.mp4', NULL, DEFAULT);
 	
 -- 후기 테이블
@@ -202,7 +202,7 @@ LEFT JOIN (
 
 
 -- 판매량 뷰
-DROP VIEW serve_summary;
+DROP VIEW sales;
 
 CREATE VIEW sales AS
 SELECT
@@ -214,8 +214,6 @@ FROM serve s
 JOIN product p ON s.pno = p.no
 GROUP BY s.pno, p.pname;
 
--- 상품등록
-INSERT INTO product VALUES(DEFAULT, ?, '', ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT);
 -- cateno 업데이트
 UPDATE product SET cateno = CONCAT(cate, NO) WHERE NO=?;
 
