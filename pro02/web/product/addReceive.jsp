@@ -45,7 +45,7 @@
                             <td>
                                 <c:set var="cate" />
                                 <select name="no" id="pno">
-                                    <option value="1" cate="B" price="40000">선택안함</option>
+                                    <option value="1" cate="0" price="" selected>선택안함</option>
                                     <c:forEach var="pro" items="${proList }" varStatus="status">
                                         <option value="${pro.no }" cate="${pro.cate }" price="${pro.price }">${pro.pname }</option>
                                     </c:forEach>
@@ -55,6 +55,10 @@
                         <tr>
                             <th><label for="amount">수량</label></th>
                             <td><input type="number" name="amount" id="amount" placeholder="입고 수량 입력" class="form-control" value="1" min="1" max="1000" required></td>
+                        </tr>
+                        <tr>
+                            <th><label for="price">가격</label></th>
+                            <td><input type="number" name="price" id="price" value="" readonly required></td>
                         </tr>
                         </tbody>
                     </table>
@@ -73,6 +77,17 @@
                             $("#cate").text(cate);
                             $("#rprice").val(price);
                         });
+                    });
+                </script>
+                <%-- 상품을 선택하면 해당 상품의 가격을 이동 --%>
+                <script>
+                    const selectElement = document.getElementById("pno");
+                    const priceInput = document.getElementById("price");
+
+                    selectElement.addEventListener("change", function() {
+                        const selectedOption = selectElement.options[selectElement.selectedIndex];
+                        const price = selectedOption.getAttribute("price");
+                        priceInput.value = price;
                     });
                 </script>
             </article>

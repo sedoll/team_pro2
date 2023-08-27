@@ -197,7 +197,7 @@
                             info: false,
                             dom: 'lt<f>p',
                             language: {
-                                emptyTable: '작성된 글이 없습니다.'
+                                emptyTable: '판매 내역이 없습니다.'
                             }
 
                         });

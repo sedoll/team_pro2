@@ -109,11 +109,13 @@
                         <tbody>
                         <tr>
                             <th>카테고리</th>
-                            <td colspan="2"><select name="cate" id="cate" class="form-control" class="indata" autofocus required>
-                                <option value="초등" selected>초등</option>
-                                <option value="중등">중등</option>
-                                <option value="고등">고등</option>
-                            </select></td>
+                            <td colspan="2">
+                                <select name="cate" id="cate" class="indata" autofocus required>
+                                    <option value="초등" selected>초등</option>
+                                    <option value="중등">중등</option>
+                                    <option value="고등">고등</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <th>상품 이름</th>
@@ -143,7 +145,7 @@
                             <td colspan="2">
                                 <input type="submit" value="상품등록" class="inbtn">
                                 <input type="reset" value="취소" class="inbtn" onclick="window.history.back();">
-                                <a href="${path}/ProList.do" class="btn btn-primary">상품목록</a>
+                                <a href="${path}/ProList.do" class="inbtn">상품목록</a>
                             </td>
                         </tr>
                         </tbody>

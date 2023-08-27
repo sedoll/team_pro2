@@ -315,9 +315,10 @@
                         <tr>
                             <th>가격 (부가세 10% 별도)</th>
                             <td>
-                                <%-- 여기에서 원가에 *1.35를 하므로 기존 가격보다 더 비쌈 --%>
-                                ${pro.price*1.1 }
-                                <input type="hidden" name="sprice" id="sprice" value="${pro.price*1.1 }">
+                                <%-- 여기에서 원가에 *1.1를 하므로 기존 가격보다 더 비쌈 --%>
+                                <fmt:parseNumber var="price" integerOnly="true" value="${pro.price*1.1 }" />
+                                    ${price}
+                                <input type="hidden" name="sprice" id="sprice" value="${price}">
                             </td>
                         </tr>
                         <tr>

@@ -248,7 +248,7 @@
                         info: false,
                         dom: 't<f>p',
                         language: {
-                            emptyTable: '작성된 글이 없습니다.'
+                            emptyTable: '장바구니 내역이 없습니다.'
                         }
 
                     });

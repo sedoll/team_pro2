@@ -397,20 +397,20 @@
 
                     } );
                 </script>
+                <c:if test="${check == '1'}">
                 <form action="${path}/AddReview.do" id="login_frm" class="frm">
                     <table class="tb3">
                         <tbody>
                         <tr>
-                            <c:if test="${check == '1'}">
                                 <th>${sid}</th>
                                 <th><textarea name="content" id="content" cols="100" rows="5" placeholder="리뷰 작성" required ></textarea></th>
                                 <th><input type="submit" value="글쓰기" class="inbtn" id="ans_btn"></th>
                                 <input type="hidden" name="pno" value="${pro.no}" readonly>
-                            </c:if>
                         </tr>
                         </tbody>
                     </table>
                 </form>
+                </c:if>
             </div>
         </section>
     </div>
