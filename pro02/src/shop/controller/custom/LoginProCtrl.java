@@ -27,18 +27,24 @@ public class LoginProCtrl extends HttpServlet {
         HttpSession session = request.getSession();
         PrintWriter out = response.getWriter();
         RequestDispatcher view = null;
-
         if(pass) {
             msg = "로그인 성공";
             session.setAttribute("sid", id);
             request.setAttribute("msg", msg);
-            response.sendRedirect("/pro02");
+            response.setContentType("text/html; charset=UTF-8");
+            out.println("<script>alert('login success');</script>");
+            out.println("<script> location.href= '/pro02'; </script>");
+            out.flush();
+//            response.sendRedirect("/pro02");
 //            response.setContentType("text/html;charset=UTF-8");
 //            response.setCharacterEncoding("UTF-8");
 //            view = request.getRequestDispatcher("/pro02");
 //            view.forward(request, response);
         } else {
-            response.sendRedirect("/pro02/Login.do");
+            response.setContentType("text/html; charset=UTF-8");
+            out.println("<script>alert('login fail');</script>");
+            out.println("<script> location.href= '/pro02/Login.do'; </script>");
+            out.flush();
         }
     }
 }

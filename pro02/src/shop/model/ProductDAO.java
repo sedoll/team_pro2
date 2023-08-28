@@ -301,6 +301,23 @@ public class ProductDAO {
         return cnt;
     }
 
+    public int updateReceive(Receive rec){
+        int cnt = 0;
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.RECEIVE_AMOUNT_UPDATE);
+            pstmt.setInt(1, rec.getAmount());
+            pstmt.setInt(2, rec.getPno());
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+        return cnt;
+    }
+
     public String getCateName(String cate) {
         String catename ="";
 

@@ -1,7 +1,5 @@
 package shop.controller.product;
 
-import shop.model.ProductDAO;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,18 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/ProductDel.do")
-public class ProductDelCtrl extends HttpServlet {
+@WebServlet("/AddProduct.do")
+public class AddProductCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int no = Integer.parseInt(request.getParameter("no"));
-        System.out.println(no);
-        ProductDAO dao = new ProductDAO();
-        int cnt = dao.delProduct(no);
-        if(cnt > 0) {
-            System.out.println("product 삭제 성공, no="+no);
-        }
-        RequestDispatcher view = request.getRequestDispatcher("/pro02/ProList.do");
+        String msg = "관리자의 상품 등록폼이 로딩되었습니다.";
+
+        request.setAttribute("msg", msg);
+        RequestDispatcher view = request.getRequestDispatcher("/product/addProduct.jsp");
         view.forward(request, response);
     }
 }

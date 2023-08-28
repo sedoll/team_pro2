@@ -99,6 +99,9 @@ public interface DBConnect {
 
     //입고 처리
     final static String RECEIVE_INSERT = "insert into receive values (default, ?, ?, ?, default)";
+    
+    // 입고 수량 갱신
+    final static String RECEIVE_AMOUNT_UPDATE = "update receive set amount=amount+? where pno=?";
 
     //장바구니 기능
     final static String CART_INSERT = "insert into cart values (default,?,?,?)";
