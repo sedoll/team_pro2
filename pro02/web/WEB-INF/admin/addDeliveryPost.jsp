@@ -434,7 +434,7 @@
                         <td class="item3">${deli.daddr}</td>
                         <td class="item1">
                             <c:if test="${deli.pstate == 0}">
-                                <a href="${path}/AddDeliveryPost.do?dno=${deli.dno}" class="inbtn">운송장번호 입력</a>
+                            <a href="/" class="inbtn">운송장번호 입력</a>
                             </c:if>
                         </td>
                     </tr>

@@ -5,13 +5,13 @@ public class Delivery {
     private int sno;    //결제번호
     private String cid; //고객아이디
     private String daddr;	//+배송지
-    private String custel;		//+고객연락처
+    private String custel; //+고객연락처
     private String pcom; //(admin)배송회사
-    private String ptel;	//(admin)배송기사연락처
+    private String ptel; //(admin)배송기사연락처
     private int pstate;	//(0:배송전,1:배송중,2:도착,3:구매결정)-배송상태
-    private String sdate;
-    private String rdate;
-    private String bcode;	//화물코드
+    private String sdate; // 결제일
+    private String rdate; // 배송시작일
+    private String bcode; //운송 번호
 
     public int getDno() {
         return dno;

@@ -337,7 +337,7 @@
                     <li>
                         <a href="#">배송</a>
                         <ul>
-                            <li><a href="${path2}/DeliveryList.do">판매량</a></li>
+                            <li><a href="${path2}/AdminDeliveryList.do">배송처리</a></li>
                             <li><a href="#">배송중</a></li>
                             <li><a href="#">배송완료</a></li>
                             <li><a href="#">text4</a></li>
