@@ -384,16 +384,16 @@
                 <li>
                     <a href="#">상품 관리</a>
                     <ul>
-                        <li><a href="${path2 }/ProList.do" class="nav-link">상품 목록</a></li>
-                        <li><a href="${path2 }/AddProduct.do" class="nav-link">상품 등록</a></li>
-                        <li><a href="${path2 }/AddReceive.do" class="nav-link">입고</a></li>
+                        <li><a href="${path }/ProList.do" class="nav-link">상품 목록</a></li>
+                        <li><a href="${path }/AddProduct.do" class="nav-link">상품 등록</a></li>
+                        <li><a href="${path }/AddReceive.do" class="nav-link">입고</a></li>
                         <li><a href="#">text4</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">회원 관리</a>
                     <ul>
-                        <li><a href="${path2 }/CustomList.do">회원 목록</a></li>
+                        <li><a href="${path }/CustomList.do">회원 목록</a></li>
                         <li><a href="#">text2</a></li>
                         <li><a href="#">text3</a></li>
                         <li><a href="#">text4</a></li>
@@ -432,11 +432,7 @@
                         <td class="item1">${deli.dno}</td>
                         <td class="item2">${deli.cid}</td>
                         <td class="item3">${deli.daddr}</td>
-                        <td class="item1">
-                            <c:if test="${deli.pstate == 0}">
-                                <a href="${path}/AddDeliveryPost.do?dno=${deli.dno}" class="inbtn">운송장번호 입력</a>
-                            </c:if>
-                        </td>
+                        <td class="item1"><a href="${path}/UpdateDeliveryPost.do?dno=${deli.dno}" class="inbtn">배송 상세</a></td>
                     </tr>
                     </c:forEach>
                     </tbody>
