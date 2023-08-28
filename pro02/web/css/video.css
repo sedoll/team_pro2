@@ -12,16 +12,20 @@ button { background-color:transparent; outline:0; border:0; }
 #restart { background-position:-48px 0px; background-image:url("../img/controls2.png"); }
 #rew { background-position:-24px 0px; background-image:url("../img/controls2.png"); }
 #play { background-position:0px -48px; position:relative; }
-#play:after { content:"▶"; display:block; color:deepskyblue; margin-top:-8px;
+#play:after { content:"▶"; display:block; color:deepskyblue; margin-top:-5px;
     font-size:10px; position:absolute; top:1px; left:0px; }
 #pause { background-position:-72px -48px; display:none; position:relative; }
 #pause:after { content:"||"; display:block; color:deepskyblue; margin-top:-8px;
     font-size:10px; position:absolute; top:3px; left:0px; }
 #stop { background-position:-48px -48px;  }
+#stop:after {content:"◼︎"; display:block; color: deepskyblue; margin-top: -13px;
+    font-size: 10px; position: absolute; }
 #fastFwd { background-position:-72px 0px; transform: scaleX(-1); }
 #mute { background-position:0px 0px; background-image:url("../img/controls2.png"); }
 #unmute { background-position:0px -72px; display:none; }
-#vmup { background-position:-48px -72px; }
+#vmup { background-position:-48px -72px; position:relative;}
+#vmup:after {content: "◀+";display:block; color:deepskyblue;  margin-top:-6px;
+    font-size:10px; position:absolute; top:2px; left:6px;}
 #vmdown { background-position:0px -24px; background-image:url("../img/controls2.png"); }
 #sizeup { background-size:72px 72px; background-image:url("../img/controls3.png");
     background-position:0px 0px; }
