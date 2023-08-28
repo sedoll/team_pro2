@@ -121,7 +121,7 @@ public class DeliveryDAO {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_ALL);
             pstmt.setInt(1, pstate);
             rs = pstmt.executeQuery();
-            if(rs.next()){
+            while(rs.next()){
                 Delivery del = new Delivery();
                 del.setDno(rs.getInt("dno"));
                 del.setSno(rs.getInt("sno"));

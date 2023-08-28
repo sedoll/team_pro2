@@ -1,4 +1,4 @@
-package shop.controller.delivery;
+package shop.controller.admin;
 
 import shop.dto.Delivery;
 import shop.model.DeliveryDAO;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 배송 시작
-@WebServlet("/DeliveryList.do")
+@WebServlet("/AdminDeliveryList.do")
 public class DeliveryListCtrl extends HttpServlet {
 
     @Override

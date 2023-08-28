@@ -336,6 +336,18 @@
             float: right;
 
         }
+
+        .indata {
+            display:inline-block;
+            width: 590px;
+            height: 32px;
+            line-height: 32px;
+            text-indent:10px;
+            font-size:16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 15px;
+        }
     </style>
 </head>
 
@@ -410,27 +422,23 @@
                     <tr>
                         <th class="item1" style="text-align: center">배송번호</th>
                         <th class="item2" style="text-align: center">구매자</th>
-                        <th class="item3" style="text-align: center">배송코드</th>
-                        <th class="item3" style="text-align: center">가입일</th>
+                        <th class="item3" style="text-align: center">주소</th>
                         <th class="item1" style="text-align: center">비고</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <c:forEach var="deli" items="${deliveryList }" varStatus="status">
                     <tr>
                         <td class="item1">${deli.dno}</td>
-                    </tr>
-                    <tr>
                         <td class="item2">${deli.cid}</td>
-                    </tr>
-                    <tr>
-                        <td class="item3"><input type="text" placeholder="운송장번호" autofocus required></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" value="글쓰기" class="inbtn">
-                            <input type="reset" value="취소" class="inbtn" onclick="window.history.back();">
+                        <td class="item3">${deli.daddr}</td>
+                        <td class="item1">
+                            <c:if test="${deli.pstate == 0}">
+                            <a href="/" class="inbtn">운송장번호 입력</a>
+                            </c:if>
                         </td>
                     </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <script>
