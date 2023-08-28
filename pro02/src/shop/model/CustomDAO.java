@@ -1,7 +1,5 @@
 package shop.model;
 
-
-
 import shop.dto.Custom;
 import shop.util.AES256;
 
@@ -47,7 +45,7 @@ public class CustomDAO {
     }
 
     public Custom getCustom(String id) {
-        Custom custom = new Custom();
+        Custom cus = new Custom();
         DBConnect con = new MariaDBCon();
         conn = con.connect();
         String qpw = "";
@@ -56,7 +54,7 @@ public class CustomDAO {
             pstmt.setString(1,id);
             rs = pstmt.executeQuery();
             if(rs.next()) {
-                custom.setId(rs.getString("id"));
+                cus.setId(rs.getString("id"));
 
                 try {
                     qpw = AES256.decryptAES256(rs.getString("pw"), key);
@@ -64,22 +62,22 @@ public class CustomDAO {
                     throw new RuntimeException(e);
                 }
 
-                custom.setPw(qpw);
-                custom.setName(rs.getString("name"));
-                custom.setPoint(rs.getInt("point"));
-                custom.setGrade(rs.getString("grade"));
-                custom.setTel(rs.getString("tel"));
-                custom.setEmail(rs.getString("email"));
-                custom.setBirth(rs.getString("birth"));
-                custom.setRegdate(rs.getString("regdate"));
-                custom.setAddress(rs.getString("address"));
+                cus.setPw(qpw);
+                cus.setName(rs.getString("name"));
+                cus.setPoint(rs.getInt("point"));
+                cus.setGrade(rs.getString("grade"));
+                cus.setTel(rs.getString("tel"));
+                cus.setEmail(rs.getString("email"));
+                cus.setBirth(rs.getString("birth"));
+                cus.setRegdate(rs.getString("regdate"));
+                cus.setAddress(rs.getString("address"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             con.close(rs, pstmt, conn);
         }
-        return custom;
+        return cus;
     }
 
     public boolean login(String id, String pw) {
@@ -98,6 +96,7 @@ public class CustomDAO {
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
+                System.out.println("복호화 " + qpw);
                 if(pw.equals(qpw)){
                     pass = true;
                 } else {
@@ -118,10 +117,16 @@ public class CustomDAO {
         boolean pass = false;
         DBConnect con = new MariaDBCon();
         conn = con.connect();
+        String qpw = "";
         try {
             pstmt = conn.prepareStatement(DBConnect.CUSTOM_INSERT);
             pstmt.setString(1, id);
-            pstmt.setString(2, pw);
+            try {
+                qpw = AES256.encryptAES256(rs.getString("pw"), key);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            pstmt.setString(2, qpw);
             pstmt.setString(3, name);
             pstmt.setString(4, tel);
             pstmt.setString(5, email);
@@ -157,6 +162,36 @@ public class CustomDAO {
             con.close(rs, pstmt, conn);
         }
         return pass;
+    }
+
+
+
+    public int modifyCustom(Custom cus) {
+        int cnt = 0;
+        DBConnect con = new MariaDBCon();
+        String qpw = "";
+        try {
+            conn = con.connect();
+            pstmt = conn.prepareStatement(DBConnect.CUSTOM_UPDATE);
+            try {
+                qpw = AES256.encryptAES256(cus.getPw(), key);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("암호화 : "+qpw);
+            pstmt.setString(1, qpw);
+            pstmt.setString(2, cus.getTel());
+            pstmt.setString(3, cus.getEmail());
+            pstmt.setString(4, cus.getAddress());
+            pstmt.setString(5, cus.getId());
+
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+        return cnt;
     }
 
     public int deleteCustom(String id){

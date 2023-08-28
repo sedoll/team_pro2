@@ -17,15 +17,35 @@ public class MypageModifyProCtrl extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String id = (String) session.getAttribute("sid");
+        String id = request.getParameter("id");
+        String pw = request.getParameter("pw");
+        String pw2 = request.getParameter("pw2");
+        String birth = request.getParameter("birth");
+        String tel = request.getParameter("tel");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address1") + "<br>" + request.getParameter("address2") +  "<br>" + request.getParameter("postcode");
 
+        int cnt = 0;
+
+        // 기존 비밀번호 확인을 위해 데이터를 가져옴
         CustomDAO dao = new CustomDAO();
         Custom cus = dao.getCustom(id);
 
-        System.out.println(cus.toString());
-        request.setAttribute("cus", cus);
-
-        RequestDispatcher view = request.getRequestDispatcher("/custom/mypageModify.jsp");
-        view.forward(request, response);
+        if(cus.getPw().equals(pw)) {
+            cus.setPw(pw2);
+            cus.setBirth(birth);
+            cus.setTel(tel);
+            cus.setEmail(email);
+            cus.setAddress(address);
+            cnt = dao.modifyCustom(cus);
+            if(cnt > 0) {
+                System.out.println("업데이트 완료");
+                RequestDispatcher view = request.getRequestDispatcher("/pro02");
+                view.forward(request, response);
+            }
+        } else {
+            System.out.println("비밀번호 불일치");
+        }
+        
     }
 }

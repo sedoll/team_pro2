@@ -8,8 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
-    <%@ include file="../head.jsp" %>
+    <title>관리자 회원 상세 페이지</title>
+    <%@ include file="../../head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
@@ -99,21 +99,21 @@
             background-color: #666666;
         }
     </style>
-    <c:set var="path" value="<%=request.getContextPath() %>" />
+
 </head>
 
 <body>
 <div class="wrap">
     <header class="hd" id="hd">
-        <%@ include file="../header.jsp" %>
+        <%@ include file="../../header.jsp" %>
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="">HOME</a> &gt; <span>마이페이지</span></p>
+            <p><a href="">HOME</a> &gt; <span>관리자 회원 정보 페이지</span></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">마이페이지</h2>
+                <h2 class="page_tit">관리자 회원 정보 페이지</h2>
                 <table class="tb1">
                     <tbody>
                     <tr>
@@ -123,6 +123,10 @@
                     <tr>
                         <th>아이디</th>
                         <td class="data">${cus.id}</td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호</th>
+                        <td class="data">${cus.pw}</td>
                     </tr>
                     <tr>
                         <th>전화번호</th>
@@ -149,8 +153,8 @@
                 <table class="tb2">
                     <tr>
                         <td colspan="2">
-                            <a href="${path}/MypageModify.do?sid=${cus.id}" class="inbtn">회원정보수정</a>
-                            <a href="${path}/pro02" class="inbtn">메인화면</a>
+                            <a href="${path}/MypageModify.do?sid=${cus.id }" class="inbtn">회원정보 수정</a>
+                            <a href="${path}/Manage.do" class="inbtn">관리자 메인</a>
                         </td>
                     </tr>
                 </table>
@@ -158,7 +162,7 @@
         </section>
     </div>
     <footer class="ft" id="ft">
-        <%@ include file="../footer.jsp" %>
+        <%@ include file="../../footer.jsp" %>
     </footer>
 </div>
 </body>

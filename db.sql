@@ -30,6 +30,8 @@ VALUES('kim', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5Pv
 -- 123456a* 암호화  PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==
 UPDATE custom SET pw='PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==';
 
+UPDATE custom SET address='경기 성남시 분당구 대왕판교로 477<br>102호<br>13480'
+
 -- 공지사항 테이블
 CREATE TABLE notice (
     no INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
