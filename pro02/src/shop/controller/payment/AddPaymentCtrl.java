@@ -28,6 +28,17 @@ public class AddPaymentCtrl extends HttpServlet {
         HttpSession session = request.getSession();
         String cid = (String) session.getAttribute("sid");
 
+        String from = request.getParameter("from");
+        String cartno = request.getParameter("cartno");
+
+        if(!from.isEmpty() && from != null) {
+            request.setAttribute("from", from);
+        }
+
+        if(!cartno.isEmpty() && cartno != null) {
+            request.setAttribute("cartno", cartno);
+        }
+
         ProductDAO dao = new ProductDAO();
         Product pro = dao.getProduct(pno);
         int amount = dao.getAmount(pno);
