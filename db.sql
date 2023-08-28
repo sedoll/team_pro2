@@ -174,7 +174,10 @@ create table category(
 	cname varchar(100) not null
 );
 
-SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate=‘B’ ORDER BY NO;
+SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate='B' ORDER BY NO;
+
+UPDATE product SET cate='A' WHERE cate='초등';
+UPDATE product SET cate='E' WHERE cate='중등';
 
 -- 카트 테이블 생성
 create table cart(

@@ -1,9 +1,7 @@
 package shop.controller.product;
 
 import shop.dto.Product;
-import shop.dto.Review;
 import shop.model.ProductDAO;
-import shop.model.ReviewDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/ProList.do")
@@ -20,7 +17,7 @@ public class ProListCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductDAO dao = new ProductDAO();
-        List<Product> proList = new ArrayList<>();
+        List<Product> proList;
 
         String catename="";
         String cate = request.getParameter("cate");
@@ -47,6 +44,7 @@ public class ProListCtrl extends HttpServlet {
         else {
             proList = dao.getCateProductList(cate);
             catename = dao.getCateName(cate);
+
         }
 
 
@@ -54,6 +52,8 @@ public class ProListCtrl extends HttpServlet {
 
         request.setAttribute("proList",proList);
         request.setAttribute("cate",cate);
+
+
 
         System.out.println("상품목록 조회" + cate);
         RequestDispatcher view = request.getRequestDispatcher("/product/proList.jsp");

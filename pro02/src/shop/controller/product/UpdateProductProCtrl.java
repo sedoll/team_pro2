@@ -1,9 +1,9 @@
-package shop.controller.admin;
+package shop.controller.product;
+
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import shop.dto.Product;
-import shop.model.FileudDAO;
 import shop.model.ProductDAO;
 
 import javax.servlet.ServletContext;
@@ -14,17 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
-@WebServlet("/AddProductPro.do")
-public class AddProductProCtrl extends HttpServlet {
-
+@WebServlet("/UpdateProductPro.do")
+public class UpdateProductProCtrl extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = "";
         ServletContext application = request.getServletContext();
-        ProductDAO dao = new ProductDAO();
-
+        String home = application.getContextPath();
         try {
             String saveDirectory = application.getRealPath("/storage"); //실제 저장 경로
             int maxSize = 1024*1024*10;     //10MB
@@ -32,15 +31,11 @@ public class AddProductProCtrl extends HttpServlet {
 
             MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
             Product pro = new Product();
-            pro.setCate(mr.getParameter("cate"));
-            pro.setCateno(mr.getParameter("cate"));
+            pro.setNo(Integer.parseInt(mr.getParameter("no")));
             pro.setPname(mr.getParameter("pname"));
             pro.setPcomment(mr.getParameter("pcomment"));
             pro.setPlist(mr.getParameter("plist"));
             pro.setPrice(Integer.parseInt(mr.getParameter("price")));
-            pro.setImgSrc1(mr.getParameter("imgsrc1"));
-            pro.setImgSrc2(mr.getParameter("imgsrc2"));
-            pro.setImgSrc3(mr.getParameter("imgsrc3"));
 
             File upfile = null;
             Enumeration files = mr.getFileNames();
@@ -75,16 +70,31 @@ public class AddProductProCtrl extends HttpServlet {
                 }
                 idx++;
             }
-            /*
-            pro.setImgSrc1(upfile.get);
-            file.setFilename(upfile.getName());*/
-            int cnt = dao.addProduct(pro);
-            if(cnt > 0) {
-                System.out.println("db 업로드 완료");
+            System.out.println(fileName);
+
+            ProductDAO dao = new ProductDAO();
+            int cnt = dao.updateProduct(pro);
+
+            if(cnt>0){
+                response.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('상품 수정이 완료되었습니다.');</script>");
+                out.println("<script> location.href= '/pro02/ProList.do'; </script>");
+                out.flush();
+
+                //response.sendRedirect(home+"/ProList.do");
+
+            }else{
+                response.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('상품등록에 실패하였습니다'); location.href='/pro02/UpdateProduct.do';</script>");
+                out.flush();
+                //response.sendRedirect(home+"/AddProduct.do");
             }
+
+
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
-        response.sendRedirect("/pro02/proList.do");
     }
 }

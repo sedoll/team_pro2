@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품 입고</title>
+    <title>추가입고</title>
     <c:set var="path" value="<%=request.getContextPath() %>" />
     <%@ include file="../head.jsp"%>
 
@@ -98,20 +98,20 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/">상품 입고</a>
-                &gt; <a href="/">상품 입고</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="/">추가입고</a>
+                &gt; <a href="/">추가입고</a></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">상품 입고</h2>
-                <form name="frm1" id="frm1" action="${path }/AddReceivePro.do" method="post">
+                <h2 class="page_tit">추가입고</h2>
+                <form name="frm1" id="frm1" action="${path }/UpdateReceivePro.do" method="post">
                     <table class="tb1">
                         <tbody>
                             <tr>
                                 <th><label for="pno">상품명</label></th>
                                 <td>
                                     <c:set var="cate" />
-                                    <select name="no" id="pno">
+                                    <select name="pno" id="pno">
                                         <option value="1" cate="0" price="" selected>선택안함</option>
                                         <c:forEach var="pro" items="${proList }" varStatus="status">
                                             <option value="${pro.no }" cate="${pro.cate }" price="${pro.price }">${pro.pname }</option>
@@ -124,12 +124,8 @@
                                 <td><input type="number" name="amount" id="amount" placeholder="입고 수량 입력" class="form-control" value="1" min="1" max="1000" required></td>
                             </tr>
                             <tr>
-                                <th><label for="price">가격</label></th>
-                                <td><input type="number" name="price" id="price" value="" readonly required></td>
-                            </tr>
-                            <tr>
                                 <td colspan="2">
-                                    <input type="submit" name="submit-btn" class="inbtn" value="상품입고">
+                                    <input type="submit" name="submit-btn" class="inbtn" value="추가입고">
                                     <input type="reset" name="reset-btn" class="inbtn" value="취소">
                                     <a href="${path }/ProList.do" class="inbtn">상품목록</a>
                                 </td>

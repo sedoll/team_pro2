@@ -1,5 +1,8 @@
 package shop.controller.product;
 
+
+import shop.dto.Category;
+import shop.dto.Product;
 import shop.model.ProductDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -9,19 +12,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/ProductDel.do")
-public class ProductDelCtrl extends HttpServlet {
+@WebServlet("/UpdateProduct.do")
+public class UpdateProductCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String msg = "상품 정보를 수정합니다.";
         int no = Integer.parseInt(request.getParameter("no"));
-        System.out.println(no);
+
         ProductDAO dao = new ProductDAO();
-        int cnt = dao.delProduct(no);
-        if(cnt > 0) {
-            System.out.println("product 삭제 성공, no="+no);
-        }
-        RequestDispatcher view = request.getRequestDispatcher("/pro02/ProList.do");
-        view.forward(request, response);
+        Product pro = dao.getProduct(no);
+        List<Category> cateList = dao.getCategoryList();
+
+        request.setAttribute("cateList", cateList);
+        request.setAttribute("msg", msg);
+        request.setAttribute("pro", pro);
+
+        RequestDispatcher view = request.getRequestDispatcher("/product/updateProduct.jsp");
+        view.forward(request,response);
     }
 }

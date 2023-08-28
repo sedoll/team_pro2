@@ -1,4 +1,7 @@
-package shop.controller.admin;
+package shop.controller.product;
+
+import shop.dto.Product;
+import shop.model.ProductDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -7,15 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/AddProduct.do")
-public class AddProductCtrl extends HttpServlet {
+@WebServlet("/UpdateReceive.do")
+public class UpdateReceiveCtrl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String msg = "관리자의 공지사항 글 등록폼이 로딩되었습니다.";
-
+        String msg = "상품 업데이트 페이지 실행";
         request.setAttribute("msg", msg);
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/addProduct.jsp");
+
+        ProductDAO dao = new ProductDAO();
+        List<Product> proList = dao.getProductList();
+
+        request.setAttribute("proList", proList);
+
+        RequestDispatcher view = request.getRequestDispatcher("/product/updateReceive.jsp");
         view.forward(request, response);
     }
 }

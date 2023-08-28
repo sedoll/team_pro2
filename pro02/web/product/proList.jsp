@@ -187,8 +187,9 @@
             display: block;
             border-radius: 10px;
             min-width: 60px;
-            padding-left: 24px;
-            padding-right: 24px;
+            padding-right: 10px;
+            padding-left: 10px;
+            margin-left: 15px;
             text-align: center;
             line-height: 38px;
             background-color: #527AF2;
@@ -302,6 +303,7 @@
                     <c:if test="${sid eq 'admin' }">
                         <a href="${path}/AddProduct.do" class="inbtn">상품 등록</a>
                         <a href="${path}/AddReceive.do" class="inbtn">상품 입고</a>
+                        <a href="${path}/UpdateReceive.do" class="inbtn">추가 입고</a>
                     </c:if>
                 </div>
             </div>

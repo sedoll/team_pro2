@@ -1,6 +1,5 @@
 package shop.controller.product;
 
-import shop.dto.Payment;
 import shop.dto.Product;
 import shop.dto.Review;
 import shop.model.PaymentDAO;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/Product.do")
