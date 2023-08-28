@@ -20,7 +20,7 @@ public class DeliveryListCtrl extends HttpServlet {
 
         List<Delivery> deliveryList = new ArrayList<>();
         DeliveryDAO dao = new DeliveryDAO();
-        int pstate = 0;
+        int pstate = Integer.parseInt(request.getParameter("pstate"));
         deliveryList = dao.getDeliveryList(pstate);
 
         request.setAttribute("deliveryList", deliveryList);

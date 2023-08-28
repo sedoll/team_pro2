@@ -145,7 +145,7 @@ public class DeliveryDAO {
     }
 
     //배송 송장 등록 및 배송시작
-    public int deliveryPro(Delivery del){
+    public int updateDelivery(Delivery del){
         int cnt = 0;
         DBConnect con = new MariaDBCon();
         conn = con.connect();
@@ -153,9 +153,10 @@ public class DeliveryDAO {
             pstmt = conn.prepareStatement(DBConnect.DELIVERY_PRO);
             pstmt.setString(1, del.getPcom());
             pstmt.setString(2, del.getPtel());
-            pstmt.setString(3, del.getRdate());
-            pstmt.setString(4, del.getBcode());
-            pstmt.setInt(5, del.getDno());
+            pstmt.setInt(3, del.getPstate());
+            pstmt.setString(4, del.getRdate());
+            pstmt.setString(5, del.getBcode());
+            pstmt.setInt(6, del.getDno());
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

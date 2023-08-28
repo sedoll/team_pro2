@@ -88,7 +88,7 @@ public interface DBConnect {
     final static String RETURN_DELEVERY = "delete from delivery where sno=?";
 
     //배송 등록 처리
-    final static String DELIVERY_PRO = "update delivery set pcom=?, ptel=?, pstate=1, sdate=current_timestamp, rdate=?, bcode=? where dno=?";
+    final static String DELIVERY_PRO = "update delivery set pcom=?, ptel=?, pstate=?, rdate=?, bcode=? where dno=?";
 
     //배송 완료 처리
     final static String DELIVERY_COMPLETE = "update delivery set pstate=2 where dno=?";

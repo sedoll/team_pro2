@@ -337,10 +337,10 @@
                     <li>
                         <a href="#">배송</a>
                         <ul>
-                            <li><a href="${path2}/AdminDeliveryList.do">배송처리</a></li>
-                            <li><a href="#">배송중</a></li>
-                            <li><a href="#">배송완료</a></li>
-                            <li><a href="#">text4</a></li>
+                            <li><a href="${path2}/AdminDeliveryList.do?pstate=0">배송처리</a></li>
+                            <li><a href="${path2}/AdminDeliveryList.do?pstate=1">배송중</a></li>
+                            <li><a href="${path2}/AdminDeliveryList.do?pstate=2">배송완료</a></li>
+                            <li><a href="${path2}/AdminDeliveryList.do?pstate=3">구매완료</a></li>
                         </ul>
                     </li>
                 </ul>
