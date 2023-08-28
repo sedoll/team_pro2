@@ -22,7 +22,7 @@ video.load();  //비디오 로딩
 video.setAttribute("loop","5"); //비디오 반복 횟수 지정
 video.volume = 1;   //비디오의 볼륨값 초기화
 
-video.play()
+// video.play();
 
 /* 동영상 재생 제어 처리부 */
 //재시작
@@ -65,7 +65,7 @@ function playPause () {
     }
 }   
 //정지함수
-function stopPlayer () { video.pause(); video.currentTime = 0; } 
+function stopPlayer () { video.pause(); video.currentTime = 0; play.style.display = "inline-block";   pause.style.display = "none";}
 /* 음량 제어 처리부 */
 function mutePlayer (state) { //음소거토글함수
     if (state == "mute") { video.volume = 0;  mute.style.display = "none";

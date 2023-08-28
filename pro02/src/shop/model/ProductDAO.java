@@ -53,6 +53,57 @@ public class ProductDAO {
         return proList;
     }
 
+    public List<Product> getCateProductListSchool(String cate){
+        List<Product> proList = new ArrayList<>();
+        DBConnect con = new MariaDBCon();
+        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+        String cate1="";
+        String cate2="";
+        String cate3="";
+        String cate4="";
+        if (cate.equals("초등")) { cate1="A";cate2="B";cate3="C";cate4="D";}
+        else if(cate.equals("중등")){ cate1="E";cate2="F";cate3="G";cate4="H";}
+        else if(cate.equals("고등")) { cate1="I";cate2="J";cate3="K";cate4="L";}
+        else if(cate.equals("기타")) { cate1="M";cate2="N";cate3="O";cate4="P";}
+
+        try {
+            conn = con.connect();
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_CATE_SCHOOL);
+
+            pstmt.setString(1, cate1);
+            pstmt.setString(2, cate2);
+            pstmt.setString(3, cate3);
+            pstmt.setString(4, cate4);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Product pro = new Product();
+                pro.setNo(rs.getInt("no"));
+                pro.setCate(rs.getString("cate"));
+                pro.setCateno(rs.getString("cateno"));
+                pro.setPname(rs.getString("pname"));
+                pro.setPcomment(rs.getString("pcomment"));
+                pro.setPlist(rs.getString("plist"));
+                pro.setPrice(rs.getInt("price"));
+                pro.setImgSrc1(rs.getString("imgsrc1"));
+                pro.setImgSrc2(rs.getString("imgsrc2"));
+                pro.setImgSrc3(rs.getString("imgsrc3"));
+                pro.setCname(rs.getString("cname"));
+                Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
+                String date = ymd.format(d);
+                pro.setResdate(date);
+                proList.add(pro);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return proList;
+    }
+
+
     public List<Product> getCateProductList(String cate) {
         List<Product> proList = new ArrayList<>();
         DBConnect con = new MariaDBCon();
@@ -147,6 +198,32 @@ public class ProductDAO {
         return cnt;
     }
 
+    public int updateProduct(Product pro){
+        int cnt =0;
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+
+        try {
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_UPDATE);
+            pstmt.setString(1, pro.getPname());
+            pstmt.setString(2, pro.getPcomment());
+            pstmt.setString(3, pro.getPlist());
+            pstmt.setInt(4, pro.getPrice());
+            pstmt.setString(5, pro.getImgSrc1());
+            pstmt.setString(6, pro.getImgSrc2());
+            pstmt.setString(7, pro.getImgSrc3());
+            pstmt.setInt(8, pro.getNo());
+            cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+
+
+        return cnt;
+    }
+
     public int delProduct(int no){
         int cnt = 0;
         DBConnect con = new MariaDBCon();
@@ -222,5 +299,29 @@ public class ProductDAO {
             con.close(pstmt, conn);
         }
         return cnt;
+    }
+
+    public String getCateName(String cate) {
+        String catename ="";
+
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        String sql = "select * from category where cno=?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, cate);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                catename = rs.getString("cname");
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+
+        return catename;
     }
 }

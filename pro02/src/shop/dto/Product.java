@@ -15,6 +15,8 @@ public class Product {
     private String imgSrc3; // 상품이미지
     private String resdate; // 등록일
 
+    private String cname;
+
     public int getNo() {
         return no;
     }
@@ -111,6 +113,14 @@ public class Product {
         this.resdate = resdate;
     }
 
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -120,11 +130,13 @@ public class Product {
                 ", pname='" + pname + '\'' +
                 ", pcomment='" + pcomment + '\'' +
                 ", plist='" + plist + '\'' +
+                ", pqty=" + pqty +
                 ", price=" + price +
                 ", imgSrc1='" + imgSrc1 + '\'' +
                 ", imgSrc2='" + imgSrc2 + '\'' +
                 ", imgSrc3='" + imgSrc3 + '\'' +
                 ", resdate='" + resdate + '\'' +
+                ", cname='" + cname + '\'' +
                 '}';
     }
 }

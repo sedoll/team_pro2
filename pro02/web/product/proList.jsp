@@ -113,9 +113,10 @@
         }
 
         #myTable td {
-            max-height: 200px;
+            height: 280px;
             overflow: hidden; /* Overflow 처리 (필요한 경우) */
-            vertical-align: top; /* 상단 정렬로 변경 */
+            vertical-align: middle; /* 상단 정렬로 변경 */
+
         }
 
         #myTable td > div {
@@ -134,32 +135,48 @@
         }
 
         .img_tit img {
-            max-height: 180px;
+            max-height: 280px;
+            overflow: hidden;
         }
-        /*
+
+
         .tb1 .item1 {
-            width: 8%;
+            width: 25%;
         }
         .tb1 .item2 {
-            width: 50%;
+            width: 20%;
             text-align: left;
+            font-weight: bold;
         }
         .tb1 .item3 {
             width: 12%;
-        }*/
 
+        }
+        .tb1 .item4 {
+            width: 23%;
+
+        }
+        .tb1 .item5 {
+            width: 20%;
+
+        }
+
+        .tb1 p {
+            padding: 4px;
+        }
         /* 기타 버튼 스타일 */
 
         .btn1 {
-            display: block;
-            border-radius: 10px;
-            max-width: 120px;
+            /*display: block;*/
+            border-radius: 4px;
+            line-height: 60px;
+            padding: 4px;
+            /*max-width: 120px;*/
             text-align: center;
             background-color: #527AF2;
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-bottom: 10px;
         }
 
         .btn1:hover {
@@ -204,55 +221,45 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">도서목록</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="${path }/ProList.do?cate=${cate }">${catename } 도서 목록</a></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">도서목록</h2>
+                <h2 class="page_tit">${catename } 도서 목록</h2>
                 <table class="tb1" id="myTable">
                     <thead>
                     <tr>
                         <th></th>
-                        <th>정보</th>
+                        <th>제목</th>
                         <th>가격</th>
-                        <th>출간일</th>
+                        <th>정보</th>
                         <th>비고</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="pro" items="${proList }">
                         <tr>
-                            <td>
-                                <div class="img_tit"><img src="${path }/storage/${pro.imgSrc1 }"/></div>
+                            <td class="item1">
+                                <div class="img_tit"><a href="${path}/Product.do?no=${pro.no}"><img src="${path }/storage/${pro.imgSrc1 }"/></a></div>
                             </td>
-                            <td>
-                                <div>
-                                    ${pro.cate }
-                                </div>
-                                <div>
-                                    ${pro.pname}
-                                </div>
-                                <div>
-                                    ${pro.plist}
-                                </div>
+                            <td class="item2">
+                                <p>${pro.pname}</p>
                             </td>
-                            <td>
-                                <div>${pro.price}</div>
+                            <td class="item3">
+                                <p>${pro.price}</p>
                             </td>
-                            <td>
-                                <div>${pro.resdate}</div>
+                            <td class="item4">
+                                <p>${pro.cname }</p>
+                                <p>출간일 ${pro.resdate}</p>
                             </td>
-                            <td>
-                                <div>
-                                    <a href="${path}/Product.do?no=${pro.no}" class="btn1">상세보기</a>
-                                </div>
+                            <td class="item5">
                                 <c:if test="${not empty sid}">
-                                    <div>
-                                        <a href="${path }/AddCart.do?pno=${pro.no }" class="btn1">장바구니</a>
-                                    </div>
-                                    <div>
+
                                         <a href="${path }/AddPayment.do?pno=${pro.no }" class="btn1">구매하기</a>
-                                    </div>
+                                        <a href="${path }/AddCart.do?pno=${pro.no }" class="btn1">장바구니</a>
+                                        <a href="${path }/AddPayment.do?pno=${pro.no }" class="btn1">♡</a>
+
+
                                 </c:if>
                             </td>
                         </tr>
@@ -267,7 +274,7 @@
                             info: false,
                             dom: 't<f>p',
                             language: {
-                                emptyTable: '작성된 글이 없습니다.'
+                                emptyTable: '등록된 상품이 없습니다.'
                             }
 
                         });
@@ -284,7 +291,7 @@
                             'margin-right':'280px'
                         });
                         $('#myTable_paginate').css({
-                            'margin-right':'100px'
+                            'margin-right':'120px'
                         });
 
 

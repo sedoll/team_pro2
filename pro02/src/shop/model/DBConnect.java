@@ -42,6 +42,11 @@ public interface DBConnect {
     final static String PRODUCT_DELETE = "delete from product where no=?";
     final static String PRODUCT_INSERT = "INSERT INTO product VALUES(DEFAULT, ?, '', ?, ?, ?, ?, ?, ?, '', DEFAULT)";
 
+    final static String PRODUCT_INSERT_UPDATE = "update product set cateno = concat(cate, no) where no in (select no from product order by resdate desc limit 1)";
+
+    final static String PRODUCT_SELECT_CATE_SCHOOL = "SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno  WHERE cate IN (?,?,?,?) ORDER BY no";
+    final static String PRODUCT_INSERT_CATENO = "update product set cateno = concat(cate, no) where no in (select no from product order by resdate desc)";
+
 
     // qna
     final static String QNA_SELECT_ALL = "select * from qna where lev=0 order by resdate desc";

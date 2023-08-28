@@ -174,6 +174,8 @@ create table category(
 	cname varchar(100) not null
 );
 
+SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate=‘B’ ORDER BY NO;
+
 -- 카트 테이블 생성
 create table cart(
 	cartno serial primary key,
