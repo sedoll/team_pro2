@@ -61,8 +61,11 @@ public interface DBConnect {
     final static String QNA_DELETE = "delete from qna where qno=?";
 
     //review
-    final static String REVIEW_SELECT = "select * from review where par=?";
+    final static String REVIEW_SELECT_ALL = "select * from review where par=?";
+    final static String REVIEW_SELECT_ONE = "select * from review where par=? and cid=?";
     final static String REVIEW_INSERT = "insert into review values(default, ?, ?, default, ?)";
+    final static String REVIEW_UPDATE = "update review set content=? where cid=? and par=?";
+    final static String REVIEW_DELETE = "delete from review where cid=? and par=?";
     
     
     //입고처리패턴
