@@ -93,6 +93,10 @@ public interface DBConnect {
     //배송 완료 처리
     final static String DELIVERY_COMPLETE = "update delivery set pstate=2 where dno=?";
 
+    
+    // 배송 조회
+    final static String DELIVERY_SELECT_ALL = "select * from delivery where pstate=?";
+
     final static String DELIVERY_SELECT_ONE = "select * from delivery where dno=?";
     final static String DELIVERY_SELECT_SNO = "select * from delivery where sno=?";
 

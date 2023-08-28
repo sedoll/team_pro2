@@ -322,7 +322,7 @@
                             <li><a href="${path2 }/ProList.do" class="nav-link">상품 목록</a></li>
                             <li><a href="${path2 }/AddProduct.do" class="nav-link">상품 등록</a></li>
                             <li><a href="${path2 }/AddReceive.do" class="nav-link">입고</a></li>
-                            <li><a href="#">text4</a></li>
+                            <li><a href="${path2}/Sales.do">판매량</a></li>
                         </ul>
                     </li>
                     <li>
@@ -335,11 +335,11 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">menu4</a>
+                        <a href="#">배송</a>
                         <ul>
-                            <li><a href="#">text1</a></li>
-                            <li><a href="#">text2</a></li>
-                            <li><a href="#">text3</a></li>
+                            <li><a href="${path2}/DeliveryList.do">판매량</a></li>
+                            <li><a href="#">배송중</a></li>
+                            <li><a href="#">배송완료</a></li>
                             <li><a href="#">text4</a></li>
                         </ul>
                     </li>

@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeliveryDAO {
     static Connection conn = null;
@@ -109,6 +111,37 @@ public class DeliveryDAO {
             con.close(pstmt, conn);
         }
         return cnt;
+    }
+
+    public List<Delivery> getDeliveryList(int pstate){
+        List<Delivery> deliveryList = new ArrayList<>();
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_ALL);
+            pstmt.setInt(1, pstate);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                Delivery del = new Delivery();
+                del.setDno(rs.getInt("dno"));
+                del.setSno(rs.getInt("sno"));
+                del.setCid(rs.getString("cid"));
+                del.setDaddr(rs.getString("daddr"));
+                del.setCustel(rs.getString("custel"));
+                del.setPcom(rs.getString("pcom"));
+                del.setPtel(rs.getString("ptel"));
+                del.setPstate(rs.getInt("pstate"));
+                del.setSdate(rs.getString("sdate"));
+                del.setRdate(rs.getString("rdate"));
+                del.setBcode(rs.getString("bcode"));
+                deliveryList.add(del);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return deliveryList;
     }
 
     //배송 송장 등록 및 배송시작
