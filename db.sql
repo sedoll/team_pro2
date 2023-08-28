@@ -221,6 +221,22 @@ FROM serve s
 JOIN product p ON s.pno = p.no
 GROUP BY s.pno, p.pname;
 
+-- 배송 뷰
+
+DROP VIEW delivery_info;
+
+CREATE VIEW delivery_product_amount_info AS
+SELECT
+    d.*,
+    pr.pname,
+    py.amount
+FROM
+    delivery d
+JOIN
+    payment py ON d.sno = py.sno
+JOIN
+    product pr ON py.pno = pr.no;
+
 -- cateno 업데이트
 UPDATE product SET cateno = CONCAT(cate, NO) WHERE NO=?;
 
