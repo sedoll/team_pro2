@@ -189,9 +189,9 @@
                         <td class="item2">${lev.content}</td>
                         <td class="item3">${lev.resdate}</td>
                         <td class="item4">
-                            <c:if test="${sid eq lev.cid}">
-                                <a href="${path}/updateAns.jsp&lev=1" class="inbtn">수정</a>
-                                <a href="${path}/deleteBoardpro.jsp&lev=1" class="inbtn delete_btn"> 삭제 </a>
+                            <c:if test="${sid eq lev.cid || sid eq 'admin'}">
+                                <a href="${path}/UpdateReview.do?cid=${lev.cid}&par=${pro.no}" class="inbtn">수정</a>
+                                <a href="${path}/DeleteReview.do?cid=${lev.cid}&par=${pro.no}" class="inbtn delete_btn"> 삭제 </a>
                             </c:if>
                         </td>
                     </tr>
