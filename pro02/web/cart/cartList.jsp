@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>도서목록</title>
+    <title>장바구니</title>
     <%@ include file="../head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
@@ -205,11 +205,11 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">도서목록</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">장바구니</a></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">도서목록</h2>
+                <h2 class="page_tit">장바구니</h2>
                 <table class="tb1" id="myTable">
                     <thead>
                     <tr>
@@ -232,7 +232,7 @@
                                 ${cart.amount }
                             </td>
                             <td class="item3">
-                                <a href="${path}/AddPayment.do?pno=${cart.pno}&from=cart" class="btn1">구매</a>
+                                <a href="${path}/AddPayment.do?pno=${cart.pno}&from=cart&cartno=${cart.cartno}" class="btn1">구매</a>
                                 <a href="${path}/DelCart.do?cartno=${cart.cartno}&from=cart" class="btn1">제거</a>
                             </td>
                         </tr>

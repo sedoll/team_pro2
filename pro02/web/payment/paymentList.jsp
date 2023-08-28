@@ -227,14 +227,14 @@
                             </td>
                             <td class="item4">
                                 <c:if test="${pay.pstate==0}">
-                                    <a href="${path }/ReturnPayment.do?sno=${pay.sno }" class="btn btn-primary">반품 요청</a>
+                                    <a href="${path }/ReturnPayment.do?sno=${pay.sno }" class="inbtn">반품 요청</a>
                                 </c:if>
                                 <c:if test="${pay.pstate==1}">
-                                    <a href="${path }/Delivery.do?sno=${pay.sno }" class="btn btn-primary">배송 조회</a>
+                                    <a href="${path }/Delivery.do?sno=${pay.sno }" class="inbtn">배송 조회</a>
                                 </c:if>
                                 <c:if test="${pay.pstate==2}">
                                     <span class="btn btn-primary">배송 완료</span>
-                                    <a href="${path }/AddReview.do?sno=${pay.sno }" class="btn btn-primary">구매 결정</a>
+                                    <a href="${path }/AddReview.do?sno=${pay.sno }" class="inbtn">구매 결정</a>
                                 </c:if>
                             </td>
                         </tr>
