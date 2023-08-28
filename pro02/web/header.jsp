@@ -61,7 +61,10 @@
                 <ul class="sub">
                     <li><a class="move" href="${path2}/ProList.do?cate=M">유아</a></li>
                     <li><a class="move" href="${path2}/ProList.do?cate=N">해외 서적</a></li>
-
+                    <c:if test="${not empty sid}">
+                        <li><a href="${path2}/CartList.do">장바구니</a></li>
+                        <li><a href="${path2}/PaymentList.do">결제내역</a></li>
+                    </c:if>
                 </ul>
             </li>
 

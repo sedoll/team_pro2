@@ -164,11 +164,11 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">관리자 페이지</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">판매량 페이지</a></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">관리자 페이지</h2>
+                <h2 class="page_tit">판매량 페이지</h2>
 
                 <table class="tb1" id="myTable">
                     <thead>
@@ -180,9 +180,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="cus" items="${salesList }" >
+                    <c:forEach var="cus" items="${salesList }" varStatus="status" >
                         <tr>
-                            <td class="item1">${cus.pno}</td>
+                            <td class="item1">${status.count}</td>
                             <td class="item2">${cus.pname}</td>
                             <td class="item2">${cus.money}</td>
                             <td class="item2">${cus.cnt}</td>
@@ -193,7 +193,7 @@
                 <script>
                     $(document).ready( function () {
                         $('#myTable').DataTable({
-                            order: [[3, 'desc']], // 0번째 컬럼을 기준으로 내림차순 정렬
+                            order: [[0, 'desc']], // 0번째 컬럼을 기준으로 내림차순 정렬
                             info: false,
                             dom: 'lt<f>p',
                             language: {
