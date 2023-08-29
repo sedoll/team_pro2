@@ -430,7 +430,7 @@
                                 <c:if test="${not empty sid}">
                                     <c:set var="isLiked" value="${likedProductIds.contains(pro.no)}" />
                                         <a href="${path }/AddPayment.do?pno=${pro.no }" class="btn1">구매하기</a>
-                                        <a href="${path }/AddCart.do?pno=${pro.no }" class="btn1">장바구니</a>
+                                        <a href="${path }/AddCart.do?pno=${pro.no }&cate=${pro.cate}" class="btn1">장바구니</a>
                                     <c:choose>
                                         <c:when test="${isLiked }">
                                             <%-- 눌러도 새로고침 안되게 처리 ///                         현재 로그인한 사용자 ID                 pro.no을 저장하기 위한 역할 --%>

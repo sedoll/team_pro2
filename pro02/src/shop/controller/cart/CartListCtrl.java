@@ -22,6 +22,8 @@ public class CartListCtrl extends HttpServlet {
         List<CartVO> cartList = dao.getByIdCartList(cid);
 
         request.setAttribute("cartList", cartList);
+
+
         RequestDispatcher view = request.getRequestDispatcher("/cart/cartList.jsp");
         view.forward(request, response);
     }

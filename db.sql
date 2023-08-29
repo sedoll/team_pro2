@@ -170,6 +170,8 @@ FOREIGN KEY(cid) REFERENCES custom(id) ON DELETE
 	CASCADE
 );
 
+TRUNCATE TABLE category; 
+
 -- 카테고리 테이블
 create table category(
 	cno varchar(4) primary key,
@@ -189,15 +191,9 @@ insert into category values('I', '고등교과서');
 insert into category values('J', '고등참고서');
 insert into category values('K', '고등문제집');
 insert into category values('L', '고등기타');
-insert into category values('M', '일반교과서');
-insert into category values('N', '일반참고서');
-insert into category values('O', '일반문제집');
-insert into category values('P', '일반기타');
-insert into category values('Q', '유아콘텐츠');
-insert into category values('R', '유아놀이');
-insert into category values('S', '유아기타');
-insert into category values('T', '해외서적');
-insert into category values('U', '해외콘텐츠');
+insert into category values('M', '일반 서적');
+insert into category values('N', '유아');
+insert into category values('O', '해외');
 
 
 SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate='B' ORDER BY NO;

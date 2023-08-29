@@ -41,6 +41,7 @@ public class ProListCtrl extends HttpServlet {
             System.out.println(proList.toString());
         }else if(cate.equals("기타")) {
             proList = dao.getCateProductListSchool("기타");
+            catename ="기타 전체";
             System.out.println(proList.toString());
         }
         else {
