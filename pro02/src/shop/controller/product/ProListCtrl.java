@@ -1,6 +1,7 @@
 package shop.controller.product;
 
 import shop.dto.Product;
+import shop.model.LikeDAO;
 import shop.model.ProductDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -48,11 +50,20 @@ public class ProListCtrl extends HttpServlet {
         }
 
 
+        //좋아요한 상품 표시 기능 처리 부분
+        //세션의 아이디값 가져오기
+        HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("sid");
+        LikeDAO likeDAO = new LikeDAO();
+        List<Integer> likedProductIds = likeDAO.getLikedProductsByUser(sid);
+        request.setAttribute("likedProductIds", likedProductIds);
+
+
+
         request.setAttribute("catename",catename);
 
         request.setAttribute("proList",proList);
         request.setAttribute("cate",cate);
-
 
 
         System.out.println("상품목록 조회" + cate);

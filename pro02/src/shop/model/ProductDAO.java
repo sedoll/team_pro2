@@ -53,6 +53,7 @@ public class ProductDAO {
         return proList;
     }
 
+
     public List<Product> getCateProductListSchool(String cate){
         List<Product> proList = new ArrayList<>();
         DBConnect con = new MariaDBCon();
@@ -122,6 +123,7 @@ public class ProductDAO {
                 pro.setPlist(rs.getString("plist"));
                 pro.setPrice(rs.getInt("price"));
                 pro.setImgSrc1(rs.getString("imgsrc1"));
+                pro.setCname(rs.getString("cname"));
 
                 Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
                 String date = ymd.format(d);
@@ -158,6 +160,7 @@ public class ProductDAO {
                 pro.setImgSrc1(rs.getString("imgsrc1"));
                 pro.setImgSrc2(rs.getString("imgsrc2"));
                 pro.setImgSrc3(rs.getString("imgsrc3"));
+                pro.setCname(rs.getString("cname"));
 
                 Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
                 String date = ymd.format(d);
@@ -185,8 +188,12 @@ public class ProductDAO {
             pstmt.setString(3, pro.getPcomment());
             pstmt.setString(4, pro.getPlist());
             pstmt.setInt(5, pro.getPrice());
-            pstmt.setString(6, pro.getImgSrc1()); // 이미지
-            pstmt.setString(7, pro.getImgSrc2()); // 소개영상
+            pstmt.setString(6, pro.getImgSrc1()); // 메인이미지
+            pstmt.setString(7, pro.getImgSrc2()); // 설명이미지
+            pstmt.setString(8, pro.getImgSrc3()); // 소개영상
+            System.out.println("img1" + pro.getImgSrc1());
+            System.out.println("img2" + pro.getImgSrc2());
+            System.out.println("img3" + pro.getImgSrc3());
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -195,6 +202,18 @@ public class ProductDAO {
         } finally {
             con.close(pstmt, conn);
         }
+
+        con = new MariaDBCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_INSERT_CATENO);
+            cnt = cnt + pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+
         return cnt;
     }
 
@@ -212,8 +231,21 @@ public class ProductDAO {
             pstmt.setString(5, pro.getImgSrc1());
             pstmt.setString(6, pro.getImgSrc2());
             pstmt.setString(7, pro.getImgSrc3());
-            pstmt.setInt(8, pro.getNo());
+            pstmt.setString(8,pro.getCate());
+            pstmt.setInt(9, pro.getNo());
+
             cnt = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+
+        con = new MariaDBCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_INSERT_CATENO);
+            cnt = cnt + pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -300,6 +332,7 @@ public class ProductDAO {
         }
         return cnt;
     }
+
 
     public int updateReceive(Receive rec){
         int cnt = 0;

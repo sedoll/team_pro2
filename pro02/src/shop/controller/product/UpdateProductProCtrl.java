@@ -19,7 +19,6 @@ import java.util.Enumeration;
 
 @WebServlet("/UpdateProductPro.do")
 public class UpdateProductProCtrl extends HttpServlet {
-    @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = "";
         ServletContext application = request.getServletContext();
@@ -36,6 +35,7 @@ public class UpdateProductProCtrl extends HttpServlet {
             pro.setPcomment(mr.getParameter("pcomment"));
             pro.setPlist(mr.getParameter("plist"));
             pro.setPrice(Integer.parseInt(mr.getParameter("price")));
+            pro.setCate(mr.getParameter("cate"));
 
             File upfile = null;
             Enumeration files = mr.getFileNames();
