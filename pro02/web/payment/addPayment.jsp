@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품 상세</title>
+    <title>상품 구매</title>
     <%@ include file="../head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
@@ -128,8 +128,7 @@
         .tb2 .item1 { width: 10%; }
         .tb2 .item2 { width: 68%;}
         .tb2 .item3 { width: 10%; }
-        .tb2 .item4 { width: 12%;
-        }
+        .tb2 .item4 { width: 12%; }
         .tb2 td {
             border-bottom: 1px solid #7e7e7e;
             vertical-align: middle;
@@ -166,6 +165,18 @@
 
         .btn1:hover {
             background-color: #666666;
+        }
+
+        .indata {
+            display:inline-block;
+            width: 590px;
+            height: 32px;
+            line-height: 32px;
+            text-indent:10px;
+            font-size:16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 15px;
         }
 
         .inbtn, .delete_btn {
@@ -273,8 +284,8 @@
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">상품구매</h2>
-                <form action="${path }/AddPaymentPro.do" method="post" onsubmit="return payCheck(this)">
-                    <table class="table table-secondary" id="tb1">
+                <form class="frm" action="${path }/AddPaymentPro.do" method="post" onsubmit="return payCheck(this)">
+                    <table class="tb1" id="tb1">
                         <tbody>
                         <tr>
                             <td colspan="2">
@@ -289,11 +300,11 @@
                         </tr>
                         <tr>
                             <th class="item1">도서 번호</th>
-                            <td class="item2">${pro.cateno }</td>
+                            <td class="item2" colspan="2">${pro.cateno }</td>
                         </tr>
                         <tr>
-                            <th>도서명</th>
-                            <td>
+                            <th class="item1">도서명</th>
+                            <td class="item2" colspan="2">
                                 ${pro.pname }
                                 <input type="hidden" name="pname" id="proName" value="${pro.pname }">
                                 <input type="hidden" name="from" id="from" value="${from }">
@@ -304,17 +315,17 @@
                         </tr>
                         <tr>
                             <th>도서 설명</th>
-                            <td>
-                                <pre>${pro.pcomment }</pre>
+                            <td colspan="2">
+                                <pre class="indata">${pro.pcomment }</pre>
                             </td>
                         </tr>
                         <tr>
                             <th>도서 목차</th>
-                            <td><pre>${pro.plist }</pre></td>
+                            <td colspan="2"><pre class="indata">${pro.plist }</pre></td>
                         </tr>
                         <tr>
                             <th>가격 (부가세 10% 별도)</th>
-                            <td>
+                            <td colspan="2">
                                 <%-- 여기에서 원가에 *1.1를 하므로 기존 가격보다 더 비쌈 --%>
                                 <fmt:parseNumber var="price" integerOnly="true" value="${pro.price*1.1 }" />
                                     ${price}
@@ -323,46 +334,55 @@
                         </tr>
                         <tr>
                             <th>구매 수량 (남은 재고 : ${amount})</th>
-                            <td>
+                            <td colspan="2">
                                 <input type="hidden" name="pno" id="pno" value="${pro.no }" />
-                                <input type="number" name="amount" id="amount" class="form-control" min="1" value="1" max="${amount}" />
+                                <input type="number" name="amount" id="amount" class="indata" min="1" value="1" max="${amount}" />
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <hr>
-                    <h3>배송 정보</h3>
-                    <table class="table">
+                    <table class="tb1">
+                        <thead>
+                        <tr>
+                            <th><h3>배송 정보</h3></th>
+                        </tr>
+                        </thead>
                         <tbody>
                         <tr>
-                            <th>배송지 주소</th>
-                            <td><input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" required readonly /><br>
-                                <input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" required /><br>
-                                <input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="form-control" required readonly>
+                            <th class="item1">배송지 주소</th>
+                            <td class="item2" colspan="2">
+                                <input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="indata" required readonly /><br>
+                                <input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="indata" required /><br>
+                                <input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="indata" required readonly>
                                 <button type="button" id="post_btn" onclick="findAddr()" class="btn btn-primary" style="margin-bottom:36px;">우편번호 검색</button>
                             </td>
                         </tr>
                         <tr>
                             <th>받는 사람 연락처</th>
-                            <td>
+                            <td colspan="2">
                                 <input type="hidden" name="cid" id="cid" value="${cus.id }">
                                 <input type="hidden" name="name" id="name" value="${cus.name }">
                                 <input type="hidden" name="email" id="email" value="${cus.email }">
                                 <input type="hidden" name="tel" id="tel" value="${cus.tel }">
                                 <input type="hidden" name="addr" id="addr" value="${cus.address }">
-                                <input type="tel" name="custel" id="custel" class="form-control" required>
+                                <input type="tel" name="custel" id="custel" class="indata" required>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <hr>
-                    <h3>결제 정보</h3>
-                    <table class="table">
+                    <table class="tb1">
+                        <thead>
+                        <tr>
+                            <th><h3>결제 정보</h3></th>
+                        </tr>
+                        </thead>
                         <tbody>
                         <tr>
-                            <th>결제 수단</th>
-                            <td>
-                                <select name="pmethod" id="pmethod" class="form-control">
+                            <th class="item1">결제 수단</th>
+                            <td class="item2" colspan="2">
+                                <select name="pmethod" id="pmethod" class="indata">
                                     <option value="신용카드">신용카드</option>
                                     <option value="체크카드">체크카드</option>
                                     <option value="계좌이체">계좌이체</option>
@@ -371,8 +391,8 @@
                         </tr>
                         <tr>
                             <th>결제사</th>
-                            <td>
-                                <select name="pcom" id="pcom" class="form-control">
+                            <td colspan="2">
+                                <select name="pcom" id="pcom" class="indata">
                                     <option value="선택안함">선택안함</option>
                                 </select>
                                 <input type="hidden" name="pcom2" id="pcom2" value="">
@@ -380,8 +400,8 @@
                         </tr>
                         <tr>
                             <th>결제 번호</th>
-                            <td>
-                                <input type="text" name="cnum" id="cnum" class="form-control" required>
+                            <td colspan="2">
+                                <input type="text" name="cnum" id="cnum" class="indata" required>
                                 <input type="hidden" name="payAmount" id="payAmount">
                                 <input type="hidden" name="payCk" id="payCk" value="no">
                             </td>
@@ -389,17 +409,14 @@
                         <tr>
                             <td colspan="2">
                                 <input type="button" id="pay" value="결재" class="inbtn">
+                                <c:if test="${!empty sid }">
+                                    <input type="submit" class="inbtn" value="구매">
+                                </c:if>
+                                <p id="paymentResult" style="color:red; font-size: 20px;"></p>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <div class="btn-wrap container">
-                        <c:if test="${!empty sid }">
-                            <input type="submit" class="inbtn" value="구매">
-                        </c:if>
-                        <a href="${path }/ProList.do" class="inbtn">제품 목록</a>
-                        <p id="paymentResult" style="color:red; font-size: 20px;"></p>
-                    </div>
                 </form>
                 <script>
                     $(document).ready(function(){
