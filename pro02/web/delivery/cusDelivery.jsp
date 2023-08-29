@@ -98,7 +98,7 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/">결제내역</a>
+            <p><a href="/">HOME</a> &gt; <a href="/">배송정보</a>
                 &gt; <a href="/">배송정보</a></p>
         </div>
         <section class="page" id="page1">
