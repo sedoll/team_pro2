@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="${path}/css/common.css">
     <link rel="stylesheet" href="${path}/css/hd.css">
     <link rel="stylesheet" href="${path}/css/ft.css">
+
     <style>
         /* 본문 영역 스타일 */
         .contents {
@@ -182,6 +183,24 @@
         .btn1:hover {
             background-color: #666666;
         }
+        .likebtn {
+            /*display: block;*/
+            border-radius: 4px;
+            width: 40px;
+            line-height: 60px;
+            padding: 4px 8px 4px 8px;
+            /*max-width: 120px;*/
+            text-align: center;
+            background-color: #527AF2;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .likebtn:hover {
+            background-color: #666666;
+        }
+
 
         .inbtn {
             display: block;
@@ -213,6 +232,7 @@
             float: right;
 
         }
+
     </style>
 </head>
 <body>
@@ -255,13 +275,53 @@
                             </td>
                             <td class="item5">
                                 <c:if test="${not empty sid}">
-
+                                    <c:set var="isLiked" value="${likedProductIds.contains(pro.no)}" />
                                         <a href="${path }/AddPayment.do?pno=${pro.no }" class="btn1">구매하기</a>
                                         <a href="${path }/AddCart.do?pno=${pro.no }" class="btn1">장바구니</a>
-                                        <a href="${path }/AddPayment.do?pno=${pro.no }" class="btn1">♡</a>
-
+                                    <c:choose>
+                                        <c:when test="${isLiked }">
+                                            <%-- 눌러도 새로고침 안되게 처리 ///                         현재 로그인한 사용자 ID                 pro.no을 저장하기 위한 역할 --%>
+                                            <a href="javascript:void(0);" onclick="toggleLike(${pro.no}, '${sessionScope.sid}');" class="likebtn" data-product-id="${pro.no}" style="color: #ff5050">♥</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="javascript:void(0);" onclick="toggleLike(${pro.no}, '${sessionScope.sid}');" class="likebtn" data-product-id="${pro.no}"  style="color: #b4b4b4">♥</a>
+                                        </c:otherwise>
+                                    </c:choose>
 
                                 </c:if>
+                                <script>
+                                    function toggleLike(productNo, ${sid }) {
+                                        $.ajax({
+                                            url: "ProductLike.do",
+                                            method: "POST",
+                                            data: {
+                                                pno: productNo,
+                                                sid: ${sid }
+                                            },
+                                            success: function(response) {
+                                                var likeButton = $("[data-product-id='" + productNo + "']");
+
+                                                if (response.trim() === "liked") {
+                                                    alert("상품을 좋아요 했습니다!");
+                                                    likeButton.css("color","#ff5050");
+                                                } else if (response.trim() === "unliked") {
+                                                    alert("상품의 좋아요를 취소했습니다.");
+                                                    likeButton.css("color","#b4b4b4");                                                } else {
+                                                    alert("오류가 발생했습니다. 다시 시도해주세요.");
+                                                }
+                                            }
+                                        });
+                                    }
+                                    $(document).ready(function() {
+                                        // 좋아요 상태를 기반으로 버튼 색 변경
+                                        $(".inbtn").each(function() {
+                                            var isLiked = $(this).hasClass("liked");
+                                            if (isLiked) {
+                                                $(this).addClass("liked");
+                                            }
+                                        });
+                                    });
+                                </script>
                             </td>
                         </tr>
                     </c:forEach>

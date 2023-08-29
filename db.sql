@@ -176,6 +176,30 @@ create table category(
 	cname varchar(100) not null
 );
 
+-- 카테고리 더미 데이터
+insert into category values('A', '초등교과서');
+insert into category values('B', '초등참고서');
+insert into category values('C', '초등문제집');
+insert into category values('D', '초등기타');
+insert into category values('E', '중등교과서');
+insert into category values('F', '중등참고서');
+insert into category values('G', '중등문제집');
+insert into category values('H', '중등기타');
+insert into category values('I', '고등교과서');
+insert into category values('J', '고등참고서');
+insert into category values('K', '고등문제집');
+insert into category values('L', '고등기타');
+insert into category values('M', '일반교과서');
+insert into category values('N', '일반참고서');
+insert into category values('O', '일반문제집');
+insert into category values('P', '일반기타');
+insert into category values('Q', '유아콘텐츠');
+insert into category values('R', '유아놀이');
+insert into category values('S', '유아기타');
+insert into category values('T', '해외서적');
+insert into category values('U', '해외콘텐츠');
+
+
 SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate='B' ORDER BY NO;
 
 UPDATE product SET cate='A' WHERE cate='초등';
@@ -236,6 +260,19 @@ JOIN
     payment py ON d.sno = py.sno
 JOIN
     product pr ON py.pno = pr.no;
+    
+-- 찜 기능 테이블
+
+DROP TABLE likes;
+
+CREATE TABLE likes (
+    userid VARCHAR(20) NOT NULL,
+    productid INT NOT NULL,
+    liketime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (userid, productid),
+    FOREIGN KEY(userid) REFERENCES custom(id) ON DELETE 
+		CASCADE
+);
 
 -- cateno 업데이트
 UPDATE product SET cateno = CONCAT(cate, NO) WHERE NO=?;

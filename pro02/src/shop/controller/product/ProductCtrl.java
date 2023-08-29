@@ -2,6 +2,7 @@ package shop.controller.product;
 
 import shop.dto.Product;
 import shop.dto.Review;
+import shop.model.LikeDAO;
 import shop.model.PaymentDAO;
 import shop.model.ProductDAO;
 import shop.model.ReviewDAO;
@@ -45,7 +46,13 @@ public class ProductCtrl extends HttpServlet {
         PaymentDAO dao3 = new PaymentDAO();
         int check = dao3.getPaymentBuyCustom(no, sid);
         request.setAttribute("check", check);
-        
+
+        //좋아요한 상품 표시 기능 처리 부분
+        LikeDAO likeDAO = new LikeDAO();
+        List<Integer> likedProductIds = likeDAO.getLikedProductsByUser(sid);
+        request.setAttribute("likedProductIds", likedProductIds);
+
+
         RequestDispatcher view = request.getRequestDispatcher("/product/getProduct.jsp");
         view.forward(request, response);
     }

@@ -80,17 +80,27 @@
                                 </td>
                             </tr>
                             <tr class="pbtn">
-                                <c:if test="${not empty sid }">
+                                <c:if test="${not empty sid}">
+                                <c:set var="isLiked" value="${likedProductIds.contains(pro.no)}" />
                                     <td><a href="${path }/AddPayment.do?pno=${pro.no }" class="inbtn">구매하기</a>
                                     <a href="${path }/AddCart.do?pno=${pro.no }" class="inbtn">장바구니</a>
-                                    <a href="${path }/zzim.do?pno=${pro.no }" class="inbtn">찜</a></td>
-                                </c:if>
+                                        <c:choose>
+                                        <c:when test="${isLiked }">
+                                            <%-- 눌러도 새로고침 안되게 처리 ///                         현재 로그인한 사용자 ID                 pro.no을 저장하기 위한 역할 --%>
+                                        <a href="javascript:void(0);" onclick="toggleLike(${pro.no}, '${sessionScope.sid}');" class="inbtn" data-product-id="${pro.no}" style="color: #ff5050">♥</a>
+                                        </c:when>
+                                        <c:otherwise>
+                                        <a href="javascript:void(0);" onclick="toggleLike(${pro.no}, '${sessionScope.sid}');" class="inbtn" data-product-id="${pro.no}"  style="color: #b4b4b4">♥</a>
+                                        </c:otherwise>
+                                        </c:choose>
+
+                                        </c:if>
                             </tr>
                             <tr>
                                 <td class="adminbtn">
                                     <c:if test="${sid eq 'admin'}">
-                                        <a href="/board/updateBoard.jsp?lev=0" class="inbtn">수정</a>
-                                        <a href="${path}/ProductDel.do?no=${pro.no}" class="inbtn delete_btn">삭제</a>
+                                        <a href="${path}/UpdateProduct.do?no=${pro.no}" class="inbtn">수정</a>
+                                        <a href="${path}/DeleteProduct.do?no=${pro.no}" class="inbtn delete_btn">삭제</a>
                                     </c:if>
                                 </td>
                             </tr>
@@ -98,7 +108,39 @@
                         </table>
                     </div>
                 </div>
+                <script>
+                    function toggleLike(productNo, ${sid }) {
+                        $.ajax({
+                            url: "ProductLike.do",
+                            method: "POST",
+                            data: {
+                                pno: productNo,
+                                sid: ${sid }
+                            },
+                            success: function(response) {
+                                var likeButton = $("[data-product-id='" + productNo + "']");
 
+                                if (response.trim() === "liked") {
+                                    alert("상품을 좋아요 했습니다!");
+                                    likeButton.css("color","#ff5050");
+                                } else if (response.trim() === "unliked") {
+                                    alert("상품의 좋아요를 취소했습니다.");
+                                    likeButton.css("color","#b4b4b4");                                                } else {
+                                    alert("오류가 발생했습니다. 다시 시도해주세요.");
+                                }
+                            }
+                        });
+                    }
+                    $(document).ready(function() {
+                        // 좋아요 상태를 기반으로 버튼 색 변경
+                        $(".inbtn").each(function() {
+                            var isLiked = $(this).hasClass("liked");
+                            if (isLiked) {
+                                $(this).addClass("liked");
+                            }
+                        });
+                    });
+                </script>
 
 
 
