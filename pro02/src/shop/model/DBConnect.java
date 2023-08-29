@@ -115,6 +115,7 @@ public interface DBConnect {
     final static String RECEIVE_AMOUNT_UPDATE = "update receive set amount=amount+? where pno=?";
 
     //장바구니 기능
+    final static String CART_SELECT_FIND = "select * from cart where cid=? and pno=?";
     final static String CART_INSERT = "insert into cart values (default,?,?,?)";
     final static String CART_SELECT_CID = "select * from cart where cid=?";
 
