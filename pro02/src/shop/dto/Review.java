@@ -5,6 +5,7 @@ public class Review {
     private String cid;
     private String content;
     private int par;
+    private String pname;
 
     private String resdate;
 
@@ -48,6 +49,14 @@ public class Review {
         this.resdate = resdate;
     }
 
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
     @Override
     public String toString() {
         return "Review{" +
@@ -55,6 +64,7 @@ public class Review {
                 ", cid='" + cid + '\'' +
                 ", content='" + content + '\'' +
                 ", par=" + par +
+                ", pname='" + pname + '\'' +
                 ", resdate='" + resdate + '\'' +
                 '}';
     }

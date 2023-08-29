@@ -1,4 +1,4 @@
-package shop.controller.product;
+package shop.controller.review;
 
 import shop.dto.Notice;
 import shop.dto.Receive;

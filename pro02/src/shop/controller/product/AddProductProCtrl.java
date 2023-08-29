@@ -27,15 +27,6 @@ public class AddProductProCtrl extends HttpServlet {
         ServletContext application = request.getServletContext();
         ProductDAO dao = new ProductDAO();
 
-        /*String c1 = request.getParameter("c1");
-        String c2 =  request.getParameter("c2");
-
-        System.out.println(c1);
-        System.out.println(c2);
-
-        String cate = c1 + c2;
-        System.out.println(cate);
-*/
 
 
         try {
@@ -49,55 +40,26 @@ public class AddProductProCtrl extends HttpServlet {
             String c1 = mr.getParameter("c1");
             String c2 = mr.getParameter("c2");
             String cate = c1 + c2;
-            
-            if (cate.equals("초등교과서")) {
-                cate = "A";
-            } else if (cate.equals("초등참고서")) {
-                cate = "B";
-            } else if (cate.equals("초등문제집")) {
-                cate = "C";
-            } else if (cate.equals("초등기타")) {
-                cate = "D";
-            } else if (cate.equals("중등교과서")) {
-                cate = "E";
-            } else if (cate.equals("중등참고서")) {
-                cate = "F";
-            } else if (cate.equals("중등문제집")) {
-                cate = "G";
-            } else if (cate.equals("중등기타")) {
-                cate = "H";
-            } else if (cate.equals("고등교과서")) {
-                cate = "I";
-            } else if (cate.equals("고등참고서")) {
-                cate = "J";
-            } else if (cate.equals("고등문제집")) {
-                cate = "K";
-            } else if (cate.equals("고등기타")) {
-                cate = "L";
-            } else if (cate.equals("일반교과서")) {
-                cate = "M";
-            } else if (cate.equals("일반참고서")) {
-                cate = "N";
-            } else if (cate.equals("일반문제집")) {
-                cate = "O";
-            } else if (cate.equals("일반기타")) {
-                cate = "P";
-            } else if (cate.equals("기타유아콘텐츠")) {
-                cate = "Q";
-            } else if (cate.equals("기타유아놀이")) {
-                cate = "R";
-            } else if (cate.equals("기타유아기타")) {
-                cate = "S";
-            } else if (cate.equals("기타해외서적")) {
-                cate = "T";
-            } else if (cate.equals("기타해외콘텐츠")) {
-                cate = "U";
-            }
-            
+
+            if (cate.equals("초등교과서")) {  cate = "A";}
+            else if (cate.equals("초등참고서")) {cate = "B";}
+            else if (cate.equals("초등문제집")) {cate = "C";}
+            else if (cate.equals("초등기타")) {cate = "D";}
+            else if (cate.equals("중등교과서")) {cate = "E";}
+            else if (cate.equals("중등참고서")) { cate = "F";}
+            else if (cate.equals("중등문제집")) { cate = "G";}
+            else if (cate.equals("중등기타")) {cate = "H";}
+            else if (cate.equals("고등교과서")) {cate = "I";}
+            else if (cate.equals("고등참고서")) { cate = "J"; }
+            else if (cate.equals("고등문제집")) {cate = "K"; }
+            else if (cate.equals("고등기타")) {cate = "L"; }
+            else if (cate.equals("기타일반서적")) {cate = "M"; }
+            else if (cate.equals("기타유아")) {cate = "N"; }
+            else if (cate.equals("기타해외")) {cate = "O";}
 
             pro.setCate(cate);
             /*pro.setCate(mr.getParameter("cate"));*/
-         /*   pro.setCateno(mr.getParameter("cateno"));*/
+            /*   pro.setCateno(mr.getParameter("cateno"));*/
             pro.setPname(mr.getParameter("pname"));
             pro.setPcomment(mr.getParameter("pcomment"));
             pro.setPlist(mr.getParameter("plist"));

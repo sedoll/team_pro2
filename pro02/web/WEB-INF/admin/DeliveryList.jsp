@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자페이지</title>
+    <title>배송관리</title>
     <%@ include file="/head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
@@ -39,9 +39,9 @@
         .contents {
             clear: both;
             min-height:200vh;
-            /*background-image: url("${path}/img/login.jpg");
+            background-image: url("${path}/img/login.jpg");
             background-repeat: no-repeat;
-            background-position: center -250px;*/
+            background-position: center -250px;
         }
 
         .contents::after {
@@ -358,14 +358,14 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">관리자 페이지</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">배송관리</a></p>
         </div>
 
         <%@ include file="./adminAside.jsp"%>
 
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">관리자 페이지</h2>
+                <h2 class="page_tit">${title}</h2>
 
 
                 <table class="tb1" id="myTable">

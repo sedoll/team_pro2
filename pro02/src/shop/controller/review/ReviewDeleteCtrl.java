@@ -1,4 +1,4 @@
-package shop.controller.product;
+package shop.controller.review;
 
 import shop.dto.Review;
 import shop.model.ReviewDAO;

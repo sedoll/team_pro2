@@ -21,5 +21,8 @@
         <li>
             <a href="${path2}/CartList.do">장바구니</a>
         </li>
+        <li>
+            <a href="${path2}/ReviewList.do">내가쓴 후기</a>
+        </li>
     </ul>
 </aside>

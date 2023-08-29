@@ -13,7 +13,7 @@
     <ul>
         <li>
             <%-- <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>--%>
-            <a href="#">게시글 관리</a>
+            <a href="#">댓글 관리</a>
             <ul>
                 <li><a href="#">text1</a></li>
                 <li><a href="#">text2</a></li>
@@ -24,10 +24,11 @@
         <li>
             <a href="#">상품 관리</a>
             <ul>
-                <li><a href="${path3 }/ProList.do" class="nav-link">상품 목록</a></li>
-                <li><a href="${path3 }/AddProduct.do" class="nav-link">상품 등록</a></li>
+                <li><a href="${path3 }/ProList.do" class="nav-link">상품목록</a></li>
+                <li><a href="${path3 }/AddProduct.do" class="nav-link">상품등록</a></li>
                 <li><a href="${path3 }/AddReceive.do" class="nav-link">입고</a></li>
-                <li><a href="#">text4</a></li>
+                <li><a href="${path3 }/Sales.do" class="nav-link">재고관리</a></li>
+                <li><a href="${path3 }/Sales.do" class="nav-link">판매량</a></li>
             </ul>
         </li>
         <li>

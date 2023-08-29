@@ -180,7 +180,7 @@
                             <div class="player">
                                 <div class="vdo_fr">
                                     <video id="video">
-                                        <source src="${path}/storage/${pro.imgSrc2}" type="video/mp4" />
+                                        <source src="${path}/storage/${pro.imgSrc3}" type="video/mp4" />
                                     </video>
                                 </div>
                                 <div id="timebar">
