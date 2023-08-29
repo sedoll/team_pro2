@@ -122,7 +122,7 @@ public class CustomDAO {
             pstmt = conn.prepareStatement(DBConnect.CUSTOM_INSERT);
             pstmt.setString(1, id);
             try {
-                qpw = AES256.encryptAES256(rs.getString("pw"), key);
+                qpw = AES256.encryptAES256(pw, key);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

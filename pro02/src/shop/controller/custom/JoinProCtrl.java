@@ -31,16 +31,7 @@ public class JoinProCtrl extends HttpServlet {
         CustomDAO dao = new CustomDAO();
         System.out.printf("%s %s %s %s %s %s %s ", id, pw, name, tel, email, birth, (address1 + "<br>" + address2));
 
-        String key = "%02x";
-        String encrypted = "";
-        try {
-            encrypted = AES256.encryptAES256(pw, key);
-            System.out.println("비밀번호 암호화 : "+encrypted);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        boolean pass = dao.join(id, encrypted, name, tel, email, birth, (address1 + "<br>" + address2 + "<br>" + postcode));
+        boolean pass = dao.join(id, pw, name, tel, email, birth, (address1 + "<br>" + address2 + "<br>" + postcode));
         System.out.println(pass);
 
         HttpSession session = request.getSession();

@@ -107,9 +107,9 @@
         }
 
         .header img {
-
             display: inline-block;
-
+            vertical-align: middle;
+            width: 40px;
         }
 
         .header h2 {
@@ -117,8 +117,10 @@
             margin: 0;
             font-size: 30px;
             font-weight: bolder;
-            padding-bottom: 15px;
-            padding-left: 5px;
+           vertical-align: middle;
+            padding-top: 4px;
+            /*padding-bottom: 15px;*/
+            padding-left: 4px;
 
         }
 
@@ -150,6 +152,7 @@
             background: cornflowerblue;
             color: #fff;
             border: 0;
+            cursor: pointer;
         }
 
 
@@ -162,6 +165,9 @@
             width: 80%;
 
 
+        }
+        #birth {
+            cursor: pointer;
         }
 
 
@@ -262,6 +268,7 @@
             margin: 0 5px;
             padding: 0;
             box-shadow: 2px 3px 7px 0px #0000005e;
+            cursor: pointer;
         }
 
         button.reset {
@@ -275,6 +282,7 @@
             padding: 0;
             margin: 0 5px;
             box-shadow: 2px 3px 7px 0px #0000005e;
+            cursor: pointer;
         }
 
         .btn1 {
@@ -283,7 +291,24 @@
             display: flex;
             margin: 20px auto;
         }
-
+        #msg {
+            text-align: left;
+            padding-top: 6px;
+        }
+        #post_btn {
+            display: block;
+            height: 40px;
+            background: cornflowerblue;
+            border: 0;
+            border-radius: 5px;
+            width: 120px;
+            color: #fff;
+            font-size: 18px;
+            float: left;
+            padding: 0;
+            margin-top: 4px;
+            cursor: pointer;
+        }
     </style>
 
     <link rel="stylesheet" href="${path}/css/ft.css">
@@ -304,7 +329,7 @@
 
                 <div class="join_form">
                     <div class="header">
-                        <img src="${path}/img/로고48.png" />
+                        <img src="${path}/img/logo_48.png" />
                         <h2>회원가입</h2>
 
                     </div>
@@ -355,6 +380,14 @@
                         <div class="register_info">
                             <label>이메일 주소</label>
                             <input type="email" name="email" id="email" class="indata" placeholder="이메일" required="">
+                        </div>
+
+                        <div class="register_info">
+                            <label>주소</label>
+                            <input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="form-control" readonly>
+                            <button type="button" id="post_btn" onclick="findAddr()" class="btn btn-primary">우편번호 검색</button>
+                            <input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" required readonly/><br>
+                            <input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" required /><br>
                         </div>
 
                         <div class="register_info">
@@ -544,12 +577,7 @@
                             </div>
                         </div>
 
-                        <div class="register_info">
-                            <input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" required /><br>
-                            <input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" required /><br>
-                            <input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="form-control">
-                            <button type="button" id="post_btn" onclick="findAddr()" class="btn btn-primary">우편번호 검색</button>
-                        </div>
+
 
 
                         <div class="btn1">
