@@ -227,14 +227,19 @@
                             </td>
                             <td class="item4">
                                 <c:if test="${pay.pstate==0}">
+                                    <span>출고처리중</span>
                                     <a href="${path }/ReturnPayment.do?sno=${pay.sno }" class="inbtn">반품 요청</a>
                                 </c:if>
                                 <c:if test="${pay.pstate==1}">
-                                    <a href="${path }/Delivery.do?sno=${pay.sno }" class="inbtn">배송 조회</a>
+                                    <span>배송중</span>
+                                    <a href="${path }/CusDelivery.do?sno=${pay.sno }" class="inbtn">배송 조회</a>
                                 </c:if>
                                 <c:if test="${pay.pstate==2}">
-                                    <span class="btn btn-primary">배송 완료</span>
-                                    <a href="${path }/AddReview.do?sno=${pay.sno }" class="inbtn">구매 결정</a>
+                                    <span>배송완료</span>
+                                    <a href="${path }/CusDelivery.do?sno=${pay.sno }" class="inbtn">배송 조회</a>
+                                </c:if>
+                                <c:if test="${pay.pstate==3}">
+                                    <span class="btn btn-primary">구매 확정</span>
                                 </c:if>
                             </td>
                         </tr>

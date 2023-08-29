@@ -1,6 +1,7 @@
 package shop.model;
 
 import shop.dto.Delivery;
+import shop.dto.DeliveryInfoView;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -165,4 +166,38 @@ public class DeliveryDAO {
         }
         return cnt;
     }
+
+
+    // 배송 뷰 보기
+    public DeliveryInfoView deliveryInfoViewList(int sno) {
+        DeliveryInfoView divl = new DeliveryInfoView();
+
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        try{
+            pstmt = conn.prepareStatement(DBConnect.DELIVERY_VIEW);
+            pstmt.setInt(1, sno);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                divl.setDno(rs.getInt("dno"));
+                divl.setSno(rs.getInt("sno"));
+                divl.setCid(rs.getString("cid"));
+                divl.setDaddr(rs.getString("daddr"));
+                divl.setCustel(rs.getString("custel"));
+                divl.setPcom(rs.getString("pcom"));
+                divl.setPtel(rs.getString("ptel"));
+                divl.setPstate(rs.getInt("pstate"));
+                divl.setSdate(rs.getString("sdate"));
+                divl.setRdate(rs.getString("rdate"));
+                divl.setBcode(rs.getString("bcode"));
+                divl.setPname(rs.getString("pname"));
+                divl.setAmount(rs.getInt("amount"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  divl;
+    }
+
 }
