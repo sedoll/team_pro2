@@ -75,7 +75,7 @@
             float: left;
             width: 30%;
             min-height: 250px;
-
+            z-index: 999;
         }
         /* 커스텀 시작 */
         .side-bar > ul ul {
