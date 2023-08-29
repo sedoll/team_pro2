@@ -67,6 +67,26 @@ public class DeliveryDAO {
     }
 
     //배송 정보 조회
+    public int getDelivery(int pno, String cid){
+        int check = 0;
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.DELIVERY_SELECT_BUY);
+            pstmt.setInt(1, pno);
+            pstmt.setString(2, cid);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                check = 1;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return check;
+    }
+
     public Delivery getDelivery(int dno){
         Delivery del = new Delivery();
         DBConnect con = new MariaDBCon();
@@ -96,22 +116,22 @@ public class DeliveryDAO {
         return del;
     }
 
-    //배송 완료 처리
-    public int deliveryComplete(int dno){
-        int cnt = 0;
+    // 구매 확정
+    public boolean buyDelivery(int sno) {
+        boolean check = false;
         DBConnect con = new MariaDBCon();
         conn = con.connect();
         try {
-            pstmt = conn.prepareStatement(DBConnect.DELIVERY_COMPLETE);
-            pstmt.setInt(1, 2);
-            pstmt.setInt(2, dno);
-            cnt = pstmt.executeUpdate();
+            pstmt = conn.prepareStatement(DBConnect.DELIVERY_BUY);
+            pstmt.setInt(1,sno);
+            int cnt = pstmt.executeUpdate();
+            if(cnt > 0) {
+                check = true;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            con.close(pstmt, conn);
         }
-        return cnt;
+        return check;
     }
 
     public List<Delivery> getDeliveryList(int pstate){

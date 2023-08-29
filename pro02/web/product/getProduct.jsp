@@ -269,11 +269,14 @@
                         <tbody>
                         <tr>
                             <c:choose>
-                                <c:when test="${check == '1'}">
+                                <c:when test="${check == '2'}">
                                     <th>${sid}</th>
                                     <th><textarea name="content" id="content" cols="100" rows="5" placeholder="리뷰 작성" required ></textarea></th>
                                     <th><input type="submit" value="글쓰기" class="inbtn" id="ans_btn"></th>
                                     <input type="hidden" name="pno" value="${pro.no}" readonly>
+                                </c:when>
+                                <c:when test="${check == '1'}">
+                                    <p id="nologin_comment">구매 확정을 해야 후기 작성이 가능합니다.</p>
                                 </c:when>
                                 <c:otherwise>
                                     <p id="nologin_comment">도서를 구입한 고객님만 후기 작성이 가능합니다.</p>

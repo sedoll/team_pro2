@@ -13,9 +13,9 @@
     <ul>
         <li>
             <%-- <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>--%>
-            <a href="#">댓글 관리</a>
+            <a href="#">게시글 관리</a>
             <ul>
-                <li><a href="#">text1</a></li>
+                <li><a href="${path3}/AdminReviewList.do">댓글관리</a></li>
                 <li><a href="#">text2</a></li>
                 <li><a href="#">text3</a></li>
                 <li><a href="#">text4</a></li>

@@ -200,6 +200,7 @@ SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate=
 
 UPDATE product SET cate='A' WHERE cate='초등';
 UPDATE product SET cate='E' WHERE cate='중등';
+UPDATE product SET cate='I' WHERE cate='고등';
 
 -- 카트 테이블 생성
 create table cart(
@@ -215,7 +216,11 @@ create table cart(
 DROP VIEW inventory;
 
 CREATE VIEW inventory AS
-SELECT r.pno AS pno, (r.total_receive - COALESCE(s.total_serve, 0)) AS amount
+SELECT
+    r.pno AS pno,
+    COALESCE(p.pname, 'Unknown') AS pname,
+    COALESCE(p.price, 0) AS price,
+    (r.total_receive - COALESCE(s.total_serve, 0)) AS amount
 FROM (
     SELECT pno, SUM(amount) AS total_receive
     FROM receive
@@ -225,8 +230,8 @@ LEFT JOIN (
     SELECT pno, SUM(amount) AS total_serve
     FROM serve
     GROUP BY pno
-) s ON r.pno = s.pno;
-
+) s ON r.pno = s.pno
+LEFT JOIN product p ON r.pno = p.no;
 
 -- 판매량 뷰
 DROP VIEW sales;
@@ -249,6 +254,7 @@ CREATE VIEW delivery_info AS
 SELECT
     d.*,
     pr.pname,
+    pr.no AS pno,
     py.amount
 FROM
     delivery d

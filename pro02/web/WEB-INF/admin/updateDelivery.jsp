@@ -145,7 +145,9 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="submit" value="상품등록" class="inbtn">
+                                <c:if test="${deli.pstate ne '3'}">
+                                    <input type="submit" value="상품등록" class="inbtn">
+                                </c:if>
                                 <input type="reset" value="취소" class="inbtn" onclick="window.history.back();">
                                 <a href="${path}/ProList.do" class="inbtn">상품목록</a>
                             </td>
