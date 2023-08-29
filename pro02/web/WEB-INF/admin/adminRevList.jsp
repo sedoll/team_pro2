@@ -13,8 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내가쓴 후기</title>
-    <%@ include file="../head.jsp" %>
+    <title>리뷰관리</title>
+    <%@ include file="../../head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
@@ -138,7 +138,7 @@
         }
 
         .tb1 .item1 {
-            width: 10%;
+            width: 15%;
         }
         .tb1 .item2 {
             width: 50%;
@@ -146,10 +146,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-        }
-        .tb1 .item3 {
-            width: 25%;
-            text-align: right;
         }
 
         /* 기타 버튼 스타일 */
@@ -350,23 +346,23 @@
 <body>
 <div class="wrap">
     <header class="hd" id="hd">
-        <%@ include file="../header.jsp" %>
+        <%@ include file="../../header.jsp" %>
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">내가쓴 후기</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">리뷰관리</a></p>
         </div>
-        <%@ include file="../custom/customAside.jsp"%>
+        <%@ include file="./adminAside.jsp"%>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">내가쓴 후기</h2>
+                <h2 class="page_tit">리뷰관리</h2>
                 <table class="tb1" id="myTable">
                     <thead>
                     <tr>
                         <th class="item1">상품번호</th>
                         <th class="item1">상품명</th>
                         <th class="item2">내용</th>
-                        <th class="item3">비고</th>
+                        <th class="item1">비고</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -381,7 +377,7 @@
                             <td class="item2">
                                 ${rv.content }
                             </td>
-                            <td class="item3">
+                            <td class="item1">
                                 <a href="${path}/Product.do?no=${rv.par}" class="btn1">상세</a>
                                 <a href="${path}/DeleteReview.do?cid=${rv.cid}&par=${rv.par}" class="btn1">제거</a>
                             </td>
@@ -398,7 +394,7 @@
                         info: false,
                         dom: 't<f>p',
                         language: {
-                            emptyTable: '장바구니 내역이 없습니다.'
+                            emptyTable: '리뷰 내역이 없습니다.'
                         }
 
                     });
@@ -422,7 +418,7 @@
         </section>
     </div>
     <footer class="ft" id="ft">
-        <%@ include file="../footer.jsp" %>
+        <%@ include file="../../footer.jsp" %>
     </footer>
 </div>
 </body>

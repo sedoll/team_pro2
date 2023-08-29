@@ -2,10 +2,7 @@ package shop.controller.product;
 
 import shop.dto.Product;
 import shop.dto.Review;
-import shop.model.LikeDAO;
-import shop.model.PaymentDAO;
-import shop.model.ProductDAO;
-import shop.model.ReviewDAO;
+import shop.model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +41,12 @@ public class ProductCtrl extends HttpServlet {
         
         // 해당 상품 구매자 확인, 구매자 인 경우 리뷰 작성 가능
         PaymentDAO dao3 = new PaymentDAO();
-        int check = dao3.getPaymentBuyCustom(no, sid);
+        int check1 = dao3.getPaymentBuyCustom(no, sid);
+
+        DeliveryDAO dao4 = new DeliveryDAO();
+        int check2 = dao4.getDelivery(no, sid);
+
+        int check = check1 + check2;
         request.setAttribute("check", check);
 
         //좋아요한 상품 표시 기능 처리 부분

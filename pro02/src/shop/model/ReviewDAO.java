@@ -26,7 +26,7 @@ public class ReviewDAO {
 
         try {
             conn = con.connect();
-            pstmt = conn.prepareStatement(DBConnect.REVIEW_SELECT_ALL);
+            pstmt = conn.prepareStatement(DBConnect.REVIEW_SELECT_ALL_PAR);
             pstmt.setInt(1, no);
             rs = pstmt.executeQuery();
             while(rs.next()){
@@ -61,6 +61,39 @@ public class ReviewDAO {
             conn = con.connect();
             pstmt = conn.prepareStatement(DBConnect.REVIEW_SELECT_ALL_CID);
             pstmt.setString(1, cid);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Review rv = new Review();
+                rv.setNo(rs.getInt("no"));
+                rv.setCid(rs.getString("cid"));
+                rv.setContent(rs.getString("content"));
+                rv.setPar(rs.getInt("par"));
+                rv.setPname(getVOPname(rv.getPar()));
+                Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
+                String date = ymd.format(d);
+                rv.setResdate(date);
+                revList.add(rv);
+                System.out.println(rv.toString());
+            }
+            System.out.println("리뷰 추출 완료");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return revList;
+    }
+
+    public List<Review> getReviewList(){
+        List<Review> revList = new ArrayList<>();
+        DBConnect con = new MariaDBCon();
+        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+
+        try {
+            conn = con.connect();
+            pstmt = conn.prepareStatement(DBConnect.REVIEW_SELECT_ALL);
             rs = pstmt.executeQuery();
             while(rs.next()){
                 Review rv = new Review();

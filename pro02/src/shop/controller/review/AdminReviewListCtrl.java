@@ -11,26 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-@WebServlet("/DeleteReview.do")
-public class ReviewDeleteCtrl extends HttpServlet {
+@WebServlet("/AdminReviewList.do")
+public class AdminReviewListCtrl extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String sid = request.getParameter("cid");
-        int pno = Integer.parseInt(request.getParameter("par"));
 
-        Review rv = new Review();
-        rv.setCid(sid);
-        rv.setPar(pno);
+        List<Review> rvList = new ArrayList<>();
 
         ReviewDAO dao = new ReviewDAO();
-        int cnt = dao.deleteReview(rv);
-        if(cnt > 0) {
-            RequestDispatcher view = request.getRequestDispatcher("/Product.do?no="+pno);
-            view.forward(request, response);
-        } else {
-            response.sendRedirect("/pro02");
-        }
+        rvList = dao.getReviewList();
+        request.setAttribute("rvList", rvList);
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/adminRevList.jsp");
+        view.forward(request, response);
     }
 }

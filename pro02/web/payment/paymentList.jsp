@@ -374,18 +374,20 @@
                             <td class="item4">
                                 <c:if test="${pay.pstate==0}">
                                     <span>출고처리중</span>
-                                    <a href="${path }/ReturnPayment.do?sno=${pay.sno }" class="inbtn">반품 요청</a>
+                                    <a href="${path }/ReturnPayment.do?sno=${pay.sno }" class="inbtn">반품요청</a>
                                 </c:if>
                                 <c:if test="${pay.pstate==1}">
                                     <span>배송중</span>
-                                    <a href="${path }/CusDelivery.do?sno=${pay.sno }" class="inbtn">배송 조회</a>
+                                    <a href="${path }/CusDelivery.do?sno=${pay.sno }" class="inbtn">배송조회</a>
                                 </c:if>
                                 <c:if test="${pay.pstate==2}">
                                     <span>배송완료</span>
-                                    <a href="${path }/CusDelivery.do?sno=${pay.sno }" class="inbtn">배송 조회</a>
+                                    <a href="${path }/ReturnPayment.do?sno=${pay.sno }" class="inbtn">환불요청</a>
+                                    <a href="${path }/CusDelivery.do?sno=${pay.sno }" class="inbtn">배송조회</a>
+                                    <a href="${path }/BuyPayment.do?sno=${pay.sno }" class="inbtn">구매확정</a>
                                 </c:if>
                                 <c:if test="${pay.pstate==3}">
-                                    <span class="btn btn-primary">구매 확정</span>
+                                    <span>구매 확정</span>
                                 </c:if>
                             </td>
                         </tr>
