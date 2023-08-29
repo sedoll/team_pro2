@@ -1,4 +1,4 @@
-package shop.controller.product;
+package shop.controller.review;
 
 import shop.dto.Review;
 import shop.model.ReviewDAO;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/AddReview.do")
 public class ReviewAddCtrl extends HttpServlet {
@@ -27,12 +28,21 @@ public class ReviewAddCtrl extends HttpServlet {
         rv.setPar(pno);
 
         ReviewDAO dao = new ReviewDAO();
-        int cnt = dao.addReview(rv);
-        if(cnt > 0) {
-            RequestDispatcher view = request.getRequestDispatcher("/Product.do?no="+pno);
-            view.forward(request, response);
+        boolean ck = dao.reviewCheck(sid, pno);
+        if(ck) {
+            int cnt = dao.addReview(rv);
+            if(cnt > 0) {
+                RequestDispatcher view = request.getRequestDispatcher("/Product.do?no="+pno);
+                view.forward(request, response);
+            } else {
+                response.sendRedirect("/pro02");
+            }
         } else {
-            response.sendRedirect("/pro02");
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('후기를 이미 작성하였습니다.'); location.href='/pro02/Product.do?no="+pno+"';</script>");
+            out.flush();
         }
+
     }
 }

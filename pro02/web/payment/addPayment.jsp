@@ -293,8 +293,8 @@
                                     <img src="${path }/storage/${pro.imgSrc1 }" style="max-height:400px;" alt="대표 이미지">
                                 </c:if>
                                 <hr>
-                                <c:if test="${!empty pro.imgSrc3}">
-                                    <img src="${path }/storage/${pro.imgSrc3 }" style="max-height:400px;" alt="대표 이미지">
+                                <c:if test="${!empty pro.imgSrc2}">
+                                    <img src="${path }/storage/${pro.imgSrc2 }" style="max-height:400px;" alt="대표 이미지">
                                 </c:if>
                             </td>
                         </tr>
@@ -493,7 +493,7 @@
                                 pg: "T5102001",
                                 merchant_uid : '상품명_' + date, //상점 거래 ID
                                 name : proName,				// 결제 명
-                                amount : 10,					// 결제금액
+                                amount : totalPay,					// 결제금액
                                 buyer_email : email, // 구매자 email
                                 buyer_name : cname,				// 구매자 이름
                                 buyer_tel : tel,		// 구매자 전화번호

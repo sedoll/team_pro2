@@ -63,7 +63,9 @@ public interface DBConnect {
 
     //review
     final static String REVIEW_SELECT_ALL = "select * from review where par=?";
+    final static String REVIEW_SELECT_ALL_CID = "select * from review where cid=?";
     final static String REVIEW_SELECT_ONE = "select * from review where par=? and cid=?";
+    final static String REVIEW_SELECT_CK = "select * from review where par=? and cid=?";
     final static String REVIEW_INSERT = "insert into review values(default, ?, ?, default, ?)";
     final static String REVIEW_UPDATE = "update review set content=? where cid=? and par=?";
     final static String REVIEW_DELETE = "delete from review where cid=? and par=?";

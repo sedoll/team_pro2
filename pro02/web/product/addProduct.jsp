@@ -1,7 +1,7 @@
- <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
- <c:set var="path" value="<%=request.getContextPath() %>" />
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -271,7 +271,8 @@
                                 </select>--%>
 
                                 <select name="c1" id="c1" class="indata" autofocus required>
-                                    <option value="초등" selected>초등</option>
+                                    <option value="" selected>선택안함</option>
+                                    <option value="초등">초등</option>
                                     <option value="중등">중등</option>
                                     <option value="고등">고등</option>
                                     <option value="일반">일반</option>
@@ -282,48 +283,48 @@
 
 
                                 <select name="c2" id="c2" class="indata" autofocus required>
-                                    <option value="교과서"  id="op1" selected>교과서</option>
+                                    <option value="" selected>선택안함</option>
+                                    <option value="교과서"  id="op1" >교과서</option>
                                     <option value="참고서" id="op2">참고서</option>
                                     <option value="문제집" id="op3">문제집</option>
                                     <option value="기타" id="op4">기타</option>
-                                    <option value="유아콘텐츠" id="op5">유아콘텐츠</option>
-                                    <option value="유아놀이" id="op6">유아놀이</option>
-                                    <option value="유아기타" id="op7">유아기타</option>
-                                    <option value="해외서적" id="op8">해외서적</option>
-                                    <option value="해외콘텐츠" id="op9">해외콘텐츠</option>
+                                    <option value="일반서적" id="op5">일반서적</option>
+                                    <option value="유아" id="op6">유아</option>
+                                    <option value="해외" id="op7">해외</option>
+
                                 </select>
 
-                                    <script>
-                                        var c1 = document.getElementById("c1");
-                                        var c2 = document.getElementById("c2");
-                                        var op1 = document.querySelectorAll("#op1,#op2,#op3,#op4");
-                                        var op2 = document.querySelectorAll("#op5,#op6,#op7,#op8,#op9");
+                                <script>
+                                    var c1 = document.getElementById("c1");
+                                    var c2 = document.getElementById("c2");
+                                    var op1 = document.querySelectorAll("#op1,#op2,#op3,#op4");
+                                    var op2 = document.querySelectorAll("#op5,#op6,#op7");
 
 
-                                        c1.addEventListener("change", function() {
-                                            if (c1.value === "기타") {
-                                                op2.forEach(option => {
-                                                    option.style.display = "block";
-                                                });
+                                    c1.addEventListener("change", function() {
+                                        if (c1.value === "기타") {
+                                            op2.forEach(option => {
+                                                option.style.display = "block";
+                                            });
 
-                                                op1.forEach(option => {
-                                                    option.style.display = "none";
-                                                });
+                                            op1.forEach(option => {
+                                                option.style.display = "none";
+                                            });
 
-                                            } else {
-                                                op1.forEach(option => {
-                                                    option.style.display = "block";
-                                                });
+                                        } else {
+                                            op1.forEach(option => {
+                                                option.style.display = "block";
+                                            });
 
-                                                op2.forEach(option => {
-                                                    option.style.display = "none";
-                                                });
+                                            op2.forEach(option => {
+                                                option.style.display = "none";
+                                            });
 
 
 
-                                            }
-                                        });
-                                    </script>
+                                        }
+                                    });
+                                </script>
 
 
                             </td>
@@ -351,11 +352,11 @@
 
                         <tr>
                             <th>설명 이미지</th>
-                            <td colspan="2"><input type="file" name="imgsrc3" id="imgsrc3" class="indata" placeholder="상품 이미지" accept=".jpg, .png" required></td>
+                            <td colspan="2"><input type="file" name="imgsrc2" id="imgsrc2" class="indata" placeholder="상품 이미지" accept=".jpg, .png" required></td>
                         </tr>
                         <tr>
                             <th>샘플 영상</th>
-                            <td colspan="2"><input type="file" name="imgsrc2" id="imgsrc2" class="indata" placeholder="상품 소개 영상" accept=".mp4" required></td>
+                            <td colspan="2"><input type="file" name="imgsrc3" id="imgsrc3" class="indata" placeholder="상품 소개 영상" accept=".mp4" required></td>
                         </tr>
                         <tr>
                             <td colspan="2">

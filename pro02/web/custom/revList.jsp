@@ -7,13 +7,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="<%=request.getContextPath() %>" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>판매량페이지</title>
-    <%@ include file="/head.jsp" %>
+    <title>내가쓴 후기</title>
+    <%@ include file="../head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
@@ -38,7 +39,7 @@
         /* 본문 영역 스타일 */
         .contents {
             clear: both;
-            min-height: 100vh;
+            min-height: 200vh;
             background-image: url("${path}/img/login.jpg");
             background-repeat: no-repeat;
             background-position: center -250px;
@@ -106,36 +107,80 @@
             border: 1px solid #527AF2;
 
         }
-        .tb1 td {
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            text-align: center;
-            line-height: 24px;
 
-        }
         .tb1 th:first-child {
             width: 40px;
         }
 
-        .tb1 tbody {
+        #myTable td {
+            max-height: 200px;
+            overflow: hidden; /* Overflow 처리 (필요한 경우) */
+            vertical-align: top; /* 상단 정렬로 변경 */
+        }
 
+        #myTable td > div {
+            text-align: center;
+        }
+
+        .img_tit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #myTable tbody tr:not(:last-child) td {
+            border-bottom: 1px solid #333;
+        }
+
+        .img_tit img {
+            max-height: 180px;
         }
 
         .tb1 .item1 {
             width: 10%;
         }
         .tb1 .item2 {
-            width: 20%;
+            width: 50%;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .tb1 .item3 {
+            width: 25%;
+            text-align: right;
         }
 
         /* 기타 버튼 스타일 */
-        .inbtn {
-            display: block;
+
+        .btn1 {
             border-radius: 10px;
-            min-width: 100px;
+            padding-left: 10px;
+            padding-right: 10px;
+            max-width: 100px;
             text-align: center;
             background-color: #527AF2;
             color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn1:hover {
+            background-color: #666666;
+        }
+
+        .inbtn {
+            display: block;
+            border-radius: 10px;
+            min-width: 60px;
+            padding-left: 24px;
+            padding-right: 24px;
+            text-align: center;
+            line-height: 38px;
+            background-color: #527AF2;
+            color: #fff;
+            font-size: 18px;
             float: right;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -155,8 +200,8 @@
 
         }
 
-        /* 노멀라이즈 끝 */
 
+        /* 사이드바 시작 */
         aside{
             float: left;
             width: 30%;
@@ -168,9 +213,6 @@
             display: none;
         }
 
-
-        /* 사이드바 시작 */
-
         /* 사이드바의 너비와 높이를 변수를 통해 통제 */
         :root {
             --side-bar-width: 220px;
@@ -178,11 +220,11 @@
         }
 
         .side-bar {
-            position: fixed; /* 스크롤을 따라오도록 지정 */
+            position: absolute; /* 스크롤을 따라오도록 지정 */
             background-color: cornflowerblue;
             width: var(--side-bar-width);
             min-height: var(--side-bar-height); /* 사이드바의 높이를 전체 화면 높이의 90%로 지정 */
-            margin-top: 50px; /* 사이드바 위와 아래의 마진을 동일하게 지정 */
+            margin-top: 150px; /* 사이드바 위와 아래의 마진을 동일하게 지정 */
         }
 
         /* 아이콘 시작 */
@@ -303,80 +345,84 @@
             transform: translate(-20px, 0); /* 둥근 모서리의 너비만큼 숨겨주기 */
         }
         /* 사이드바 끝 */
-        /* 커스텀 끝 */
     </style>
 </head>
-
 <body>
 <div class="wrap">
     <header class="hd" id="hd">
-        <%@ include file="/header.jsp" %>
+        <%@ include file="../header.jsp" %>
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">판매량 페이지</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">내가쓴 후기</a></p>
         </div>
-        <%@ include file="./adminAside.jsp"%>
+        <%@ include file="../custom/customAside.jsp"%>
         <section class="page" id="page1">
             <div class="page_wrap">
-                <h2 class="page_tit">판매량 페이지</h2>
-
+                <h2 class="page_tit">내가쓴 후기</h2>
                 <table class="tb1" id="myTable">
                     <thead>
-                        <tr>
-                            <th class="item1" style="text-align: center">번호</th>
-                            <th class="item3" style="text-align: center">이름</th>
-                            <th class="item2" style="text-align: center">판매수익</th>
-                            <th class="item3" style="text-align: center">판매량</th>
-                        </tr>
+                    <tr>
+                        <th class="item1">상품번호</th>
+                        <th class="item1">상품명</th>
+                        <th class="item2">내용</th>
+                        <th class="item3">비고</th>
+                    </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="cus" items="${salesList }" varStatus="status" >
+                    <c:forEach var="rv" items="${rvList }" varStatus="status">
                         <tr>
-                            <td class="item1">${status.count}</td>
-                            <td class="item2">${cus.pname}</td>
-                            <td class="item2">${cus.money}</td>
-                            <td class="item2">${cus.cnt}</td>
+                            <td class="item1">
+                                <span>${rv.no }</span>
+                            </td>
+                            <td class="item1">
+                                <span>${rv.pname }</span>
+                            </td>
+                            <td class="item2">
+                                ${rv.content }
+                            </td>
+                            <td class="item3">
+                                <a href="${path}/Product.do?no=${rv.par}" class="btn1">상세</a>
+                                <a href="${path}/DeleteReview.do?par=${rv.par}" class="btn1">제거</a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <script>
-                    $(document).ready( function () {
-                        $('#myTable').DataTable({
-                            order: [[0, 'desc']], // 0번째 컬럼을 기준으로 내림차순 정렬
-                            info: false,
-                            dom: 'lt<f>p',
-                            language: {
-                                emptyTable: '판매 내역이 없습니다.'
-                            }
-
-                        });
-                    } );
-                    $(document).ready(function() {
-                        $('.dataTables_paginate').css({
-                            'textAlign':'left',
-                            'float': 'none',
-                            'margin-top':'10px',
-                        });
-                        $('.dataTables_filter').css({
-                            'float': 'left',
-                            'margin-top':'14px',
-                            'margin-right':'280px'
-                        });
-                        $('#myTable_paginate').css({
-                            'margin-right':'100px'
-                        });
-
+            </div>
+            <script>
+                $(document).ready( function () {
+                    $('#myTable').DataTable({
+                        pageLength : 5,
+                        order: [[0, 'asc']], // 0번째 컬럼을 기준으로 내림차순 정렬
+                        info: false,
+                        dom: 't<f>p',
+                        language: {
+                            emptyTable: '장바구니 내역이 없습니다.'
+                        }
 
                     });
-
-                </script>
-            </div>
+                } );
+                $(document).ready(function() {
+                    $('.dataTables_paginate').css({
+                        'textAlign':'left',
+                        'float': 'none',
+                        'margin-top':'10px',
+                    });
+                    $('.dataTables_filter').css({
+                        'float': 'left',
+                        'margin-top':'14px',
+                        'margin-right':'280px'
+                    });
+                    $('#myTable_paginate').css({
+                        'margin-right':'100px'
+                    });
+                });
+            </script>
         </section>
     </div>
     <footer class="ft" id="ft">
-        <%@ include file="/footer.jsp" %>
+        <%@ include file="../footer.jsp" %>
     </footer>
 </div>
 </body>

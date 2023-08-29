@@ -1,6 +1,7 @@
 package shop.model;
 
 import shop.dto.Notice;
+import shop.dto.Product;
 import shop.dto.Qna;
 import shop.dto.Review;
 
@@ -34,7 +35,40 @@ public class ReviewDAO {
                 rv.setCid(rs.getString("cid"));
                 rv.setContent(rs.getString("content"));
                 rv.setPar(rs.getInt("par"));
+                Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
+                String date = ymd.format(d);
+                rv.setResdate(date);
+                revList.add(rv);
+                System.out.println(rv.toString());
+            }
+            System.out.println("리뷰 추출 완료");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return revList;
+    }
 
+    public List<Review> getReviewList(String cid){
+        List<Review> revList = new ArrayList<>();
+        DBConnect con = new MariaDBCon();
+        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+
+        try {
+            conn = con.connect();
+            pstmt = conn.prepareStatement(DBConnect.REVIEW_SELECT_ALL_CID);
+            pstmt.setString(1, cid);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Review rv = new Review();
+                rv.setNo(rs.getInt("no"));
+                rv.setCid(rs.getString("cid"));
+                rv.setContent(rs.getString("content"));
+                rv.setPar(rs.getInt("par"));
+                rv.setPname(getVOPname(rv.getPar()));
                 Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
                 String date = ymd.format(d);
                 rv.setResdate(date);
@@ -83,6 +117,28 @@ public class ReviewDAO {
             con.close(rs, pstmt, conn);
         }
         return rv;
+    }
+
+    public boolean reviewCheck(String cid, int par){
+        DBConnect con = new MariaDBCon();
+        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+        boolean ck = true;
+        try {
+            conn = con.connect();
+            pstmt = conn.prepareStatement(DBConnect.REVIEW_SELECT_CK);
+            pstmt.setInt(1, par);
+            pstmt.setString(2, cid);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                ck = false;
+            }
+            System.out.println("리뷰 추출 완료");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return ck;
     }
 
     public int addReview(Review rv){
@@ -175,5 +231,11 @@ public class ReviewDAO {
             con.close(pstmt, conn); // db commit(저장)
         }
         return cnt;
+    }
+
+    public String getVOPname(int pno){
+        ProductDAO dao = new ProductDAO();
+        Product pro  = dao.getProduct(pno);
+        return pro.getPname();
     }
 }
