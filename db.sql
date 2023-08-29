@@ -200,8 +200,6 @@ SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate=
 
 UPDATE product SET cate='A' WHERE cate='초등';
 UPDATE product SET cate='E' WHERE cate='중등';
-UPDATE product SET imgSrc2 = '초등영어13.jpg';
-UPDATE product SET imgSrc3 = 'video71.mp4';
 
 -- 카트 테이블 생성
 create table cart(
