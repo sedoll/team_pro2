@@ -100,6 +100,9 @@ public interface DBConnect {
     final static String DELIVERY_SELECT_ONE = "select * from delivery where dno=?";
     final static String DELIVERY_SELECT_SNO = "select * from delivery where sno=?";
 
+    // 배송 뷰 조회
+    final static String DELIVERY_VIEW = "select * from delivery_info where sno=?";
+
     //재고 조회
     final static String INVENTORY_SELECT_ALL = "select * from inventory order by pno desc";
     final static String INVENTORY_SELECT_ONE = "select * from inventory where pno=?";

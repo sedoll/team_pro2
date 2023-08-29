@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>배송 정보 작성</title>
+    <title>배송정보</title>
     <%@ include file="/head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
@@ -98,61 +98,84 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/">배송정보</a>
+            <p><a href="/">HOME</a> &gt; <a href="/">결제내역</a>
                 &gt; <a href="/">배송정보</a></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">배송정보</h2>
-                <form action="${path}/UpdateDeliveryPostPro.do" class="frm" method="post">
-                    <table class="tb1">
-                        <tbody>
-                        <tr>
-                            <th>배송 분류</th>
-                            <td colspan="2">
-                                <select name="pstate" id="pstate" class="indata" autofocus required>
-                                    <option value="0" ${deli.pstate eq "0" ? 'selected' : ''}>출고</option>
-                                    <option value="1" ${deli.pstate eq "1" ? 'selected' : ''}>배송중</option>
-                                    <option value="2" ${deli.pstate eq "2" ? 'selected' : ''}>배송완료</option>
-                                    <option value="3" ${deli.pstate eq "3" ? 'selected' : ''}>구매완료</option>
-                                </select>
-                            </td>
-                            <input type="hidden" name="dno" id="dno" value="${deli.dno}" readonly>
-                        </tr>
-                        <tr>
-                            <th>구매자</th>
-                            <td colspan="2"><input type="text" name="cid" id="cid" class="indata" value="${deli.cid}" readonly></td>
-                        </tr>
-                        <tr>
-                            <th>주소</th>
-                            <td colspan="2"><input type="text" name="daddr" id="daddr" class="indata" value="${deli.daddr}" readonly></td>
-                        </tr>
-                        <tr>
-                            <th>배송회사</th>
-                            <td colspan="2"><input type="text" name="pcom" id="pcom" class="indata" value="${deli.pcom}" required></td>
-                        </tr>
-                        <tr>
-                            <th>기사번호</th>
-                            <td colspan="2"><input type="text" name="ptel" id="ptel" class="indata" value="${deli.ptel}" required></td>
-                        </tr>
-                        <tr>
-                            <th>운송번호</th>
-                            <td colspan="2"><input type="text" name="bcode" id="bcode" class="indata" value="${deli.bcode}" required></td>
-                        </tr>
-                        <tr>
-                            <th>배송날짜</th>
-                            <td colspan="2"><input type="text" name="rdate" id="rdate" class="indata" value="${deli.rdate}" required maxlength="13"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" value="상품등록" class="inbtn">
-                                <input type="reset" value="취소" class="inbtn" onclick="window.history.back();">
-                                <a href="${path}/ProList.do" class="inbtn">상품목록</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </form>
+                <table class="tb1">
+                    <tbody>
+                    <tr>
+                        <th>배송번호</th>
+                        <td colspan="2">${deli.dno}</td>
+                    </tr>
+                    <tr>
+                        <th>구매번호</th>
+                        <td colspan="2">${deli.sno}</td>
+                    </tr>
+                    <tr>
+                        <th>구매상품</th>
+                        <td colspan="2">${deli.pname}</td>
+                    </tr>
+                    <tr>
+                        <th>구매수량</th>
+                        <td colspan="2">${deli.amount}</td>
+                    </tr>
+                    <tr>
+                        <th>구매자</th>
+                        <td colspan="2">${deli.cid}</td>
+                    </tr>
+                    <tr>
+                        <th>주소</th>
+                        <td colspan="2">${deli.daddr}</td>
+                    </tr>
+                    <tr>
+                        <th>전화번호</th>
+                        <td colspan="2">${deli.custel}</td>
+                    </tr>
+                    <tr>
+                        <th>운송회사</th>
+                        <td colspan="2">${deli.pcom}</td>
+                    </tr>
+                    <tr>
+                        <th>운송번호</th>
+                        <td colspan="2">${deli.bcode}</td>
+                    </tr>
+                    <tr>
+                        <th>기사 전화번호</th>
+                        <td colspan="2">${deli.ptel}</td>
+                    </tr>
+                    <tr>
+                        <th>구매번호</th>
+                        <td colspan="2">${deli.sno}</td>
+                    </tr>
+                    <tr>
+                        <th>배송정보</th>
+                        <c:if test="${deli.pstate == 0}">
+                            <td colspan="2">출고처리중</td>
+                        </c:if>
+                        <c:if test="${deli.pstate == 1}">
+                            <td colspan="2">배송중</td>
+                        </c:if>
+                        <c:if test="${deli.pstate == 2}">
+                            <td colspan="2">배송완료</td>
+                        </c:if>
+                        <c:if test="${deli.pstate == 3}">
+                            <td colspan="2">구매완료</td>
+                        </c:if>
+                    </tr>
+                    <tr>
+                        <th>결제날짜</th>
+                        <td colspan="2">${deli.sdate}</td>
+                    </tr>
+                    <tr>
+                        <th>출고날짜</th>
+                        <td colspan="2">${deli.rdate}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
             </div>
         </section>
     </div>
