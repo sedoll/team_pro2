@@ -349,56 +349,7 @@
             <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">관리자 페이지</a></p>
         </div>
 
-
-        <aside class="side-bar">
-            <section class="side-bar__icon-box">
-                <section class="side-bar__icon-1">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </section>
-            </section>
-            <ul>
-                <li>
-                    <%-- <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>--%>
-                    <a href="#">게시글 관리</a>
-                    <ul>
-                        <li><a href="#">text1</a></li>
-                        <li><a href="#">text2</a></li>
-                        <li><a href="#">text3</a></li>
-                        <li><a href="#">text4</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">상품 관리</a>
-                    <ul>
-                        <li><a href="${path2 }/ProList.do" class="nav-link">상품 목록</a></li>
-                        <li><a href="${path2 }/AddProduct.do" class="nav-link">상품 등록</a></li>
-                        <li><a href="${path2 }/AddReceive.do" class="nav-link">입고</a></li>
-                        <li><a href="#">text4</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">회원 관리</a>
-                    <ul>
-                        <li><a href="${path2 }/CustomList.do">회원 목록</a></li>
-                        <li><a href="#">text2</a></li>
-                        <li><a href="#">text3</a></li>
-                        <li><a href="#">text4</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">menu4</a>
-                    <ul>
-                        <li><a href="#">text1</a></li>
-                        <li><a href="#">text2</a></li>
-                        <li><a href="#">text3</a></li>
-                        <li><a href="#">text4</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </aside>
-
+        <%@ include file="./adminAside.jsp"%>
 
         <section class="page" id="page1">
             <div class="page_wrap">
