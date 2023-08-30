@@ -37,7 +37,8 @@ public class UpdDeliveryProCtrl extends HttpServlet {
         } else {
             System.out.println("배송 정보 수정 실패");
         }
-        RequestDispatcher view = request.getRequestDispatcher("/pro02/AdminDeliveryList.do?pstate"+pstate);
-        view.forward(request, response);
+        response.sendRedirect("/pro02/AdminDeliveryList.do?pstate="+pstate);
+//        RequestDispatcher view = request.getRequestDispatcher("/pro02/AdminDeliveryList.do?pstate"+pstate);
+//        view.forward(request, response);
     }
 }

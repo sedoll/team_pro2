@@ -17,7 +17,7 @@
 <meta http-equiv="author" content="TeenTalk"> <!-- 문서의 제작사 -->
 <meta http-equiv="publisher" content="TeenTalk"> <!-- 문서의 저자 정의 -->
 <meta http-equiv="copyright" content="copyright@teentalk.co.kr"> <!-- 저작권 명시 -->
-<title>TEENTALK</title>
+<title>TEENBOOK</title>
 
 <!-- 검색엔진 최적화(SEO) -->
 <meta name="subject" content="TeenTalk"> <!-- 페이지 주제 지정 http-equiv 로 지정해도 상관 무 -->
