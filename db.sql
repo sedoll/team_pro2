@@ -22,10 +22,10 @@ INSERT INTO custom(id, pw, NAME, tel, email, birth, address)
 VALUES('admin', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '관리자', '01011112222', 'admin@shop.com', '1995-07-31', '서울시 구로구 01111');
 	
 INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
-VALUES('hong', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '홍길동', '01011222233', 'hong@shop.com', '2000-06-23', '서울시 금천구 01123');
+VALUES('hong123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '홍길동', '01011222233', 'hong@shop.com', '2000-06-23', '서울시 금천구 01123');
 
 INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
-VALUES('kim', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '김철수', '01011332222', 'kim@shop.com', '2001-03-25', '서울시 양천구 02111');
+VALUES('kim123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '김철수', '01011332222', 'kim@shop.com', '2001-03-25', '서울시 양천구 02111');
 
 -- 123456a* 암호화  PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==
 UPDATE custom SET pw='PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==';
@@ -39,28 +39,6 @@ CREATE TABLE notice (
     content varchar(1000) NOT null,
     resdate timestamp DEFAULT CURRENT_TIMESTAMP(),
     visited int DEFAULT 0
-);
-
-
-
--- 파일 업로드 관련 테이블
-
--- 하나의 파일 업로드 테이블
-CREATE TABLE FILE(
-	uname VARCHAR(200),
-	SUBJECT VARCHAR(300),
-	content VARCHAR(1000),
-	fname VARCHAR(500)
-);
-
--- 다중 파일 업로드 테이블
-CREATE TABLE FILE2(
-	uname VARCHAR(200),
-	SUBJECT VARCHAR(300),
-	content VARCHAR(1000),
-	fname1 VARCHAR(500),
-	fname2 VARCHAR(500),
-	fname3 VARCHAR(500)
 );
 
 DROP TABLE product;
@@ -258,25 +236,6 @@ GROUP BY
 ORDER BY 
     p.cate;
 
-
-CREATE VIEW ProductSummary AS
-SELECT 
-    p.no AS product_no,
-    p.pname AS product_name,
-    p.price AS product_price,
-    p.cate AS category_no,
-    COALESCE(SUM(r.amount), 0) AS received_amount,
-    COALESCE(SUM(r.rprice), 0) AS received_price,
-    COALESCE(SUM(s.amount), 0) AS served_amount,
-    COALESCE(SUM(s.amount) * p.price, 0) AS total_served_price,
-    COALESCE(MAX(r.resdate), '') AS last_receive_date
-FROM  
-    product p
-    LEFT JOIN receive r ON p.no = r.pno
-    LEFT JOIN serve s ON p.no = s.pno
-GROUP BY 
-    p.no, p.pname, p.price, p.cate;
-
 -- 판매량 뷰
 DROP VIEW sales;
 
@@ -387,4 +346,4 @@ sdate=CURRENT_TIMESTAMP, rdate=?, bcode=? WHERE dno=?;
 
 -- 도착
 UPDATE delivery SET pcom=?, ptel=?, pstate=2, 
-sdate=CURRENT_TIMESTAMP, rdate=?, bcode=? WHERE dno=?;
+sdate=CURRENT_TIMESTAMP, rdate=?, bcode=? WHERE dno=?;team12
