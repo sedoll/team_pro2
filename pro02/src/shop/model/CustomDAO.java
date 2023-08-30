@@ -183,7 +183,8 @@ public class CustomDAO {
             pstmt.setString(2, cus.getTel());
             pstmt.setString(3, cus.getEmail());
             pstmt.setString(4, cus.getAddress());
-            pstmt.setString(5, cus.getId());
+            pstmt.setString(5, cus.getBirth());
+            pstmt.setString(6, cus.getId());
 
             cnt = pstmt.executeUpdate();
         } catch (SQLException e) {

@@ -98,11 +98,18 @@ public class PaymentDAO {
             cnt = cnt + pstmt.executeUpdate();
 
             //4. 반품시 장바구니에 다시 담기
-            pstmt = conn.prepareStatement(DBConnect.RETURN_CART);
+            pstmt = conn.prepareStatement(DBConnect.CART_SELECT_FIND);
             pstmt.setString(1, cid);
             pstmt.setInt(2, pno);
-            pstmt.setInt(3, amount);
-            cnt = cnt + pstmt.executeUpdate();
+            rs = pstmt.executeQuery();
+
+            if(!rs.next()) {
+                pstmt = conn.prepareStatement(DBConnect.RETURN_CART);
+                pstmt.setString(1, cid);
+                pstmt.setInt(2, pno);
+                pstmt.setInt(3, amount);
+                cnt = cnt + pstmt.executeUpdate();
+            }
 
             conn.commit();
             conn.setAutoCommit(true);
@@ -114,7 +121,7 @@ public class PaymentDAO {
             }
             throw new RuntimeException(e);
         } finally {
-            con.close(pstmt, conn);
+            con.close(rs, pstmt, conn);
         }
         return cnt;
     }

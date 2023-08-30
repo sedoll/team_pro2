@@ -470,8 +470,8 @@
                         var totalPay=0;
                         var proName;
                         $("#pay").click(function(){
-                            var email = $("#name").val();
-                            var cname = $("#email").val();
+                            var email = $("#email").val();
+                            var cname = $("#name").val();
                             var tel = $("#tel").val();
                             var addr = $("#addr").val();
                             var postcode = $("#postcode").val();
@@ -522,9 +522,9 @@
                                 //테스트용이므로 실패시에도 그냥 통과시킴
                                 $("#payCk").val("yes");
                                 $("#payAmount").val(totalPay);
-                                $("#pmethod").val("신용카드");
-                                $("#pcom").val("삼성카드");
-                                $("#cnum").val("123-1234-1234-1278");
+                                // $("#pmethod").val("신용카드");
+                                // $("#pcom").val("삼성카드");
+                                // $("#cnum").val("123-1234-1234-1278");
                                 $("#paymentResult").text("결제 완료 : "+totalPay);
                             });
                         });

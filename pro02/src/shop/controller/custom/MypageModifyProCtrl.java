@@ -40,11 +40,12 @@ public class MypageModifyProCtrl extends HttpServlet {
             cnt = dao.modifyCustom(cus);
             if(cnt > 0) {
                 System.out.println("업데이트 완료");
-                RequestDispatcher view = request.getRequestDispatcher("/pro02");
-                view.forward(request, response);
+                response.sendRedirect("/pro02/Mypage.do");
             }
         } else {
             System.out.println("비밀번호 불일치");
+            RequestDispatcher view = request.getRequestDispatcher("/pro02");
+            view.forward(request, response);
         }
         
     }

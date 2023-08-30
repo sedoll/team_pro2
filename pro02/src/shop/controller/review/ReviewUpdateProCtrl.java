@@ -29,8 +29,7 @@ public class ReviewUpdateProCtrl extends HttpServlet {
         ReviewDAO dao = new ReviewDAO();
         int cnt = dao.updateReview(rv);
         if(cnt > 0) {
-            RequestDispatcher view = request.getRequestDispatcher("/pro02/ProList.do");
-            view.forward(request, response);
+            response.sendRedirect("/pro02/Product.do?no="+pno);
         } else {
             response.sendRedirect("/pro02");
         }
