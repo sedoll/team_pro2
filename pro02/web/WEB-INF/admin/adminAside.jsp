@@ -27,8 +27,8 @@
                 <li><a href="${path3 }/ProList.do" class="nav-link">상품목록</a></li>
                 <li><a href="${path3 }/AddProduct.do" class="nav-link">상품등록</a></li>
                 <li><a href="${path3 }/AddReceive.do" class="nav-link">입고</a></li>
-                <li><a href="${path3 }/Sales.do" class="nav-link">재고관리</a></li>
-                <li><a href="${path3 }/Sales.do" class="nav-link">판매량</a></li>
+                <li><a href="${path3 }/UpdateReceive.do" class="nav-link">추가입고</a></li>
+                <li><a href="${path3 }/InventoryList.do" class="nav-link">재고관리</a></li>
             </ul>
         </li>
         <li>

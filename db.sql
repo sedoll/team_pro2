@@ -233,6 +233,50 @@ LEFT JOIN (
 ) s ON r.pno = s.pno
 LEFT JOIN product p ON r.pno = p.no;
 
+-- 카테고리별 전체 남은재고, 판매수량, 판매이익
+DROP VIEW inventorysummary;
+
+CREATE VIEW InventorySummary AS
+SELECT 
+    p.cate AS c_no,
+    c.cname AS c_name,
+    SUM(i.amount) AS i_amount,
+    SUM(s.serve_amount) AS s_amount,
+    SUM(s.serve_price) AS s_price
+FROM  
+    product p
+    JOIN category c ON p.cate = c.cno
+    JOIN inventory i ON p.no = i.pno
+    JOIN receive r ON p.no = r.pno
+    LEFT JOIN (
+        SELECT pno, SUM(amount) AS serve_amount, SUM(sprice) AS serve_price
+        FROM serve
+        GROUP BY pno
+    ) s ON p.no = s.pno
+GROUP BY 
+    p.cate, c.cname
+ORDER BY 
+    p.cate;
+
+
+CREATE VIEW ProductSummary AS
+SELECT 
+    p.no AS product_no,
+    p.pname AS product_name,
+    p.price AS product_price,
+    p.cate AS category_no,
+    COALESCE(SUM(r.amount), 0) AS received_amount,
+    COALESCE(SUM(r.rprice), 0) AS received_price,
+    COALESCE(SUM(s.amount), 0) AS served_amount,
+    COALESCE(SUM(s.amount) * p.price, 0) AS total_served_price,
+    COALESCE(MAX(r.resdate), '') AS last_receive_date
+FROM  
+    product p
+    LEFT JOIN receive r ON p.no = r.pno
+    LEFT JOIN serve s ON p.no = s.pno
+GROUP BY 
+    p.no, p.pname, p.price, p.cate;
+
 -- 판매량 뷰
 DROP VIEW sales;
 
@@ -262,6 +306,22 @@ JOIN
     payment py ON d.sno = py.sno
 JOIN
     product pr ON py.pno = pr.no;
+    
+-- inven + sales
+DROP view inven_sales;
+
+CREATE VIEW inven_sales AS
+SELECT
+    i.pno,
+    i.pname,
+    i.price,
+    p.cate,
+    i.amount AS i_amount,
+    COALESCE(s.total_amount, 0) AS s_amount,
+    COALESCE(s.total_cost, 0) AS s_cost
+FROM inventory i
+LEFT JOIN sales s ON i.pno = s.pno
+JOIN product p ON i.pno = p.no;
     
 -- 찜 기능 테이블
 
