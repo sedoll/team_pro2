@@ -98,6 +98,27 @@ public class CartDAO {
         return cartList;
     }
 
+    public int cntCart(String id){
+        int cnt = 0;
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        try {
+            //select COUNT(cid) from cart where cid=?
+            pstmt = conn.prepareStatement(DBConnect.CART_COUNT);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                cnt = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(pstmt, conn);
+        }
+        return cnt;
+    }
+
+
     public String getCusName(String id){
         CustomDAO dao = new CustomDAO();
         Custom cus = dao.getCustom(id);

@@ -17,6 +17,9 @@ public class CartListCtrl extends HttpServlet {
 
         HttpSession session = request.getSession();
         String cid = (String) session.getAttribute("sid");
+        CartDAO cartDAO = new CartDAO();
+        int cntCart = cartDAO.cntCart(cid);
+        session.setAttribute("cntCart",cntCart);
 
         CartDAO dao = new CartDAO();
         List<CartVO> cartList = dao.getByIdCartList(cid);

@@ -15,7 +15,7 @@ public class AddProductCtrl extends HttpServlet {
         String msg = "관리자의 상품 등록폼이 로딩되었습니다.";
 
         request.setAttribute("msg", msg);
-        RequestDispatcher view = request.getRequestDispatcher("/product/addProduct.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/addProduct.jsp");
         view.forward(request, response);
     }
 }

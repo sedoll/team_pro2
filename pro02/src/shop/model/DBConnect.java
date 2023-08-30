@@ -119,6 +119,7 @@ public interface DBConnect {
     final static String CART_SELECT_FIND = "select * from cart where cid=? and pno=?";
     final static String CART_INSERT = "insert into cart values (default,?,?,?)";
     final static String CART_SELECT_CID = "select * from cart where cid=?";
+    final static String CART_COUNT = "select COUNT(cid) from cart where cid=?"; //장바구니 내 상품 카운트
     
     // 찜기능
     final static String LIKE_SELECT_CID = "select * from likes where userid=?";

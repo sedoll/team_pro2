@@ -8,6 +8,7 @@
             <c:if test="${!empty sid}">
             <li>안녕하세요,  ${sid}님</li> <!-- 로그인 한 회원의 이름 -->
                 <li><a href="${path2}/Mypage.do">마이페이지</a></li>
+                <li><a href="${path2}/CartList.do">장바구니 (${cntCart })</a></li>
                 <c:if test="${sid eq 'admin'}">
                 <li><a href="${path2}/Manage.do">관리자페이지</a></li>
                 </c:if>
@@ -16,8 +17,8 @@
             <c:if test="${empty sid}">
             <li><a href="${path2}/Login.do">로그인</a></li>
             <li><a href="${path2}/Join.do">회원가입</a></li>
-            <li><a href="${path2}/NoticeList.do">고객센터</a></li>
             </c:if>
+            <li><a href="${path2}/NoticeList.do">고객센터</a></li>
         </ul>
     </nav>
 </div>
