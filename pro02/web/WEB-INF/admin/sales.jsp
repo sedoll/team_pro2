@@ -312,11 +312,11 @@
     <header class="hd" id="hd">
         <%@ include file="/header.jsp" %>
     </header>
+    <%@ include file="./adminAside.jsp"%>
     <div class="contents" id="contents">
         <div class="breadcrumb">
             <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">판매량 페이지</a></p>
         </div>
-        <%@ include file="./adminAside.jsp"%>
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">판매량 페이지</h2>
