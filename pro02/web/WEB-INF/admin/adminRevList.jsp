@@ -138,7 +138,10 @@
         }
 
         .tb1 .item1 {
-            width: 15%;
+            width: 10%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .tb1 .item2 {
             width: 50%;
@@ -146,6 +149,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+        }
+        .tb1 .item3 {
+            width: 15%;
         }
 
         /* 기타 버튼 스타일 */
@@ -348,11 +354,11 @@
     <header class="hd" id="hd">
         <%@ include file="../../header.jsp" %>
     </header>
+    <%@ include file="./adminAside.jsp"%>
     <div class="contents" id="contents">
         <div class="breadcrumb">
             <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">리뷰관리</a></p>
         </div>
-        <%@ include file="./adminAside.jsp"%>
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">리뷰관리</h2>
@@ -361,8 +367,9 @@
                     <tr>
                         <th class="item1">상품번호</th>
                         <th class="item1">상품명</th>
+                        <th class="item1">작성자</th>
                         <th class="item2">내용</th>
-                        <th class="item1">비고</th>
+                        <th class="item3">비고</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -374,10 +381,13 @@
                             <td class="item1">
                                 <span>${rv.pname }</span>
                             </td>
+                            <td class="item1">
+                                <span>${rv.cid }</span>
+                            </td>
                             <td class="item2">
                                 ${rv.content }
                             </td>
-                            <td class="item1">
+                            <td class="item3">
                                 <a href="${path}/Product.do?no=${rv.par}" class="btn1">상세</a>
                                 <a href="${path}/DeleteReview.do?cid=${rv.cid}&par=${rv.par}" class="btn1">제거</a>
                             </td>

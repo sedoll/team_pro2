@@ -31,21 +31,42 @@ public class AddCartCtrl extends HttpServlet {
         if(check) { // 장바구니에 없는 경우
             cnt = dao.addCart(cart);
             if(cnt>0){
+                if(cate != null) {
+                    response.setContentType("text/html; charset=UTF-8");
+                    out.println("<script>alert('add cart success');</script>");
+                    out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
+                    out.flush();
+                } else {
+                    response.setContentType("text/html; charset=UTF-8");
+                    out.println("<script>alert('add cart success');</script>");
+                    out.println("<script> location.href= '/pro02/LikeList.do'; </script>");
+                    out.flush();
+                }
+            } else {
+                if(cate != null) {
+                    response.setContentType("text/html; charset=UTF-8");
+                    out.println("<script>alert('add cart fail');</script>");
+                    out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
+                    out.flush();
+                } else {
+                    response.setContentType("text/html; charset=UTF-8");
+                    out.println("<script>alert('add cart fail');</script>");
+                    out.println("<script> location.href= '/pro02/LikeList.do'; </script>");
+                    out.flush();
+                }
+            }
+        } else { // 이미 장바구니에 들어 있는 경우
+            if(cate != null) {
                 response.setContentType("text/html; charset=UTF-8");
-                out.println("<script>alert('add cart success');</script>");
+                out.println("<script>alert('add cart fail');</script>");
                 out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
                 out.flush();
             } else {
                 response.setContentType("text/html; charset=UTF-8");
                 out.println("<script>alert('add cart fail');</script>");
-                out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
+                out.println("<script> location.href= '/pro02/LikeList.do'; </script>");
                 out.flush();
             }
-        } else { // 이미 장바구니에 들어 있는 경우
-            response.setContentType("text/html; charset=UTF-8");
-            out.println("<script>alert('add cart fail');</script>");
-            out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
-            out.flush();
         }
     }
 }

@@ -2,8 +2,9 @@ package shop.dto;
 
 public class Like {
     private String userid;
-    private String productid;
+    private int productid;
     private String liketime;
+    private String pname;
 
     public String getUserid() {
         return userid;
@@ -13,11 +14,11 @@ public class Like {
         this.userid = userid;
     }
 
-    public String getProductid() {
+    public int getProductid() {
         return productid;
     }
 
-    public void setProductid(String productid) {
+    public void setProductid(int productid) {
         this.productid = productid;
     }
 
@@ -29,12 +30,21 @@ public class Like {
         this.liketime = liketime;
     }
 
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
     @Override
     public String toString() {
         return "Like{" +
                 "userid='" + userid + '\'' +
                 ", productid='" + productid + '\'' +
                 ", liketime='" + liketime + '\'' +
+                ", pname='" + pname + '\'' +
                 '}';
     }
 }

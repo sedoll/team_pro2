@@ -397,13 +397,13 @@
     <header class="hd" id="hd">
         <%@ include file="../header.jsp" %>
     </header>
+    <c:if test="${sid eq 'admin'}">
+        <%@ include file="../WEB-INF/admin/adminAside.jsp"%>
+    </c:if>
     <div class="contents" id="contents">
         <div class="breadcrumb">
             <p><a href="/">HOME</a> &gt; <a href="${path }/ProList.do?cate=${cate }">${catename } 도서 목록</a></p>
         </div>
-        <c:if test="${sid eq 'admin'}">
-            <%@ include file="../WEB-INF/admin/adminAside.jsp"%>
-        </c:if>
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">${catename } 도서 목록</h2>

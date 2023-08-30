@@ -246,14 +246,14 @@
     <header class="hd" id="hd">
         <%@ include file="/header.jsp" %>
     </header>
+    <c:if test="${sid eq 'admin'}">
+        <%@ include file="../WEB-INF/admin/adminAside.jsp"%>
+    </c:if>
     <div class="contents" id="contents">
         <div class="breadcrumb">
             <p><a href="/">HOME</a> &gt; <a href="/">상품 입고</a>
                 &gt; <a href="/">상품 입고</a></p>
         </div>
-        <c:if test="${sid eq 'admin'}">
-            <%@ include file="../WEB-INF/admin/adminAside.jsp"%>
-        </c:if>
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">상품 입고</h2>

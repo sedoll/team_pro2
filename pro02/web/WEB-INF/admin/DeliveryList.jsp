@@ -356,12 +356,11 @@
     <header class="hd" id="hd">
         <%@ include file="/header.jsp" %>
     </header>
+    <%@ include file="./adminAside.jsp"%>
     <div class="contents" id="contents">
         <div class="breadcrumb">
             <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">배송관리</a></p>
         </div>
-
-        <%@ include file="./adminAside.jsp"%>
 
         <section class="page" id="page1">
             <div class="page_wrap">

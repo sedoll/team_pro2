@@ -1,10 +1,17 @@
 package shop.model;
 
+import shop.dto.CartVO;
+import shop.dto.Like;
+import shop.dto.Product;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LikeDAO {
@@ -93,5 +100,40 @@ public class LikeDAO {
         }
         return likedProductIds;
     }
+    
+    // 유저의 좋아요 목록 출력
+    public List<Like> getByIdLikeList(String cid){
+        List<Like> likeList = new ArrayList<>();
+        DBConnect con = new MariaDBCon();
+        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+        conn = con.connect();
+        try {
+            pstmt = conn.prepareStatement(DBConnect.LIKE_SELECT_CID);
+            pstmt.setString(1, cid);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Like like = new Like();
+                like.setProductid(rs.getInt("productid"));
+                like.setPname(getPname(rs.getInt("productid")));
+                Date d = ymd.parse(rs.getString("liketime"));  //날짜데이터로 변경
+                String date = ymd.format(d);
+                like.setLiketime(date);
+                like.setUserid(cid);
+                likeList.add(like);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return likeList;
+    }
 
+    public String getPname(int pno){
+        ProductDAO dao = new ProductDAO();
+        Product pro = dao.getProduct(pno);
+        return pro.getPname();
+    }
 }
