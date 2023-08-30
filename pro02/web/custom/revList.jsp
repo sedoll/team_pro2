@@ -139,6 +139,9 @@
 
         .tb1 .item1 {
             width: 10%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .tb1 .item2 {
             width: 50%;
@@ -150,6 +153,9 @@
         .tb1 .item3 {
             width: 25%;
             text-align: right;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         /* 기타 버튼 스타일 */
@@ -379,7 +385,7 @@
                                 <span>${rv.pname }</span>
                             </td>
                             <td class="item2">
-                                ${rv.content }
+                                <span>${rv.content }</span>
                             </td>
                             <td class="item3">
                                 <a href="${path}/Product.do?no=${rv.par}" class="btn1">상세</a>

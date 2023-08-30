@@ -24,7 +24,7 @@ public class AddReceiveCtrl extends HttpServlet {
         List<Product> proList = dao.getProductList();
 
         request.setAttribute("proList", proList);
-        RequestDispatcher view = request.getRequestDispatcher("/product/addReceive.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/addReceive.jsp");
         view.forward(request, response);
     }
 }

@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품 정보 작성</title>
-    <%@ include file="../head.jsp" %>
+    <%@ include file="../../head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
@@ -244,10 +244,10 @@
 <body>
 <div class="wrap">
     <header class="hd" id="hd">
-        <%@ include file="/header.jsp" %>
+        <%@ include file="../../header.jsp" %>
     </header>
     <c:if test="${sid eq 'admin'}">
-        <%@ include file="../WEB-INF/admin/adminAside.jsp"%>
+        <%@ include file="adminAside.jsp"%>
     </c:if>
     <div class="contents" id="contents">
         <div class="breadcrumb">
@@ -372,7 +372,7 @@
         </section>
     </div>
     <footer class="ft" id="ft">
-        <%@ include file="/footer.jsp" %>
+        <%@ include file="../../footer.jsp" %>
     </footer>
 </div>
 </body>

@@ -22,6 +22,9 @@ public class ProductCtrl extends HttpServlet {
 
         HttpSession session = request.getSession();
         String sid = (String) session.getAttribute("sid");
+        CartDAO cartDAO = new CartDAO();
+        int cntCart = cartDAO.cntCart(sid);
+        session.setAttribute("cntCart",cntCart);
 
         // 상품 상세 내용 정보 추출
         ProductDAO dao = new ProductDAO();
