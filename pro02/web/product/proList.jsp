@@ -168,9 +168,10 @@
         /* 기타 버튼 스타일 */
 
         .btn1 {
-            /*display: block;*/
+            display: inline-block;
             border-radius: 4px;
-            line-height: 60px;
+            line-height: 36px;
+            width: 90px;
             padding: 4px;
             /*max-width: 120px;*/
             text-align: center;
@@ -178,16 +179,19 @@
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            float: right;
         }
 
         .btn1:hover {
             background-color: #666666;
         }
         .likebtn {
-            /*display: block;*/
+            display: block;
             border-radius: 4px;
-            width: 40px;
-            line-height: 60px;
+            width: 34px;
+            line-height: 36px;
             padding: 4px 8px 4px 8px;
             /*max-width: 120px;*/
             text-align: center;
@@ -195,6 +199,9 @@
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s;
+            float: right;
+            font-size: 24px;
+
         }
 
         .likebtn:hover {
