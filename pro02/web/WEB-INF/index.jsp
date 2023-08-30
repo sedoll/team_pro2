@@ -38,84 +38,72 @@
         .page_wrap { clear: both; width: 1200px; height: auto; margin: 0 auto;}
         .page_tit {font-size: 48px; text-align: center; padding-top: 50px; padding-top: 0.5em;}
 
-        #page2 {height: 400px; background-color: #f5f9fe; background-position: 15vw 75vh;
-            background-repeat: no-repeat; padding-top: 100px;}
-
-        .pic_lst {clear: both; width: 1200px; margin: 150px auto;}
-        .pic_lst li {width: 280px; height: 400px; margin-left: 26px; float: left; background-repeat: no-repeat;
-            background-position: center center; background-size: cover; filter: blur(1px) brightness(80%); box-shadow: 12px 12px 12px #999;}
-        .pic_lst li a { display: block; width: 256px; height: 376px; margin: 11px;}
-        .pic_lst li a:hover {border: 1px solid #fff; transition: 0.3s;}
-        .pic_lst li:first-child {margin-left: 0;} /* 안쪽에만 마진이 있으므로 테두리 부분의 마진 제거*/
-        pic_lst li.item1 { background-image: url("${path}/img/img_social_main01.jpg");}
-        .pic_lst li.item2 { background-image: url("${path}/img/img_social_main02.jpg");}
-        .pic_lst li.item3 { background-image: url("${path}/img/img_social_main03.jpg");}
-        .pic_lst li.item4 { background-image: url("${path}/img/img_social_main04.jpg");}
-        .pic_lst li:hover { margin-top: -20px; transition: 0.5s; filter: brightness(105%); } /*호버 후 움직여서 밝기*/
-        .pic_com {padding-left: 20px; padding-top: 20px; font-size: 14px;}
-        .pic_tit {padding-left: 20px; padding-top: 20px; font-size: 18px;}
-        .pic_arrow {display: block; width: 110px; height: 10px; border-bottom: 1px solid white; margin-left: -20px; margin-top: 20px;
-            transition: 0.4s; position: relative;}
-        .pic_lst li:hover .pic_arrow {margin-left: 20px;}
-        .pic_arrow::after {content: ""; width: 10px; height: 10px; position: absolute; right: 0; top: 0; border-bottom: 1px solid white;
-            display: block; clear: both; transform-origin: 100% 100%; transform: rotate(45deg); display: none;} /* 화살표 생성 */
-        .pic_lst li:hover .pic_arrow::after {display: block;} /*처음엔 안보였다가 호버하면 화살표 생성 */
-
-
-        .card_lst li.item2 .thumb_box {background-image: url("${path}/img/t1.jpg");}
-        .card_lst li.item3 .thumb_box {background-image: url("${path}/img/t2.jpg");}
-        .card_lst li.item4 .thumb_box {background-image: url("${path}/img/t3.jpg");}
-        .card_lst li.item5 .thumb_box {background-image: url("${path}/img/t4.jpg");}
-        .card_lst li.item6 .thumb_box {background-image: url("${path}/img/t5.jpg");}
-        .card_lst li.item7 .thumb_box {background-image: url("${path}/img/t6.jpg");}
-
-
-        .ico.item1 {background-position: -70px -60px;} /*네이버 블로그 아이콘*/
-        .ico.item2 {background-position: -140px -120px;} /*인스타 그램 아이콘*/
-
-
-
-
-        /*중간*/
-        .board_tit {font-size: 38px; text-align: center;
-            padding-top: 50px;
-            padding-top: 0.5em;
-            margin-bottom: 20px}
-
-        .latest_board{
-            width:1000px;
-            margin: 0 auto;
+        .productList{
+            height: 600px;
+            padding-top: 40px;
         }
-        .leftcontent {
-            width: 500px;
-            height: 700px;
+        .listTitle{
+            border-bottom: 1px solid #cccccc;
+            height: 60px;
+            margin-bottom: 30px;
+        }
+        .listTitle h2{
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+        }
+
+        .productCard {
+            width:250px;
+            height: 420px;
+            margin-right: 60px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
             float: left;
+        }
+        .productCard:last-child{
+            margin-right: 0;
+        }
+
+        .productCard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 0 1px #c7c7c7 inset;
+        }
+
+        .productImage {
+            height: 320px;
+            /*margin: 0 auto;*/
+            text-align: center;
 
         }
-        .rightcontent {
-            width: 500px;
-            height: 700px;
-            display: inline-block;
+        .productImage img {
+            height: 320px;
+            overflow: hidden;
+        }
 
+        .productInfo {
+            padding: 15px;
         }
-        .rightcontent table{
-            float: right;
-        }
-        .tb1 {
+        .productCate {
             font-size: 16px;
-            width: 480px;
+            margin-bottom: 10px;
+            color: #6b6b6b;
         }
-        .tb1 th {
+        .productTitle {
+            font-size: 20px;
+            margin-bottom: 10px;
             font-weight: bold;
-            background-color: #dae4f3;
-            line-height: 40px;
-            border-right: 1px solid white;
+        }
 
+        .productPrice {
+            font-size: 16px;
+            font-weight: bold;
         }
-        .tb1 td {
-            line-height: 34px;
-            border-bottom: 1px solid #d2d2d2;
-        }
+
     </style>
 </head>
 <body>
@@ -148,167 +136,52 @@
     </figure>
     <script src="./js/rotation.js"></script>
 
-    <%--
+
     <div class="page_wrap">
-        <div class="latest_board">
-            <div class="leftcontent">
-                <h2 class="board_tit">자유게시판</h2>
-                <table class="tb1" id="myTable">
-                    <thead>
-                    <tr>
-                        <th class="item1" style="text-align: center">제목</th>
-                        <th class="item2" style="text-align: center">작성자</th>
-                        <th class="item3" style="text-align: center">작성일</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-                        int tot = boardList.size();
-                        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
-                        int count = 0;
-                        for(Board arr:boardList) {
-                            if(count++ >= 15) break;
-                            Date d = ymd.parse(arr.getResdate());  //날짜데이터로 변경
-                            String date = ymd.format(d);    //형식을 포함한 문자열로 변경
-                    %>
-                    <tr>
-                        <td class="item1"><a href="/board/getBoard.jsp?bno=<%=arr.getPar() %>"><%=arr.getTitle() %></a></td>
-                        <td class="item2"><%=arr.getAuthor()%></td>
-                        <td class="item3"><%=date %></td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
-            </div>
 
-            <%
-                List<Qna> qnaList = new ArrayList<>();
 
-                conn = con.connect();
-                if(conn != null){
-                    System.out.println("DB 연결 성공");
-                }
+            <div class="productList">
+                <div class="listTitle">
+                    <h2>베스트 도서</h2>
+                </div>
+                <c:forEach var="pro" items="${bestList }" varStatus="status">
+                <div class="productCard">
+                    <div class="productImage"><a href="${path}/Product.do?no=${pro.no}"><img src="${path }/storage/${pro.imgSrc1 }"/></a></div>
+                    <div class="productInfo">
+                        <div class="productCate">${pro.cname }</div>
+                        <div class="productTitle">${pro.pname }</div>
+                        <div class="productPrice">${pro.price }원</div>
+                    </div>
+                </div>
+                </c:forEach>
 
-                // 해당 회원의 정보를 db에서 가져옴
-                try {
-                    String sql = "select * from qna_problem where lev=0 order by par desc";
-                    pstmt = conn.prepareStatement(sql);
-                    rs = pstmt.executeQuery();
-                    while(rs.next()){
-                        Qna q = new Qna();
-                        q.setPar(rs.getInt("par"));
-                        q.setTitle(rs.getString("title"));
-                        q.setAuthor(rs.getString("author"));
-                        q.setResdate(rs.getString("resdate"));
-                        qnaList.add(q);
-                    }
-                } catch(SQLException e) {
-                    System.out.println("SQL 구문이 처리되지 못했습니다.");
-                } finally {
-                    con.close(rs, pstmt, conn);
-                }
-            %>
 
-            <div class="rightcontent">
-                <h2 class="board_tit">문제 QNA</h2>
-                <table class="tb1">
-                    <thead>
-                    <tr>
-                        <th class="item1" style="text-align: center">제목</th>
-                        <th class="item2" style="text-align: center">작성자</th>
-                        <th class="item3" style="text-align: center">작성일</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%
-
-                        count = 0;
-                        for(Qna arr:qnaList) {
-                            if(count++ >= 15) break;
-                            Date d = ymd.parse(arr.getResdate());  //날짜데이터로 변경
-                            String date = ymd.format(d);    //형식을 포함한 문자열로 변경
-                    %>
-                    <tr>
-                        <td class="item1"><a href="getQna.jsp?qno=<%=arr.getPar() %>"><%=arr.getTitle() %></a></td>
-                        <td class="item2"><%=arr.getAuthor()%></td>
-                        <td class="item3"><%=date %></td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                    </tbody>
-                </table>
-            </div>
         </div>
+
+        <div class="productList">
+            <div class="listTitle">
+                <h2>최신 도서</h2>
+            </div>
+            <c:forEach var="newpro" items="${newList }" varStatus="status">
+                <div class="productCard">
+                    <div class="productImage"><a href="${path}/Product.do?no=${newpro.no}"><img src="${path }/storage/${newpro.imgSrc1 }"/></a></div>
+                    <div class="productInfo">
+                        <div class="productCate">${newpro.cname }</div>
+                        <div class="productTitle">${newpro.pname }</div>
+                        <div class="productPrice">${newpro.price }원</div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+
+
 
     </div>
 
-
-
-
-
-    <section class="page" id="page2">
-        <div class="page_wrap">
-            <h2 class="page_tit">페이지 제목2</h2>
-            <p class="page_com">페이지 설명</p>
-
-
-            <div class="boxes">
-                <div>
-                    <div class="top first flexset">
-                        <div class="imgBox">
-                            <img src="./img/main_bottom_1.png" alt="" class="img" />
-                        </div>
-                        <a class="title"> 공지사항 </a>
-                    </div>
-                    <div class="bottom">
-                        <ul class="description">
-                            <li>테스트 중입니다 1</li>
-
-                        </ul>
-                        <button class="flexset" onclick="">자세히 보기 </button>
-                    </div>
-                </div>
-                <div>
-                    <div class="top second flexset">
-                        <div class="imgBox">
-                            <img src="./img/main_bottom_2.png" alt="" class="img" />
-                        </div>
-                        <a class="title"> 입시뉴스 </a>
-                    </div>
-                    <div class="bottom">
-                        <ul class="description">
-                            <li>테스트 중입니다 1</li>
-
-                        </ul>
-                        <button class="flexset" onclick="location.href=''">자세히 보기 </button>
-                    </div>
-                </div>
-                <div class="last flexset">
-                    <a href="./member/term.jsp" class="title right">
-                        저희의 <br />
-                        친구가 되어주세요!
-                    </a>
-                    <div class="friends flexset">
-                        <img src="./img/main_bottom_3.png" alt=""class="img"  />
-                    </div>
-                </div>
-            </div>
-
-
-
-
-        </div>
-    </section>
-    <script src="./js/slidebox.js"></script>
-    --%>
 </div>
 
 <footer class="ft" id="ft">
     <%@include file="/footer.jsp"%>
 </footer>
-<a href="#" class="totop">위</a>
 </body>
 </html>

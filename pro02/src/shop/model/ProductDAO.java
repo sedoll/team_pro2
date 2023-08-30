@@ -374,4 +374,70 @@ public class ProductDAO {
 
         return catename;
     }
+
+    public List<Product> getProductListBest() {
+        List<Product> proList = new ArrayList<>();
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+        try {
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_BEST);
+            rs = pstmt.executeQuery();
+            while(rs.next()) {
+                Product pro = new Product();
+                pro.setNo(rs.getInt("no"));
+                pro.setCate(rs.getString("cate"));
+                pro.setPname(rs.getString("pname"));
+                pro.setPcomment(rs.getString("pcomment"));
+                pro.setPlist(rs.getString("plist"));
+                pro.setPrice(rs.getInt("price"));
+                pro.setImgSrc1(rs.getString("imgsrc1"));
+                pro.setCname(rs.getString("cname"));
+                Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
+                String date = ymd.format(d);
+                pro.setResdate(date);
+                proList.add(pro);
+            }
+        } catch (SQLException e) {
+            System.out.println("sql 에러");
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return proList;
+    }
+
+    public List<Product> getProductListNew() {
+        List<Product> proList = new ArrayList<>();
+        DBConnect con = new MariaDBCon();
+        conn = con.connect();
+        SimpleDateFormat ymd = new SimpleDateFormat("yy-MM-dd");
+        try {
+            pstmt = conn.prepareStatement(DBConnect.PRODUCT_SELECT_NEW);
+            rs = pstmt.executeQuery();
+            while(rs.next()) {
+                Product pro = new Product();
+                pro.setNo(rs.getInt("no"));
+                pro.setCate(rs.getString("cate"));
+                pro.setPname(rs.getString("pname"));
+                pro.setPcomment(rs.getString("pcomment"));
+                pro.setPlist(rs.getString("plist"));
+                pro.setPrice(rs.getInt("price"));
+                pro.setImgSrc1(rs.getString("imgsrc1"));
+                pro.setCname(rs.getString("cname"));
+                Date d = ymd.parse(rs.getString("resdate"));  //날짜데이터로 변경
+                String date = ymd.format(d);
+                pro.setResdate(date);
+                proList.add(pro);
+            }
+        } catch (SQLException e) {
+            System.out.println("sql 에러");
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            con.close(rs, pstmt, conn);
+        }
+        return proList;
+    }
 }

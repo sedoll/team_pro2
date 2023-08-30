@@ -36,7 +36,8 @@ public interface DBConnect {
     final static String PRODUCT_SELECT_CATE = "SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where cate=? ORDER BY NO";
     final static String PRODUCT_SELECT_ONE =  "SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where no=?"; // 상품 상세 조회
     final static String PRODUCT_SELECT_RECENT = "SELECT * FROM product ORDER BY NO DESC LIMIT 5"; // 최근 상품 조회
-    final static String PRODUCT_SELECT_BEST = "SELECT * from product where pno IN (SELECT pno FROM payment GROUP BY pno ORDER BY SUM(amount) DESC LIMIT 5)"; // 제일 잘나가는 상품 조회
+    final static String PRODUCT_SELECT_NEW = "SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno ORDER BY NO desc limit 4";
+    final static String PRODUCT_SELECT_BEST = "SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where no in (select pno from payment group by pno order by sum(amount) desc )limit 4"; // 제일 잘나가는 상품 조회
     final static String PRODUCT_INSERT = "INSERT INTO product VALUES(DEFAULT, ?, '', ?, ?, ?, ?, ?, ?, ?, DEFAULT)";
     final static String PRODUCT_INSERT_CATENO = "update product set cateno = concat(cate, no) where no in (select no from product order by resdate desc)";
     final static String PRODUCT_UPDATE = "update product set pname=?, pcomment=?, plist=?, price=?, imgsrc1=?, imgsrc2=?, imgsrc3=?, cate=? where no=?"; // 테스트! 상품정보수정
