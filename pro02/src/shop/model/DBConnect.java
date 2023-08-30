@@ -14,6 +14,15 @@ public interface DBConnect {
     final static String NOTICE_DELETE = "delete from notice where no=?";
     // endregion
 
+    final static String FAQ_SELECT_ALL = "select * from faq";
+    final static String FAQ_SELECT_ONE = "select * from faq where fno=?";
+    final static String FAQ_INSERT = "insert into faq(question, answer) values (?, ?)";
+    final static String FAQ_UPDATE = "update faq set question=?, answer=? where fno=?";
+    final static String FAQ_UPDATE_CNT = "update faq set cnt=cnt+1 where fno=?";
+    final static String FAQ_DELETE = "delete from faq where no=?";
+
+
+
     // region customer
     final static String CUSTOM_SELECT_ALL = "select * from custom order by regdate desc";
     final static String CUSTOM_SELECT_ONE = "select * from custom where id=?";

@@ -1,9 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="<%=request.getContextPath() %>" />
@@ -12,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항</title>
+    <title>고객센터</title>
     <%@ include file="../head.jsp" %>
 
     <!-- 스타일 초기화 : reset.css 또는 normalize.css -->
@@ -94,7 +89,7 @@
 
         /* 테이블 스타일 */
         .tb1 {
-            width: 80%;
+            width: 300px;
             margin: 50px auto;
             font-size: 20px;
             border-collapse: collapse;
@@ -122,14 +117,15 @@
         }
 
         .tb1 .item1 {
-            width: 8%;
+            width: 12%;
         }
         .tb1 .item2 {
-            width: 50%;
+            width: 58%;
+
             text-align: left;
         }
         .tb1 .item3 {
-            width: 12%;
+            width: 15%;
         }
 
         /* 기타 버튼 스타일 */
@@ -162,8 +158,65 @@
             float: right;
 
         }
+
+
+        .content {
+            width: 900px;
+            margin: 0 auto;
+        }
+        .helpmenu {
+            width: 250px;
+            border-right: 1px solid #e0e0e0;
+            padding: 20px 0;
+            display: inline-block;
+            float: left;
+        }
+
+        .helpmenu ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .helpmenu ul li {
+            margin-bottom: 15px;
+            line-height: 40px;
+        }
+
+        .helpmenu ul li a {
+            display: block;
+            text-decoration: none;
+            padding-left: 30px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        #selectedmenu {
+            background-color: #527AF2;
+
+            border-radius: 5px;
+        }
+        #selectedmenu a {
+            color: white;
+        }
+
+
+        .helpcontent {
+            width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-left: 1px solid #e0e0e0;
+            display: inline-block;
+            float: left;
+        }
+        #myTable {
+            font-size: 14px;
+        }
+
     </style>
 </head>
+
+
 <body>
 <div class="wrap">
     <header class="hd" id="hd">
@@ -171,70 +224,83 @@
     </header>
     <div class="contents" id="contents">
         <div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/">공지사항</a></p>
+            <p><a href="/">HOME</a> &gt; <a href="/help/help.jsp">공지사항</a></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">
                 <h2 class="page_tit">공지사항</h2>
-                <table class="tb1" id="myTable">
-                    <thead>
-                    <tr>
-                        <th class="item1" style="text-align: center">번호</th>
-                        <th class="item2" style="text-align: center">제목</th>
-                        <th class="item3" style="text-align: center">작성일</th>
-                        <th class="item3" style="text-align: center">조회수</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="noti" items="${notiList}" varStatus="status">
-                        <tr>
-                            <td class="item1">${status.count}</td>
-                            <td class="item2"><a href="${path}/Notice.do?no=${noti.no}">${noti.title}</a></td>
-                            <td class="item3">${noti.resdate}</td>
-                            <td class="item3">${noti.visited}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-                <script>
-                    $(document).ready( function () {
-                        $('#myTable').DataTable({
-                            order: [[0, 'desc']], // 0번째 컬럼을 기준으로 내림차순 정렬
-                            info: false,
-                            dom: 't<f>p',
-                            language: {
-                                emptyTable: '작성된 글이 없습니다.'
-                            }
 
-                        });
-                    } );
-                    $(document).ready(function() {
-                        $('.dataTables_paginate').css({
-                            'textAlign':'left',
-                            'float': 'none',
-                            'margin-top':'10px',
-                        });
-                        $('.dataTables_filter').css({
-                            'float': 'left',
-                            'margin-top':'14px',
-                            'margin-right':'280px'
-                        });
-                        $('#myTable_paginate').css({
-                            'margin-right':'100px'
-                        });
+                <div class="content">
+                    <div class="helpmenu">
+                        <ul>
+                            <li id="selectedmenu"><a href="${path }/NoticeList.do">공지사항</a></li>
+                            <li><a href="${path }/FaqList.do">FAQ</a></li>
+                            <%-- <li><a href="helpQuestion.jsp">문의하기</a></li> --%>
+                        </ul>
+                    </div>
+                    <div class="helpcontent">
+                        <table class="tb1" id="myTable">
+                            <thead>
+                            <tr>
+                                <th class="item1" style="text-align: center">번호</th>
+                                <th class="item2" style="text-align: center">제목</th>
+                                <th class="item3" style="text-align: center">작성일</th>
+                                <th class="item3" style="text-align: center">조회수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="noti" items="${notiList }" varStatus="status">
+                                <tr>
+                                    <td class="item1">${status.count}</td>
+                                    <td class="item2"><a href="${path}/Notice.do?bno=${noti.bno}">${noti.title}</a></td>
+                                    <td class="item3">${noti.resdate}</td>
+                                    <td class="item3">${noti.visited}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <script>
+                            $(document).ready( function () {
+                                $('#myTable').DataTable({
+                                    order: [[0, 'desc']], // 0번째 컬럼을 기준으로 내림차순 정렬
+                                    info: false,
+                                    dom: 't<f>p',
+                                    language: {
+                                        emptyTable: '작성된 글이 없습니다.'
+                                    }
+
+                                });
+                            } );
+                            $(document).ready(function() {
+                                $('.dataTables_paginate').css({
+                                    'textAlign':'left',
+                                    'float': 'none',
+                                    'margin-top':'10px',
+                                });
+                                $('.dataTables_filter').css({
+                                    'float': 'left',
+                                    'margin-top':'14px',
+                                    'margin-right':'280px'
+                                });
+                                $('#myTable_paginate').css({
+                                    'margin-top':'-30px',
+                                    'float':'right'
+                                });
 
 
-                    });
+                            });
 
-                </script>
-                <div class="btn_group">
-                    <c:if test="${sid eq 'admin' }">
-                        <a href="${path}/AddNotice.do" class="inbtn"> 글 작성 </a>
-                    </c:if>
+                        </script>
+                        <div class="btn_group">
+                            <a href="../WEB-INF/admin/addNotice.jsp" class="inbtn"> 글 작성 </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
+
+
     <footer class="ft" id="ft">
         <%@ include file="../footer.jsp" %>
     </footer>

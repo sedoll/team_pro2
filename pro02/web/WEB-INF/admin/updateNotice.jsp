@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="${path}/css/ft.css">
     <style>
         /* 본문 영역 스타일 */
-        .contents { clear:both; min-height: 100vh; background-image: url("../img/login.jpg");
+        .contents { clear:both; min-height: 100vh; background-image: url("../../img/login.jpg");
             background-repeat: no-repeat; background-position: center -250px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
@@ -98,7 +98,7 @@
     <div class="contents" id="contents">
         <div class="breadcrumb">
             <p><a href="/">HOME</a> &gt; <a href="/board/boardList.jsp">공지사항</a>
-                &gt; <a href="${path}/UpdateNoticePro">공지사항 수정</a></p>
+                &gt; <a href="${path}/UpdateNoticePro.do">공지사항 수정</a></p>
         </div>
         <section class="page" id="page1">
             <div class="page_wrap">

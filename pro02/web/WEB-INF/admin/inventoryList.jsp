@@ -39,9 +39,9 @@
         .contents {
             clear: both;
             min-height:200vh;
-            /*background-image: url("${path}/img/login.jpg");
+            background-image: url("${path}/img/login.jpg");
             background-repeat: no-repeat;
-            background-position: center -250px;*/
+            background-position: center -250px;
         }
 
         .contents::after {
