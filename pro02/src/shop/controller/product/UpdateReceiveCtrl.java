@@ -24,7 +24,7 @@ public class UpdateReceiveCtrl extends HttpServlet {
 
         request.setAttribute("proList", proList);
 
-        RequestDispatcher view = request.getRequestDispatcher("/product/updateReceive.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/updateReceive.jsp");
         view.forward(request, response);
     }
 }

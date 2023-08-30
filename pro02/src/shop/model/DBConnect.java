@@ -106,7 +106,10 @@ public interface DBConnect {
     final static String DELIVERY_VIEW = "select * from delivery_info where sno=?";
 
     //재고 조회
-    final static String INVENTORY_SELECT_ALL = "select * from inventory order by pno desc";
+    final static String INVENTORY_SUMMARY_SELECT ="select * from InventorySummary";
+
+    final String INVENTORY_SELECT_CATE = "select * from inven_sales where cate=?";
+
     final static String INVENTORY_SELECT_ONE = "select * from inventory where pno=?";
 
     //입고 처리

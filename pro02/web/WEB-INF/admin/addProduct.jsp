@@ -263,13 +263,6 @@
                         <tr>
                             <th>카테고리</th>
                             <td colspan="2">
-                                <%--<select name="cate" id="cate" class="indata" autofocus required>
-                                    <option value="초등" selected>초등</option>
-                                    <option value="중등">중등</option>
-                                    <option value="고등">고등</option>
-                                    <option value="고등">일반</option>
-                                </select>--%>
-
                                 <select name="c1" id="c1" class="indata" autofocus required>
                                     <option value="" selected>선택안함</option>
                                     <option value="초등">초등</option>
@@ -277,10 +270,7 @@
                                     <option value="고등">고등</option>
                                     <option value="일반">일반</option>
                                     <option value="기타">기타</option>
-
                                 </select>
-
-
 
                                 <select name="c2" id="c2" class="indata" autofocus required>
                                     <option value="" selected>선택안함</option>
