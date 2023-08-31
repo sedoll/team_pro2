@@ -23,8 +23,6 @@ public class AddCartCtrl extends HttpServlet {
         cart.setCid(cid);
         cart.setAmount(1);
 
-        PrintWriter out = response.getWriter();
-
         CartDAO dao = new CartDAO();
         boolean check = dao.getCart(cart);
         int cnt = 0;
@@ -33,24 +31,28 @@ public class AddCartCtrl extends HttpServlet {
             if(cnt>0){
                 if(cate != null) {
                     response.setContentType("text/html; charset=UTF-8");
-                    out.println("<script>alert('add cart success');</script>");
+                    PrintWriter out = response.getWriter();
+                    out.println("<script>alert('장바구니 추가 성공');</script>");
                     out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
                     out.flush();
                 } else {
                     response.setContentType("text/html; charset=UTF-8");
-                    out.println("<script>alert('add cart success');</script>");
+                    PrintWriter out = response.getWriter();
+                    out.println("<script>alert('장바구니 추가 성공');</script>");
                     out.println("<script> location.href= '/pro02/LikeList.do'; </script>");
                     out.flush();
                 }
             } else {
                 if(cate != null) {
                     response.setContentType("text/html; charset=UTF-8");
-                    out.println("<script>alert('add cart fail');</script>");
+                    PrintWriter out = response.getWriter();
+                    out.println("<script>alert('장바구니 추가 실패');</script>");
                     out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
                     out.flush();
                 } else {
                     response.setContentType("text/html; charset=UTF-8");
-                    out.println("<script>alert('add cart fail');</script>");
+                    PrintWriter out = response.getWriter();
+                    out.println("<script>alert('장바구니 추가 실패');</script>");
                     out.println("<script> location.href= '/pro02/LikeList.do'; </script>");
                     out.flush();
                 }
@@ -58,12 +60,14 @@ public class AddCartCtrl extends HttpServlet {
         } else { // 이미 장바구니에 들어 있는 경우
             if(cate != null) {
                 response.setContentType("text/html; charset=UTF-8");
-                out.println("<script>alert('add cart fail');</script>");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('장바구니 추가 실패');</script>");
                 out.println("<script> location.href= '/pro02/ProList.do?cate="+cate+"'; </script>");
                 out.flush();
             } else {
                 response.setContentType("text/html; charset=UTF-8");
-                out.println("<script>alert('add cart fail');</script>");
+                PrintWriter out = response.getWriter();
+                out.println("<script>alert('장바구니 추가 실패');</script>");
                 out.println("<script> location.href= '/pro02/LikeList.do'; </script>");
                 out.flush();
             }

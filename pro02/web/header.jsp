@@ -7,7 +7,7 @@
         <ul class="menu">
             <c:if test="${!empty sid}">
             <li>안녕하세요,  ${sid}님</li> <!-- 로그인 한 회원의 이름 -->
-                <li><a href="${path2}/Mypage.do">마이페이지</a></li>
+                <li><a href="${path2}/MypageIndex.do">마이페이지</a></li>
                 <li><a href="${path2}/CartList.do">장바구니 (${cntCart })</a></li>
                 <c:if test="${sid eq 'admin'}">
                 <li><a href="${path2}/Manage.do">관리자페이지</a></li>
