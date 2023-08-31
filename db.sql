@@ -19,18 +19,36 @@ CREATE TABLE custom (
 );
 
 INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
-VALUES('admin', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '관리자', '01011112222', 'admin@shop.com', '1995-07-31', '서울시 구로구 01111');
+VALUES('admin', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '관리자', '01011112222', 'admin@shop.com', '1995-07-31', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
 	
 INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
-VALUES('hong123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '홍길동', '01011222233', 'hong@shop.com', '2000-06-23', '서울시 금천구 01123');
+VALUES('hong123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '홍길동', '01011222233', 'hong@shop.com', '2000-06-23', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
 
 INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
-VALUES('kim123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '김철수', '01011332222', 'kim@shop.com', '2001-03-25', '서울시 양천구 02111');
+VALUES('kim123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '김철수', '01011332222', 'kim@shop.com', '2001-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
+
+INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
+VALUES('kang123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '강감찬', '01011333333', 'kang@shop.com', '2003-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
+
+INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
+VALUES('son123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '손웅민', '01011334444', 'son@shop.com', '2004-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
+
+INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
+VALUES('oh12345', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '오세훈', '01011335555', 'oh@shop.com', '2005-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
+
+INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
+VALUES('kkt123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '김기태', '01011336666', 'kkt@shop.com', '2006-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
+
+INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
+VALUES('kong123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '오킹콩', '01011337777', 'kong@shop.com', '1999-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
+
+INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
+VALUES('usin123', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '김유신', '01011338888', 'usin@shop.com', '1998-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
+
+INSERT INTO custom(id, pw, NAME, tel, email, birth, address) 
+VALUES('sej1234', 'PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==', '이세종', '01011339999', 'sej@shop.com', '1997-03-25', '경기 성남시 분당구 대왕판교로 477<br>102호<br>13480');
 
 -- 123456a* 암호화  PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==
-UPDATE custom SET pw='PoFwcUNmztMSrVIZNnSjPgluwbPVYHUiSzicdxofwckMOUmrtQZNWNOIv1kyht5PvqAAUg==';
-
-UPDATE custom SET address='경기 성남시 분당구 대왕판교로 477<br>102호<br>13480'
 
 -- 공지사항 테이블
 CREATE TABLE notice (
@@ -347,3 +365,17 @@ sdate=CURRENT_TIMESTAMP, rdate=?, bcode=? WHERE dno=?;
 -- 도착
 UPDATE delivery SET pcom=?, ptel=?, pstate=2, 
 sdate=CURRENT_TIMESTAMP, rdate=?, bcode=? WHERE dno=?;team12
+
+DELIMITER $$
+CREATE PROCEDURE auto_notice(IN count INT)
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    WHILE (i <= count) DO
+		  INSERT INTO notice (title, content)VALUES('공지사항' , '내용');
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$ /* 프로시저 종료 지점 마찬가지로 DELIMITER 사이 공백 지우면 에러남.*/
+CALL auto_notice(200); /*() 안의 숫자만큼 반복 실행 */
+SELECT * FROM notice;
+DROP PROCEDURE auto_notice;
