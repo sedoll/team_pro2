@@ -268,7 +268,6 @@
                                     <option value="초등">초등</option>
                                     <option value="중등">중등</option>
                                     <option value="고등">고등</option>
-                                    <option value="일반">일반</option>
                                     <option value="기타">기타</option>
                                 </select>
 

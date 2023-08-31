@@ -35,21 +35,24 @@ public class JoinProCtrl extends HttpServlet {
         System.out.println(pass);
 
         HttpSession session = request.getSession();
-        PrintWriter out = response.getWriter();
         RequestDispatcher view = null;
 
         if(pass) {
             msg = "회원가입 성공";
-//            session.setAttribute("sid", id);
-//            request.setAttribute("msg", msg);
-            response.sendRedirect("/pro02");
-//            response.setContentType("text/html;charset=UTF-8");
-//            response.setCharacterEncoding("UTF-8");
-//            view = request.getRequestDispatcher("/pro02");
-//            view.forward(request, response);
+//            response.sendRedirect("/pro02");
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('회원가입 성공');</script>");
+            out.println("<script> location.href= '/pro02'; </script>");
+            out.flush();
         } else {
             msg = "회원가입 실패";
-            response.sendRedirect("/pro02");
+//            response.sendRedirect("/pro02");
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('회원가입 실패');</script>");
+            out.println("<script> location.href= '/pro02/Join.do'; </script>");
+            out.flush();
         }
     }
 }
