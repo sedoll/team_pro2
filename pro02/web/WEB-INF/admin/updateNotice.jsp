@@ -117,7 +117,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="submit" value="글쓰기" class="inbtn">
+                                <input type="submit" value="수정" class="inbtn">
                                 <input type="reset" value="취소" class="inbtn" onclick="window.history.back();">
                             </td>
                         </tr>
