@@ -294,7 +294,9 @@
 
                         </script>
                         <div class="btn_group">
-                            <a href="${path2 }/AddNotice.do" class="inbtn"> 글 작성 </a>
+                            <c:if test="${sid eq 'admin'}">
+                                <a href="${path2 }/AddNotice.do" class="inbtn"> 글 작성 </a>
+                            </c:if>
                         </div>
                     </div>
 
