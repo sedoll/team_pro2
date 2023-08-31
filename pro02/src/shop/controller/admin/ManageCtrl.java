@@ -20,7 +20,7 @@ public class ManageCtrl extends HttpServlet {
         customList = dao.getCustomList();
 
         request.setAttribute("cusList", customList);
-        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/customList.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/index.jsp");
         view.forward(request, response);
     }
 }

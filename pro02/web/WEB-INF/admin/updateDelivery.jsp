@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="${path}/css/common.css">
     <link rel="stylesheet" href="${path}/css/hd.css">
     <link rel="stylesheet" href="${path}/css/ft.css">
+
     <style>
         /* 본문 영역 스타일 */
         .contents { clear:both; min-height: 100vh; background-image: url("${path}/img/login.jpg");
