@@ -25,14 +25,14 @@ public class LoginProCtrl extends HttpServlet {
         boolean pass = dao.login(id, pw);
 
         HttpSession session = request.getSession();
-        PrintWriter out = response.getWriter();
         RequestDispatcher view = null;
         if(pass) {
             msg = "로그인 성공";
             session.setAttribute("sid", id);
             request.setAttribute("msg", msg);
             response.setContentType("text/html; charset=UTF-8");
-            out.println("<script>alert('login success');</script>");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('로그인 성공');</script>");
             out.println("<script> location.href= '/pro02'; </script>");
             out.flush();
 //            response.sendRedirect("/pro02");
@@ -42,7 +42,8 @@ public class LoginProCtrl extends HttpServlet {
 //            view.forward(request, response);
         } else {
             response.setContentType("text/html; charset=UTF-8");
-            out.println("<script>alert('login fail');</script>");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('로그인 실패');</script>");
             out.println("<script> location.href= '/pro02/Login.do'; </script>");
             out.flush();
         }

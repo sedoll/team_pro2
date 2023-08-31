@@ -39,7 +39,7 @@
     <style>
         /* 본문 영역 스타일 */
         /* background-image: url("../img/login.jpg"); */
-        .contents { clear:both; min-height: 250vh; background-image: url("${path}/img/login.jpg");
+        .contents { clear:both; min-height: 300vh; background-image: url("${path}/img/login.jpg");
             background-repeat: no-repeat; background-position: center -250px; }
         .contents::after { content:""; clear:both; display:block; width:100%; }
 
