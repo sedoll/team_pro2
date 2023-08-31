@@ -36,61 +36,22 @@
     <link rel="stylesheet" href="${path}/css/ft.css">
     <style>
         /* 본문 영역 스타일 */
-        .contents {
-            clear: both;
-            min-height: 100vh;
-            background-image: url("${path}/img/login.jpg");
-            background-repeat: no-repeat;
-            background-position: center -250px;
-        }
-        .contents::after {
-            content: "";
-            clear: both;
-            display: block;
-            width: 100%;
-        }
+        .contents { clear:both; min-height: 100vh; background-image: url("${path}/img/login.jpg");
+            background-repeat: no-repeat; background-position: center -250px; }
+        .contents::after { content:""; clear:both; display:block; width:100%; }
 
-        .page {
-            clear: both;
-            width: 100vw;
-            height: 100vh;
-            position: relative;
-        }
-        .page::after {
-            content: "";
-            display: block;
-            width: 100%;
-            clear: both;
-        }
+        .page { clear:both; width: 100vw; height: 100vh; position:relative; }
+        .page::after { content:""; display:block; width: 100%; clear:both; }
 
-        .page_wrap {
-            clear: both;
-            width: 1200px;
-            height: auto;
-            margin: 0 auto;
+        .page_wrap { clear:both; width: 1200px; height: auto; margin:0 auto; }
+        .page_tit { font-size:48px; text-align: center; padding-top:0.7em; color:#fff;
+            padding-bottom: 1.3em; }
 
-        }
-        .page_tit {
-            font-size: 48px;
-            text-align: center;
-            /*padding-top: 0.7em;*/
-            color: #fff;
-            padding-bottom: 1.3em;
-        }
-
-        .breadcrumb {
-            clear: both;
-            width: 1200px;
-            margin: 0 auto;
-            text-align: right;
-            color: #fff;
-            padding-top: 28px;
-            padding-bottom: 28px;
-        }
-        .breadcrumb a {
-            color: #fff;
-
-        }
+        .breadcrumb { clear:both;
+            width:1200px; margin: 0 auto; text-align: right; color:#fff;
+            padding-top: 28px;}
+        .breadcrumb a { color:#fff; }
+        .frm { clear:both; width:1200px; margin:0 auto; padding-top: 80px; }
 
         /* 테이블 스타일 */
         .tb1 {

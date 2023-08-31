@@ -24,10 +24,13 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- css 모듈화 -->
     <link rel="stylesheet" href="${path }/css/common.css">
     <link rel="stylesheet" href="${path }/css/hd.css">
     <link rel="stylesheet" href="${path }/css/ft.css">
+    <%--<link rel="stylesheet" href="${path}/css/asidebar.css">--%>
 
 
     <style>
@@ -36,8 +39,10 @@
         /* 본문 영역 스타일 */
         .contents {
             clear: both;
-            min-height:200vh;
-            /*background-image: url("${path}/img/login.jpg");
+            min-height: 200vh;
+            background-color: #ffffff;
+            /*background-image: url("
+        ${path} /img/login.jpg");
             background-repeat: no-repeat;
             background-position: center -250px;*/
         }
@@ -50,39 +55,77 @@
         }
 
 
-      /* 사이트의 높이를 5000px로 만들어 스크롤 생성 */
-       body {
-           height: 5000px;
-           /*background-color: #444;*/
-       }
+        /* 본문 */
 
-        /* 노멀라이즈 시작 */
-        body, ul, li {
-            margin: 0;
-            padding: 0;
-            list-style: none; /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
+        .page {
+            float: right;
+            width: 85%;
+            height: 100vh;
+            margin-top: 50px;
+            margin-bottom: 10px;
         }
 
-        a {
-            color: inherit; /* 부모 엘리먼트의 값을 물려받는다 */
-            text-decoration: none; /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
+
+        .page::after {
+            content: "";
+            display: block;
+            width: 100%;
+            clear: both;
         }
 
-        /* 노멀라이즈 끝 */
+        .page_wrap {
+            clear: both;
+            width: 1200px;
+            height: auto;
+            margin: 0 auto;
 
-       aside{
-           float: left;
-           width: 30%;
-           min-height: 250px;
+        }
 
-       }
+        .page_tit {
+            font-size: 48px;
+            text-align: center;
+            padding-top: 0.7em;
+            color: #fff;
+            padding-bottom: 1.3em;
+        }
+
+        .breadcrumb {
+            clear: both;
+            width: 1200px;
+            margin: 0 auto;
+            text-align: right;
+            color: #fff;
+            padding-top: 28px;
+        }
+
+        .breadcrumb a {
+            color: #fff;
+        }
+
+        /*본문 내용*/
+        .adminContent {
+            width: 600px;
+            margin: 50px;
+            background-color: #ffffff;
+
+            display: inline-block;
+
+
+        }
+        /*사이드 바*/
+        /* 사이드바 시작 */
+        aside{
+            float: left;
+            width: 30%;
+            min-height: 250px;
+            z-index: 999;
+            position: absolute;    /*절대값으로 위치를 설정*/
+            left: 0px;
+        }
         /* 커스텀 시작 */
         .side-bar > ul ul {
             display: none;
         }
-
-
-        /* 사이드바 시작 */
 
         /* 사이드바의 너비와 높이를 변수를 통해 통제 */
         :root {
@@ -91,11 +134,12 @@
         }
 
         .side-bar {
+
             position: fixed; /* 스크롤을 따라오도록 지정 */
             background-color: cornflowerblue;
             width: var(--side-bar-width);
             min-height: var(--side-bar-height); /* 사이드바의 높이를 전체 화면 높이의 90%로 지정 */
-            margin-top: 50px; /* 사이드바 위와 아래의 마진을 동일하게 지정 */
+            margin-top: 150px; /* 사이드바 위와 아래의 마진을 동일하게 지정 */
         }
 
         /* 아이콘 시작 */
@@ -179,7 +223,7 @@
             font-weight: bold;
             padding-top: 20px;
             padding-bottom: 20px;
-            padding-left: 50px;
+            padding-left: 30px;padding-right: 30px;
             transition: .5s;
         }
 
@@ -201,14 +245,14 @@
             background-color: #888;
             top: 0; /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
             left: 100%; /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
-            width: 100%; /* 1차 메뉴의 너비를 상속 */
+            width: 120%; /* 1차 메뉴의 너비를 상속 */
         }
 
         /* 사이드바 너비의 80%만큼 왼쪽으로 이동 */
         .side-bar {
             border-radius: 0px 20px 20px 0;
-          /*  transform: translate(calc(var(--side-bar-width) * -0.8), 0);
-            transition: .5s;*/
+            /*  transform: translate(calc(var(--side-bar-width) * -0.8), 0);
+              transition: .5s;*/
         }
 
         /* 마우스 인식 시 원래의 위치로 이동 */
@@ -216,103 +260,239 @@
             transform: translate(-20px, 0); /* 둥근 모서리의 너비만큼 숨겨주기 */
         }
         /* 사이드바 끝 */
-        /* 커스텀 끝 */
-
-       /* 본문 */
-
-       .page{
-           float: right;
-           width: 70%;
-           height: 100vh;
-           margin-bottom:10px;
-       }
 
 
-       .page::after {
-           content: "";
-           display: block;
-           width: 100%;
-           clear: both;
-       }
+        /* 메인 */
+        .nav-container {
+            background-color: white;
+            width: 100%;
+            height: 60px;
+            margin-top: 50px;
+            box-shadow: 0px 2px 0px 0px #eee;
+            display: flex;
+            justify-content: space-between;
+        }
 
-       .page_wrap {
-           clear: both;
-           width: 1200px;
-           height: auto;
-           margin: 0 auto;
+        .search-box {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 100px;
+        }
 
-       }
+        .search-box-input {
+            padding: 5px;
+            border-radius: 5px 0px 0px 5px;
+            border: 1px solid lightgrey;
+            width: 150px;
+            transition: width 1s;
+        }
 
-       .page_tit {
-           font-size: 48px;
-           text-align: center;
-           padding-top: 0.7em;
-           color: #fff;
-           padding-bottom: 1.3em;
-       }
+        .search-box-input:focus {
+            width: 300px;
+        }
 
-       .breadcrumb {
-           clear: both;
-           width: 1200px;
-           margin: 0 auto;
-           text-align: right;
-           color: #fff;
-           padding-top: 28px;
-       }
+        .search-box-btn {
+            background-color: #343940;
+            color: white;
+            border: none;
+            border-radius: 0px 5px 5px 0px;
+            height: 36px;
+            width: 40px;
+        }
 
-       .breadcrumb a {
-           color: #fff;
-       }
+        .notification {
+            display: flex;
+            margin-right: 20px;
+            align-items: center;
+        }
+
+        .notification-icon {
+            font-size: x-large;
+            margin-left: 60px;
+            color: #808080;
+            margin-bottom: 20px;
+        }
+
+        .notification-badge {
+            position: relative;
+            left: 15px;
+            top: 16px;
+            background-color: #DC3545;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: small;
+            font-weight: 600;
+        }
+
+        #notification-name {
+            margin-left: 40px;
+            color: grey;
+        }
 
 
 
-        /*본문 내용*/
-       .adminContent{
-           width: 600px;
-           margin: 50px;
-           background-color: #ffffff;
 
-           display: inline-block;
-
-
-       }
     </style>
 
 </head>
 <body>
-<div class="container-fluid">
+<header class="hd">
     <%@ include file="../../header.jsp" %>
+</header>
+<div class="container-fluid">
+    <%@ include file="./adminAside.jsp" %>
     <div class="contents" style="min-height:200vh">
-        <%--<nav aria-label="breadcrumb container-fluid" style="padding-top:28px; border-bottom:2px solid #666;">
-            <div class="container">
-                <ol class="breadcrumb justify-content-end">
-                    <li class="breadcrumb-item"><a href="${path }">Home</a></li>
-                    <li class="breadcrumb-item"><a href="${path }/ProList.do">관리자 페이지 메인</a></li>
-                </ol>
+
+        <nav class="nav-container">
+            <div class="search-box">
+                <input type="text" class="search-box-input" placeholder="Search"/>
+                <button class="search-box-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </div>
-        </nav>--%>
 
-        <%--<div class="breadcrumb">
-            <p><a href="/">HOME</a> &gt; <a href="/admin/baordList.jsp">관리자 페이지</a></p>
-        </div>--%>
-            <%@ include file="./adminAside.jsp"%>
-
-        <section class="page" id="page1">
-            <div class="page_wrap">
-
-
-                <div class="adminContent">
-                    <h2> 관리자 페이지 입니다</h2>
-
+            <div class="notification">
+                <div class="notification-icon">
+                    <span class="notification-badge">5</span>
+                    <i class="fa-solid fa-bell"></i>
                 </div>
-
-
+                <div class="notification-icon">
+                    <span class="notification-badge">9</span>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <span id="notification-name">admin</span>
             </div>
-        </section>
+        </nav>
 
+        <div class="page">
+
+            <%-- 대쉬보드 --%>
+            <div class="container">
+                <h4 class="my-4"></h4>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card monthly">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                    <p class="card-text mb-2">신규 회원 수</p>
+                                    <h4>23 명</h4>
+                                </div>
+                                <i
+                                        class="fas fa-calendar"
+                                        style="font-size: 30px; margin-top: 20px; color: #6c757d"
+                                ></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card annual">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                    <p class="card-text mb-2">매출 (일)</p>
+                                    <h4>500,000 원</h4>
+                                </div>
+                                <i
+                                        class="fa-solid fa-dollar-sign"
+                                        style="font-size: 30px; margin-top: 20px; color: #6c757d"
+                                ></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card tasks">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                    <p class="card-text mb-2">일일 방문자 수</p>
+                                    <h4>100 명</h4>
+                                </div>
+                                <i
+                                        class="fa-solid fa-list-check"
+                                        style="font-size: 30px; margin-top: 20px; color: #6c757d"
+                                ></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card requests">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                    <p class="card-text mb-2">답변대기 문의</p>
+                                    <h4>13 개</h4>
+                                </div>
+                                <i
+                                        class="fa-solid fa-comments"
+                                        style="font-size: 30px; margin-top: 20px; color: #6c757d"
+                                ></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-3">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card-header h5">방문자 현황</div>
+                        <div class="card-body"><canvas id="myChart"></canvas></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header h5">Tasks</div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">신규주문</li>
+                                <li class="list-group-item">취소관리</li>
+                                <li class="list-group-item">반품관리</li>
+                                <li class="list-group-item">교환관리</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     </div>
-    <%@ include file="../../footer.jsp" %>
+
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June"],
+            datasets: [
+                {
+                    label: "Monthly",
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: "rgba(255, 99, 132, 0.2)",
+                    borderColor: "rgba(255, 99, 132, 1)",
+                    borderWidth: 1,
+                    fill: true,
+                    tension: 0.2,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>
+
+

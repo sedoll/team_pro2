@@ -16,9 +16,9 @@
             <a href="#">게시글 관리</a>
             <ul>
                 <li><a href="${path3}/AdminReviewList.do">댓글관리</a></li>
-                <li><a href="#">text2</a></li>
+                <%--<li><a href="#">text2</a></li>
                 <li><a href="#">text3</a></li>
-                <li><a href="#">text4</a></li>
+                <li><a href="#">text4</a></li>--%>
             </ul>
         </li>
         <li>
@@ -35,9 +35,9 @@
             <a href="#">회원 관리</a>
             <ul>
                 <li><a href="${path3 }/CustomList.do">회원 목록</a></li>
-                <li><a href="#">text2</a></li>
+               <%-- <li><a href="#">text2</a></li>
                 <li><a href="#">text3</a></li>
-                <li><a href="#">text4</a></li>
+                <li><a href="#">text4</a></li>--%>
             </ul>
         </li>
         <li>
