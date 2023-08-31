@@ -38,6 +38,7 @@ public class NoticeDAO {
                 noti.setVisited(rs.getInt("visited"));
                 notiList.add(noti);
             }
+            System.out.println("공지사항 추출 완료");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ParseException e) {

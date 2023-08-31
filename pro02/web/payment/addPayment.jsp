@@ -408,7 +408,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="button" id="pay" value="결재" class="inbtn">
+                                <input type="button" id="pay" value="결제" class="inbtn">
                                 <c:if test="${!empty sid }">
                                     <input type="submit" class="inbtn" value="구매">
                                 </c:if>

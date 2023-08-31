@@ -90,7 +90,7 @@
         /* 테이블 스타일 */
         .tb1 {
             width: 300px;
-            margin: 50px auto;
+            margin: 100px;
             font-size: 20px;
             border-collapse: collapse;
         }
@@ -252,7 +252,7 @@
                             <c:forEach var="noti" items="${notiList }" varStatus="status">
                                 <tr>
                                     <td class="item1">${status.count}</td>
-                                    <td class="item2"><a href="${path}/Notice.do?bno=${noti.bno}">${noti.title}</a></td>
+                                    <td class="item2"><a href="${path}/Notice.do?no=${noti.no}">${noti.title}</a></td>
                                     <td class="item3">${noti.resdate}</td>
                                     <td class="item3">${noti.visited}</td>
                                 </tr>
@@ -264,7 +264,8 @@
                                 $('#myTable').DataTable({
                                     order: [[0, 'desc']], // 0번째 컬럼을 기준으로 내림차순 정렬
                                     info: false,
-                                    dom: 't<f>p',
+                                    //dom: 't<f>p',
+                                    dom: 'ftp',
                                     language: {
                                         emptyTable: '작성된 글이 없습니다.'
                                     }
@@ -275,7 +276,8 @@
                                 $('.dataTables_paginate').css({
                                     'textAlign':'left',
                                     'float': 'none',
-                                    'margin-top':'10px',
+                                    'margin-top':'40px',
+                                    'padding-top' :'50px'
                                 });
                                 $('.dataTables_filter').css({
                                     'float': 'left',
@@ -292,9 +294,10 @@
 
                         </script>
                         <div class="btn_group">
-                            <a href="../WEB-INF/admin/addNotice.jsp" class="inbtn"> 글 작성 </a>
+                            <a href="${path2 }/AddNotice.do" class="inbtn"> 글 작성 </a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
