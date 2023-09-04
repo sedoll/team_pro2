@@ -1,11 +1,12 @@
 # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;천재교육 풀스택 과정 2차 프로젝트 
 <br/>
-​
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![logo](https://github.com/kuyejin/project2/assets/65212187/1651e951-5f94-424f-9b8d-aa33298aecad)
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![logo](https://github.com/kuyejin/project2/assets/65212187/1651e951-5f94-424f-9b8d-aa33298aecad)
 ​
 <br/><br/>
 ​
-# �� 프로젝트 소개 
+# 📂 프로젝트 소개 
 ​
 안녕하세요! **teenBook**은 '학생 및 교사 전용 커뮤니티 사이트입니다.  
 이 곳은 서로의 경험, 관심사, 의견을 공유하며 함께 성장하고 배우는 공간을 제공합니다.
@@ -15,8 +16,8 @@
  저희 팀의 기획의도 입니다.  
  <br/> <br/>
  
-### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ��TEENBOOK��에 대해 자세히 설명해 드릴게요!
-### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[��‍♀️ CLIKE ME ��](https://drive.google.com/file/d/17pVcjRG1zmZlccVw1lUjXmn67raB-5W5/view?usp=drive_link)
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🔹 TEENBOOK 🔹에 대해 자세히 설명해 드릴게요!
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🙋‍♀️  CLIKE ME  🙋](https://drive.google.com/file/d/17pVcjRG1zmZlccVw1lUjXmn67raB-5W5/view?usp=drive_link)
 <br/>
   
 ​
@@ -24,17 +25,17 @@
 ​
   
 ​
-# �� 팀원 소개
+# 👤 팀원 소개
 ![image](https://github.com/kuyejin/project2/assets/65212187/d773780d-58f9-4f2f-bbc9-94355ca2b40c) 
 ​
 <br/>
 ​
-# �� 개발일정
+# 🗓 개발일정
 ![image](https://github.com/kuyejin/project2/assets/65212187/62d66a98-3c91-4d50-83b0-60bf864989e2)
 ​
 <br/>
 ​
-#  �� 개발스택
+#  🔨 개발스택
 ​
 ### 주요언어
 <img  src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img  src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
@@ -56,7 +57,7 @@
 ​
 ​
 ​
-#  ��‍��‍ 협업 방식
+#  👨‍👨 협업 방식
 **✔ 언제든 자유롭게 의견내기, 단 강요는 ��‍♂️**   
 ​
 ✔   [![](https://camo.githubusercontent.com/5f4f9e864500236994df27a0204caec7543b79162b3e45e9edaecc499ad2186d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f74696f6e2d3030303030303f7374796c653d666c61742d726f756e64266c6f676f3d4e6f74696f6e266c6f676f436f6c6f723d7768697465)](https://www.notion.so/2-61e48e6a682e4d7191fc2993b91b0665)
@@ -71,7 +72,7 @@
 ​
 ​
 ​
-#  �� 데이터베이스 설계
+#  📊 데이터베이스 설계
 ​
 ## 1️⃣ 요구사항 분석
 ![슬라이드1](https://github.com/kuyejin/project1/assets/65212187/55be3641-041a-4677-910a-fc34cdf579e4)
