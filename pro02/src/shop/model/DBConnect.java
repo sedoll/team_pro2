@@ -49,7 +49,7 @@ public interface DBConnect {
     final static String PRODUCT_SELECT_BEST = "SELECT p.*, c.cname FROM product p JOIN category c ON p.cate = c.cno where no in (select pno from payment group by pno order by sum(amount) desc )limit 4"; // 제일 잘나가는 상품 조회
     final static String PRODUCT_INSERT = "INSERT INTO product VALUES(DEFAULT, ?, '', ?, ?, ?, ?, ?, ?, ?, DEFAULT)";
     final static String PRODUCT_INSERT_CATENO = "update product set cateno = concat(cate, no) where no in (select no from product order by resdate desc)";
-    final static String PRODUCT_UPDATE = "update product set pname=?, pcomment=?, plist=?, price=?, imgsrc1=?, imgsrc2=?, imgsrc3=?, cate=? where no=?"; // 테스트! 상품정보수정
+    final static String PRODUCT_UPDATE = "update product set pname=?, pcomment=?, plist=?, price=?, cate=? where no=?"; // 테스트! 상품정보수정
     final static String PRODUCT_UPDATE_CATENO= "UPDATE product SET cateno = CONCAT(cate, NO) WHERE NO=?";
     final static String PRODUCT_DELETE = "delete from product where no=?";
 
