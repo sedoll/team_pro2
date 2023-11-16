@@ -177,7 +177,7 @@
                             </tbody>
                         </table>
                     </form>
-                    <a href="/member/term.jsp"> 회원가입 </a>
+                    <a href="${path}/custom/Join.do"> 회원가입 </a>
 
                 </div>
 
